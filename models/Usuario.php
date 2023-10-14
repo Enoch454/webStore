@@ -53,7 +53,11 @@ class Usuario {
     }
     /// fin sets and getters
 
-    public function __construct($idUsuario, $userName, $contrasena, $fechaIngreso, $email, $fotoPerfil, $esPrivado) {
+    public function __construct($userName, $contrasena, $email,
+                                $idUsuario = null,
+                                $fechaIngreso = null,
+                                $fotoPerfil = null,
+                                $esPrivado = null) {
         $this->idUsuario = $idUsuario;
         $this->userName = $userName;
         $this->contrasena = $contrasena;
@@ -88,11 +92,17 @@ class Usuario {
         $stmt->execute();
         $this->id = (int)$stmt->insert_id;
         */
-        $stmt= $mysqli->prepare($sql);
-        $stmt->bind_param("sss", $this->userName, $this->contrasena, $this->email);
-        $isSucces = $stmt->execute();
-        print_r((int)$stmt->insert_id);
-        return $isSucces;
+        try {
+            $stmt= $mysqli->prepare($sql);
+            $stmt->bind_param("sss", $this->userName, $this->contrasena, $this->email);
+            $isSucces = $stmt->execute();
+            //print_r((int)$stmt->insert_id);
+            return $isSucces;
+        } catch (Exception $e) {
+            //echo 'Excepción capturada: ',  $e->getMessage(), "\n";
+            return false;
+        }
+        
         
     }
 
