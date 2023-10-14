@@ -80,7 +80,8 @@ class Usuario {
 
     }
     public function save($mysqli) {
-        $sql = "EXEC InsertarUsuario @p_userName = ?, @p_contraseña = ?, @p_fechaIngreso = ?,  @p_email = ?, @p_fotoPerfil = ?, @p_esPrivado = ?";
+        //$sql = "EXEC InsertarUsuario @p_userName = ?, @p_contraseña = ?, @p_fechaIngreso = ?,  @p_email = ?, @p_fotoPerfil = ?, @p_esPrivado = ?";
+        $sql = 'CALL InsertarUsuario(?, ?, ?)';
         /*
         $stmt= $mysqli->prepare($sql);
         $stmt->bind_param("sssss", $this->names, $this->lastnames, $this->username, $this->email,$this->password);
@@ -88,11 +89,14 @@ class Usuario {
         $this->id = (int)$stmt->insert_id;
         */
         $stmt= $mysqli->prepare($sql);
-        $stmt->bind_param("sssssss", $this->userName, $this->contrasena, $this->fechaIngreso, $this->email, $this->fotoPerfil, $this->esPrivado);
-        $stmt->execute();
-
+        $stmt->bind_param("sss", $this->userName, $this->contrasena, $this->email);
+        $isSucces = $stmt->execute();
+        print_r((int)$stmt->insert_id);
+        return $isSucces;
         
     }
+
+    /*
     public static function findUserByUsername($mysqli, $username, $password) {
         $sql = "SELECT id, names, lastnames, username, email FROM users WHERE  username = ? AND password = ? LIMIT 1";
         $stmt = $mysqli->prepare($sql);
@@ -111,6 +115,7 @@ class Usuario {
         $user = $result->fetch_assoc();
         return $user ? User::parseJson($user) : NULL;
     }
+    */
     public function toJSON() {
         return get_object_vars($this);
     }
