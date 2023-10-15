@@ -8,8 +8,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     //print_r(json_encode($json));
     $conexion = new Conexion;
     $mysqli = $conexion->conexion;
-    $esCredValida = Usuario::validateCredendtials($mysqli, $json['userName'], $json['contrasena']);
-    //print_r($esCredValida);
+    $idUsr = Usuario::validateCredendtials($mysqli, $json['userName'], $json['contrasena']);
+    print_r($idUsr);
     
     //Sanitizar JSON
     // $filters = [
@@ -27,8 +27,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     /*
     header('Content-Type: application/json');
-    $conexion = new Conexion;
-    $mysqli = $conexion->conexion;
     $user = Usuario::findUserByUsername($mysqli,$json["username"],$json["password"]);
     $json_response = ["success" => true];
     

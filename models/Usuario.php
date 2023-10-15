@@ -124,13 +124,13 @@ class Usuario {
         $result = mysqli_query($mysqli, $sql);
 
         // Recuperar el valor de @res
-        $selectResult = mysqli_query($mysqli, "SELECT @res as esValido;");
+        $selectResult = mysqli_query($mysqli, "SELECT @res as idUsuario;");
         $row = mysqli_fetch_assoc($selectResult);
-        $isValid = $row['esValido'];
+        $idUsr = $row['idUsuario'];
 
         mysqli_free_result($selectResult);
 
-        return $isValid;
+        return $idUsr;
 
     }
 
