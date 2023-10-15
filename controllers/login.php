@@ -5,11 +5,11 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     //Obtener Json
     $json = json_decode(file_get_contents('php://input'),true);
-    print_r(json_encode($json));
+    //print_r(json_encode($json));
     $conexion = new Conexion;
     $mysqli = $conexion->conexion;
     $esCredValida = Usuario::validateCredendtials($mysqli, $json['userName'], $json['contrasena']);
-    print_r($esCredValida);
+    //print_r($esCredValida);
     
     //Sanitizar JSON
     // $filters = [

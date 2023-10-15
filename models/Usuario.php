@@ -106,13 +106,31 @@ class Usuario {
         
     }
 
-    public static function validateCredendtials($mysqli, $userName, $password) { 
+    
+    public static function validateCredendtials($mysqli, $userName, $password) {
+        
         //$sql = "SELECT id, names, lastnames, username, email FROM users WHERE  username = ? AND password = ? LIMIT 1";
-        $sql = "CALL IniciarSesion(?, ?, @res)";
-        $stmt = $mysqli->prepare($sql);
-        $stmt->bind_param("ss",$userName, $password);
-        $result = $stmt->execute();
-        return $result;
+        //$sql = "CALL IniciarSesion(?, ?, @res)";
+        //$stmt = $mysqli->prepare($sql);
+        //$stmt->bind_param("ss",$userName, $password);
+        //$result = $stmt->execute();
+        //$result = $stmt->get_result(); 
+        //$user = $result->fetch_assoc();
+        //return $user ? User::parseJson($user) : NULL;
+        
+        
+        $sql = "CALL IniciarSesion('%s', '%s', @res);";
+        $sql = sprintf($sql, $userName, $password);
+        $result = mysqli_query($mysqli, $sql);
+
+        // Recuperar el valor de @res
+        $selectResult = mysqli_query($mysqli, "SELECT @res as esValido;");
+        $row = mysqli_fetch_assoc($selectResult);
+        $isValid = $row['esValido'];
+
+        mysqli_free_result($selectResult);
+
+        return $isValid;
 
     }
 
