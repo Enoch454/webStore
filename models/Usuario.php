@@ -8,6 +8,7 @@ class Usuario {
     private $email;
     private $fotoPerfil;
     private $esPrivado;
+    private $esActivo;
     private $idPersona;
     public function getIdUsuario() {
         return $this->idUsuario;
@@ -51,6 +52,12 @@ class Usuario {
     public function setIdPersona ($idPersona) {
         $this->idPersona = $idPersona;
     }
+    public function getEsActivo() {
+        return $this->esActivo;
+    }
+    public function setEsActivo($esActivo) {
+        $this->esActivo = $esActivo;
+    }
     /// fin sets and getters
 
     public function __construct($userName, $contrasena, $email,
@@ -69,11 +76,11 @@ class Usuario {
     }
     static public function parseJson($json) {
         $usuario = new Usuario(
-            isset($json["idUsuario"]) ? $json["idUsuario"] : "",
             isset($json["userName"]) ? $json["userName"] : "",
             isset($json["contrasena"]) ? $json["contrasena"] : "",
-            isset($json["fechaIngreso"]) ? $json["fechaIngreso"] : "",
             isset($json["email"]) ? $json["email"] : "",
+            isset($json["idUsuario"]) ? $json["idUsuario"] : "",
+            isset($json["fechaIngreso"]) ? $json["fechaIngreso"] : "",
             isset($json["fotoPerfil"]) ? $json["fotoPerfil"] : "",
             isset($json["esPrivado"]) ? $json["esPrivado"] : ""
         );
@@ -84,63 +91,53 @@ class Usuario {
 
     }
     public function save($mysqli) {
+        $sql = 'CALL InsertarUsuario(?, ?, ?)';
+        
         try {
-            // Define la consulta SQL con el stored procedure
-            $sql = 'CALL InsertarUsuario(?, ?, ?)';
-    
-            // Verifica si la conexión a la base de datos está establecida
-            if ($mysqli->connect_error) {
-                die("Connection failed: " . $mysqli->connect_error);
-            }
-    
-            // Prepara la consulta SQL
-            $stmt = $mysqli->prepare($sql);
-    
-            if ($stmt) {
-                // Vincula los parámetros
-                $stmt->bind_param("sss", $this->userName, $this->contrasena, $this->email);
-    
-                // Ejecuta la consulta
-                $isSuccess = $stmt->execute();
-    
-                if ($isSuccess) {
-                    return true;
-                } else {
-                    return false;
-                }
-    
-                // Cierra la declaración
-                $stmt->close();
-            } else {
-                return false;
-            }
+            $stmt= $mysqli->prepare($sql);
+            $stmt->bind_param("sss", $this->userName, $this->contrasena, $this->email);
+            $isSucces = $stmt->execute();
+            //print_r((int)$stmt->insert_id);
+            return $isSucces;
         } catch (Exception $e) {
-            // Maneja excepciones
+            //echo 'Excepción capturada: ',  $e->getMessage(), "\n";
             return false;
         }
+        
+        
     }
-    
 
-    /*
-    public static function findUserByUsername($mysqli, $username, $password) {
-        $sql = "SELECT id, names, lastnames, username, email FROM users WHERE  username = ? AND password = ? LIMIT 1";
-        $stmt = $mysqli->prepare($sql);
-        $stmt->bind_param("ss",$username, $password);
-        $stmt->execute();
-        $result = $stmt->get_result(); 
-        $user = $result->fetch_assoc();
-        return $user ? User::parseJson($user) : NULL;
+    
+    public static function validateCredendtials($mysqli, $userName, $password) {
+        $sql = "CALL IniciarSesion('%s', '%s', @res);";
+        $sql = sprintf($sql, $userName, $password);
+        $result = mysqli_query($mysqli, $sql);
+
+        // Recuperar el valor de @res
+        $selectResult = mysqli_query($mysqli, "SELECT @res as idUsuario;");
+        $row = mysqli_fetch_assoc($selectResult);
+        $idUsr = $row['idUsuario'];
+
+        mysqli_free_result($selectResult);
+
+        return $idUsr;
+
     }
+
+    
     public static function findUserById($mysqli, $id) {
-        $sql = "SELECT id, names, lastnames, username, email FROM users WHERE  id = ? LIMIT 1";
+
+        $sql = "CALL ConsultarUsuario(?);";
         $stmt = $mysqli->prepare($sql);
         $stmt->bind_param("i",$id);
         $stmt->execute();
         $result = $stmt->get_result(); 
         $user = $result->fetch_assoc();
-        return $user ? User::parseJson($user) : NULL;
+        //print_r($user);
+        return $user ? Usuario::parseJson($user) : NULL;
+
     }
-    */
+    
     public function toJSON() {
         return get_object_vars($this);
     }

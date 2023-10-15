@@ -88,11 +88,11 @@ BEGIN
   WHERE userName = p_userName AND contraseña = p_contraseña AND esActivo = 1;
 
   IF userCount = 1 THEN
-    SET p_resultado = 1; -- Usuario válido
+    -- SET p_resultado = 1; -- Usuario válido
+    SELECT idUsuario INTO p_resultado FROM Usuarios WHERE userName = p_userName LIMIT 1;
   ELSE
-    SET p_resultado = 0; -- Usuario inválido
-  END IF;
-END //
+    SET p_resultado = -1; -- Usuario inválido
+  E//
 
 DELIMITER ;
 
@@ -104,23 +104,20 @@ DELIMITER ;
 
 DELIMITER //
 
-CREATE PROCEDURE ConsultarPerfilUsuarioPersona(
+CREATE PROCEDURE ConsultarUsuario(
   IN p_idUsuario INT
 )
 BEGIN
   SELECT
     U.idUsuario,
     U.userName,
+    U.contraseña,
+    U.fechaIngreso
     U.email,
     U.fotoPerfil,
     U.esPrivado,
-    P.Nombre,
-    P.ApellidoPat,
-    P.ApellidoMat,
-    P.FechaNac,
-    P.Sexo
+    U.esActivo
   FROM Usuarios U
-  JOIN Personas P ON U.idPersona = P.idPersona
   WHERE U.idUsuario = p_idUsuario;
 END //
 
