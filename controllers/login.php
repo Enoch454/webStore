@@ -5,7 +5,11 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     //Obtener Json
     $json = json_decode(file_get_contents('php://input'),true);
-    print_r($json);
+    print_r(json_encode($json));
+    $conexion = new Conexion;
+    $mysqli = $conexion->conexion;
+    $esCredValida = Usuario::validateCredendtials($mysqli, $json['userName'], $json['contrasena']);
+    print_r($esCredValida);
     
     //Sanitizar JSON
     // $filters = [
@@ -20,11 +24,15 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     // foreach($json as $key=>$value) {
     //     $json_safe[$key] = filter_var($value, $filters[$key], $options[$key]);
     // }
+
+    /*
     header('Content-Type: application/json');
     $conexion = new Conexion;
     $mysqli = $conexion->conexion;
     $user = Usuario::findUserByUsername($mysqli,$json["username"],$json["password"]);
     $json_response = ["success" => true];
+    
+    
     if($user) {
         $json_response["msg" ]= "Bienvenido";
         $json_response ["user"] = $user->toJSON();
@@ -40,5 +48,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
         echo json_encode($json_response);
         exit;
     } 
+    */
    
 }

@@ -106,16 +106,17 @@ class Usuario {
         
     }
 
-    /*
-    public static function findUserByUsername($mysqli, $username, $password) {
-        $sql = "SELECT id, names, lastnames, username, email FROM users WHERE  username = ? AND password = ? LIMIT 1";
+    public static function validateCredendtials($mysqli, $userName, $password) { 
+        //$sql = "SELECT id, names, lastnames, username, email FROM users WHERE  username = ? AND password = ? LIMIT 1";
+        $sql = "CALL IniciarSesion(?, ?, @res)";
         $stmt = $mysqli->prepare($sql);
-        $stmt->bind_param("ss",$username, $password);
-        $stmt->execute();
-        $result = $stmt->get_result(); 
-        $user = $result->fetch_assoc();
-        return $user ? User::parseJson($user) : NULL;
+        $stmt->bind_param("ss",$userName, $password);
+        $result = $stmt->execute();
+        return $result;
+
     }
+
+    /*
     public static function findUserById($mysqli, $id) {
         $sql = "SELECT id, names, lastnames, username, email FROM users WHERE  id = ? LIMIT 1";
         $stmt = $mysqli->prepare($sql);
