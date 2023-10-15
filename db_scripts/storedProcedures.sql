@@ -104,23 +104,20 @@ DELIMITER ;
 
 DELIMITER //
 
-CREATE PROCEDURE ConsultarPerfilUsuarioPersona(
+CREATE PROCEDURE ConsultarUsuario(
   IN p_idUsuario INT
 )
 BEGIN
   SELECT
     U.idUsuario,
     U.userName,
+    U.contraseña,
+    U.fechaIngreso
     U.email,
     U.fotoPerfil,
     U.esPrivado,
-    P.Nombre,
-    P.ApellidoPat,
-    P.ApellidoMat,
-    P.FechaNac,
-    P.Sexo
+    U.esActivo
   FROM Usuarios U
-  JOIN Personas P ON U.idPersona = P.idPersona
   WHERE U.idUsuario = p_idUsuario;
 END //
 
