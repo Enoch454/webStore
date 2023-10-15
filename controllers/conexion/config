@@ -3,7 +3,7 @@
         "server": "localhost",
         "user": "root",
         "password": "valtrazos123",
-        "database": "apirest_sql",
+        "database": "webStore_db",
         "port": "3306"
     }
 }
