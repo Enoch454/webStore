@@ -2,8 +2,8 @@
     "conexion":{
         "server": "localhost",
         "user": "root",
-        "password": "valtrazos123",
-        "database": "apirest_sql",
+        "password": "",
+        "database": "webStore_db",
         "port": "3306"
     }
 }

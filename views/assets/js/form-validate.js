@@ -54,11 +54,41 @@ function valid_datas(f) {
         valid = false;
     }
 
-    if (valid) {
-        // Mostrar un mensaje de registro exitoso
-        alert('Registro exitoso. ¡Bienvenido!');
-        // Puedes redirigir al usuario a otra página o realizar otras acciones aquí-contact').find('input,textarea,button').css('border', 'none').attr({ 'disabled': '' });
-    }
+    
+        if (valid) {
+            alert('Registro exitoso. ¡Bienvenido!');
+            const userData = {
+                "username": f.Username.value,
+                "password": f.Contraseña.value,
+                "email": f.email.value,
+                // Agrega más propiedades aquí según sea necesario
+            };
+        
+            // Crear una instancia de Usuario
+            const usuario = new Usuario(
+                userData.username,
+                userData.password,
+                userData.email
+                // Puedes agregar más propiedades según sea necesario
+            );
+        
+            // Insertar el usuario en la base de datos
+            fetch("registroApi.php", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(userData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert('Registro exitoso. ¡Bienvenido!');
+            })
+            .catch(error => {
+                console.error("Error en la solicitud:", error);
+            });
+        }
+    
 
     return false;
 }

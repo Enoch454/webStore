@@ -1,33 +1,20 @@
 -- Insertar usuario y persona, colocando como esActivo como 1 y esPrivado como true por default a la hora de hacer insert
 DELIMITER //
 
-CREATE PROCEDURE InsertarUsuarioYPersona(
+CREATE PROCEDURE InsertarUsuario(
   IN p_userName VARCHAR(15),
   IN p_contraseña VARCHAR(15),
   IN p_email VARCHAR(20),
-  IN p_fotoPerfil BLOB,
-  IN p_nombre VARCHAR(50),
-  IN p_apellidoPat VARCHAR(50),
-  IN p_apellidoMat VARCHAR(50),
-  IN p_fechaNac DATE,
-  IN p_sexo CHAR(1)
 )
 BEGIN
-  DECLARE new_idPersona INT;
-
-  -- Insertar en la tabla Personas
-  INSERT INTO Personas (Nombre, ApellidoPat, ApellidoMat, FechaNac, Sexo)
-  VALUES (p_nombre, p_apellidoPat, p_apellidoMat, p_fechaNac, p_sexo);
-
-  -- Obtener el ID de la nueva fila insertada en Personas
-  SET new_idPersona = LAST_INSERT_ID();
-
   -- Insertar en la tabla Usuarios
-  INSERT INTO Usuarios (userName, contraseña, email, fotoPerfil, esPrivado, esActivo, idPersona)
-  VALUES (p_userName, p_contraseña, p_email, p_fotoPerfil, TRUE, 1, new_idPersona);
+  INSERT INTO Usuarios (userName, contraseña, email)
+  VALUES (p_userName, p_contraseña, p_email);
 END //
 
 DELIMITER ;
+
+
 
 DELIMITER //
 -- Editar el usuario en cuestion

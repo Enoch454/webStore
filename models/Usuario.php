@@ -53,7 +53,11 @@ class Usuario {
     }
     /// fin sets and getters
 
-    public function __construct($idUsuario, $userName, $contrasena, $fechaIngreso, $email, $fotoPerfil, $esPrivado) {
+    public function __construct($userName, $contrasena, $email,
+                                $idUsuario = null,
+                                $fechaIngreso = null,
+                                $fotoPerfil = null,
+                                $esPrivado = null) {
         $this->idUsuario = $idUsuario;
         $this->userName = $userName;
         $this->contrasena = $contrasena;
@@ -80,19 +84,44 @@ class Usuario {
 
     }
     public function save($mysqli) {
-        $sql = "EXEC InsertarUsuario @p_userName = ?, @p_contraseña = ?, @p_fechaIngreso = ?,  @p_email = ?, @p_fotoPerfil = ?, @p_esPrivado = ?";
-        /*
-        $stmt= $mysqli->prepare($sql);
-        $stmt->bind_param("sssss", $this->names, $this->lastnames, $this->username, $this->email,$this->password);
-        $stmt->execute();
-        $this->id = (int)$stmt->insert_id;
-        */
-        $stmt= $mysqli->prepare($sql);
-        $stmt->bind_param("sssssss", $this->userName, $this->contrasena, $this->fechaIngreso, $this->email, $this->fotoPerfil, $this->esPrivado);
-        $stmt->execute();
-
-        
+        try {
+            // Define la consulta SQL con el stored procedure
+            $sql = 'CALL InsertarUsuario(?, ?, ?)';
+    
+            // Verifica si la conexión a la base de datos está establecida
+            if ($mysqli->connect_error) {
+                die("Connection failed: " . $mysqli->connect_error);
+            }
+    
+            // Prepara la consulta SQL
+            $stmt = $mysqli->prepare($sql);
+    
+            if ($stmt) {
+                // Vincula los parámetros
+                $stmt->bind_param("sss", $this->userName, $this->contrasena, $this->email);
+    
+                // Ejecuta la consulta
+                $isSuccess = $stmt->execute();
+    
+                if ($isSuccess) {
+                    return true;
+                } else {
+                    return false;
+                }
+    
+                // Cierra la declaración
+                $stmt->close();
+            } else {
+                return false;
+            }
+        } catch (Exception $e) {
+            // Maneja excepciones
+            return false;
+        }
     }
+    
+
+    /*
     public static function findUserByUsername($mysqli, $username, $password) {
         $sql = "SELECT id, names, lastnames, username, email FROM users WHERE  username = ? AND password = ? LIMIT 1";
         $stmt = $mysqli->prepare($sql);
@@ -111,6 +140,7 @@ class Usuario {
         $user = $result->fetch_assoc();
         return $user ? User::parseJson($user) : NULL;
     }
+    */
     public function toJSON() {
         return get_object_vars($this);
     }

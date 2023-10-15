@@ -156,7 +156,7 @@
 					</div>
 				 	<div id="form_status"></div>
 					<div class="contact-form">
-						<form type="POST" id="dessert-contact" onSubmit="return valid_datas( this );">
+						<form  id="dessert-contact" onSubmit="return valid_datas( this );" method="POST" action="registroApi.php" enctype="multipart/form-data">
 							<p>
 								<input class="formulario" type="text" placeholder="Nombre" name="Nombre" id="Nombre">
 							</p>
