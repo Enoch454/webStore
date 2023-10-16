@@ -4,7 +4,7 @@ DELIMITER //
 CREATE PROCEDURE InsertarUsuario(
   IN p_userName VARCHAR(15),
   IN p_contraseña VARCHAR(15),
-  IN p_email VARCHAR(20),
+  IN p_email VARCHAR(20)
 )
 BEGIN
   -- Insertar en la tabla Usuarios
@@ -12,8 +12,46 @@ BEGIN
   VALUES (p_userName, p_contraseña, p_email);
 END //
 
+
 DELIMITER ;
 
+
+DELIMITER //
+CREATE PROCEDURE sp_InsertarUsuario(
+  IN p_userName VARCHAR(15),
+  IN p_contraseña VARCHAR(15),
+  IN p_email VARCHAR(20),
+  IN p_fotoPerfil BLOB,
+  IN p_esPrivado BOOLEAN,
+  IN p_esActivo BIT
+)
+BEGIN
+  INSERT INTO Usuarios (userName, contraseña, email, fotoPerfil, esPrivado, esActivo)
+  VALUES (p_userName, p_contraseña, p_email, p_fotoPerfil, p_esPrivado, p_esActivo);
+
+END //
+DELIMITER ;
+
+
+-- Insertar Persona atributos completos
+
+DELIMITER //
+
+CREATE PROCEDURE sp_InsertarPersona(
+  IN p_Nombre VARCHAR(50),
+  IN p_ApellidoPat VARCHAR(50),
+  IN p_ApellidoMat VARCHAR(50),
+  IN p_FechaNac DATE,
+  IN p_Sexo CHAR(1),
+  IN p_Telefono VARCHAR(15)
+)
+BEGIN
+  -- Insertar en la tabla Personas
+  INSERT INTO Personas (Nombre, ApellidoPat, ApellidoMat, FechaNac, Sexo, Telefono)
+  VALUES (p_Nombre, p_ApellidoPat, p_ApellidoMat, p_FechaNac, p_Sexo, p_Telefono);
+END //
+
+DELIMITER ;
 
 
 DELIMITER //
@@ -92,9 +130,11 @@ BEGIN
     SELECT idUsuario INTO p_resultado FROM Usuarios WHERE userName = p_userName LIMIT 1;
   ELSE
     SET p_resultado = -1; -- Usuario inválido
-  E//
+  END IF; -- Agregar este END IF para corregir el error de sintaxis
+END //
 
 DELIMITER ;
+
 
 
 -- Funcion para ingresar el inicio de sesion si es valido o no
