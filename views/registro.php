@@ -156,7 +156,7 @@
 					</div>
 				 	<div id="form_status"></div>
 					<div class="contact-form">
-						<form  id="dessert-contact" onSubmit="return valid_datas( this );" method="POST" action="registroApi.php" enctype="multipart/form-data">
+						<form  type= "POST" id="dessert-contact" onSubmit="return valid_datas( this );" method="POST" action="../controllers/signup.php" enctype="multipart/form-data">
 							<p>
 								<input class="formulario" type="text" placeholder="Nombre" name="Nombre" id="Nombre">
 							</p>
@@ -168,8 +168,13 @@
 							<p><input class="formulario" type="date" name="FechaNac" id="FechaNac"></p>
 
 							<p>Género:</p>
-							<p><input type="radio" name="Genero" value="Masculino" class="radio-input"> Masculino</p>
-							<p><input type="radio" name="Genero" value="Femenino" class="radio-input"> Femenino</p>
+							<p><input type="radio" name="Genero" value="Masculino" class="radio-input" id="masculino"> Masculino</p>
+							<p><input type="radio" name="Genero" value="Femenino" class="radio-input" id="femenino"> Femenino</p>
+
+							<p><input type="hidden" name="Genero" id="Genero" value="Masculino"></p>
+							<p>Seleccionaste: <span id="generoSeleccionado">Masculino</span></p>
+
+
 
 							<p><input class="formulario" type="text" placeholder="Username" name="Username" id="subject"></p>
 							<p><input class="formulario" type="password" placeholder="Contraseña" name="Contraseña" id="pass"></p>	

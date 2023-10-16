@@ -1,18 +1,68 @@
--- Insertar usuario y persona, colocando como esActivo como 1 y esPrivado como true por default a la hora de hacer insert
+-- Insertar usuario de prueba solo con Username, contra y email
 DELIMITER //
 
 CREATE PROCEDURE InsertarUsuario(
   IN p_userName VARCHAR(15),
   IN p_contraseña VARCHAR(15),
-  IN p_email VARCHAR(20),
+  IN p_email VARCHAR(20)
 )
 BEGIN
-  -- Insertar en la tabla Usuarios
+
   INSERT INTO Usuarios (userName, contraseña, email)
   VALUES (p_userName, p_contraseña, p_email);
 END //
 
 DELIMITER ;
+
+select * from Usuarios;
+select * from Personas;
+select * from Domicilios;
+
+
+
+
+
+DELIMITER //
+-- Insertar Usuario con todos sus atributos de su tabla
+
+CREATE PROCEDURE sp_InsertarUsuario(
+  IN p_userName VARCHAR(15),
+  IN p_contraseña VARCHAR(15),
+  IN p_email VARCHAR(20),
+  IN p_fotoPerfil BLOB,
+  IN p_esPrivado BOOLEAN,
+  IN p_esActivo BIT
+)
+BEGIN
+  INSERT INTO Usuarios (userName, contraseña, email, fotoPerfil, esPrivado, esActivo)
+  VALUES (p_userName, p_contraseña, p_email, p_fotoPerfil, p_esPrivado, p_esActivo);
+END //
+
+DELIMITER ;
+
+-- Insertar Persona atributos completos
+
+DELIMITER //
+
+CREATE PROCEDURE sp_InsertarPersona(
+  IN p_Nombre VARCHAR(50),
+  IN p_ApellidoPat VARCHAR(50),
+  IN p_ApellidoMat VARCHAR(50),
+  IN p_FechaNac DATE,
+  IN p_Sexo CHAR(1),
+  IN p_Telefono VARCHAR(15)
+)
+BEGIN
+  -- Insertar en la tabla Personas
+  INSERT INTO Personas (Nombre, ApellidoPat, ApellidoMat, FechaNac, Sexo, Telefono)
+  VALUES (p_Nombre, p_ApellidoPat, p_ApellidoMat, p_FechaNac, p_Sexo, p_Telefono);
+END //
+
+DELIMITER ;
+
+
+
+
 
 
 
@@ -88,11 +138,11 @@ BEGIN
   WHERE userName = p_userName AND contraseña = p_contraseña AND esActivo = 1;
 
   IF userCount = 1 THEN
-    -- SET p_resultado = 1; -- Usuario válido
-    SELECT idUsuario INTO p_resultado FROM Usuarios WHERE userName = p_userName LIMIT 1;
+    SET p_resultado = 1; -- Usuario válido
   ELSE
-    SET p_resultado = -1; -- Usuario inválido
-  E//
+    SET p_resultado = 0; -- Usuario inválido
+  END IF;
+END //
 
 DELIMITER ;
 
@@ -104,20 +154,23 @@ DELIMITER ;
 
 DELIMITER //
 
-CREATE PROCEDURE ConsultarUsuario(
+CREATE PROCEDURE ConsultarPerfilUsuarioPersona(
   IN p_idUsuario INT
 )
 BEGIN
   SELECT
     U.idUsuario,
     U.userName,
-    U.contraseña,
-    U.fechaIngreso
     U.email,
     U.fotoPerfil,
     U.esPrivado,
-    U.esActivo
+    P.Nombre,
+    P.ApellidoPat,
+    P.ApellidoMat,
+    P.FechaNac,
+    P.Sexo
   FROM Usuarios U
+  JOIN Personas P ON U.idPersona = P.idPersona
   WHERE U.idUsuario = p_idUsuario;
 END //
 
