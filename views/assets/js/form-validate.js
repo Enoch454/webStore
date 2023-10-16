@@ -4,8 +4,15 @@ $(document).ready(function() {
     
     // Asignar la función valid_datas al evento submit del formulario
     $('#form_status').submit(valid_datas);
-});
 
+    // Agregar evento click para los elementos de radio
+    // Dentro del evento click para los elementos de radio
+    $('#masculino, #femenino').click(function() {
+        const genero = $(this).val();
+        $('#Genero').val(genero);
+        $('#generoSeleccionado').text(genero);
+    });
+});
 
 function valid_datas(f) {
     var valid = true;
@@ -54,41 +61,47 @@ function valid_datas(f) {
         valid = false;
     }
 
-    
-        if (valid) {
-            alert('Registro exitoso. ¡Bienvenido!');
-            const userData = {
-                "username": f.Username.value,
-                "password": f.Contraseña.value,
-                "email": f.email.value,
-                // Agrega más propiedades aquí según sea necesario
-            };
+    if (valid) {
+        alert('Antes del fetch. ¡Bienvenido!');
         
-            // Crear una instancia de Usuario
-            const usuario = new Usuario(
-                userData.username,
-                userData.password,
-                userData.email
-                // Puedes agregar más propiedades según sea necesario
-            );
+        // Combina los datos en un solo objeto
+        const userData = {
+            "Nombre": f.Nombre.value,
+            "ApPaterno": f.ApPaterno.value,
+            "ApMaterno": f.ApMaterno.value,
+            "email": f.email.value,
+            "Telefono": f.Telefono.value,
+            "FechaNac": f.FechaNac.value,
+            "Genero": $('#Genero').val(),
+            "Username": f.Username.value,
+            "Contraseña": f.Contraseña.value,
+        };
+
+        // Realiza una solicitud fetch para enviar los datos al servidor
+        fetch("../controllers/signup.php", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(userData)
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success && data.redirect) {
+                // Captura el ID del nuevo usuario
+                var userId = data.idUsuario;
+                console.log("ID del nuevo usuario: " + userId);
         
-            // Insertar el usuario en la base de datos
-            fetch("registroApi.php", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(userData)
-            })
-            .then(response => response.json())
-            .then(data => {
                 alert('Registro exitoso. ¡Bienvenido!');
-            })
-            .catch(error => {
-                console.error("Error en la solicitud:", error);
-            });
-        }
-    
+                window.location.href = data.redirect;
+            } else {
+                alert('Registro exitoso, pero ocurrió un error inesperado.');
+            }
+        })
+        .catch(error => {
+            console.error("Error en la solicitud:", error);
+        });
+    }
 
     return false;
 }
@@ -98,5 +111,3 @@ function notice(f) {
     f.style.border = '1px solid red';
     f.focus();
 }
-
-

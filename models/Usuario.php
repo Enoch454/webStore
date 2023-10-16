@@ -90,21 +90,44 @@ class Usuario {
         return $usuario;
 
     }
+
+
+
     public function save($mysqli) {
-        $sql = 'CALL InsertarUsuario(?, ?, ?)';
-        
         try {
-            $stmt= $mysqli->prepare($sql);
-            $stmt->bind_param("sss", $this->userName, $this->contrasena, $this->email);
-            $isSucces = $stmt->execute();
-            //print_r((int)$stmt->insert_id);
-            return $isSucces;
+            // Define la consulta SQL con el stored procedure
+            $sql = 'CALL sp_InsertarUsuario(?, ?, ?, ?, ?, ?)';
+    
+            // Verifica si la conexión a la base de datos está establecida
+            if ($mysqli->connect_error) {
+                die("Connection failed: " . $mysqli->connect_error);
+            }
+    
+            // Prepara la consulta SQL
+            $stmt = $mysqli->prepare($sql);
+    
+            if ($stmt) {
+                // Vincula los parámetros
+                $stmt->bind_param("ssssss", $this->userName, $this->contrasena, $this->email, $this->fotoPerfil, $this->esPrivado, $this->esActivo);
+    
+                // Ejecuta la consulta
+                $isSuccess = $stmt->execute();
+    
+                if ($isSuccess) {
+                    return true;
+                } else {
+                    return false;
+                }
+    
+                // Cierra la declaración
+                $stmt->close();
+            } else {
+                return false;
+            }
         } catch (Exception $e) {
-            //echo 'Excepción capturada: ',  $e->getMessage(), "\n";
+            // Maneja excepciones
             return false;
         }
-        
-        
     }
 
     
