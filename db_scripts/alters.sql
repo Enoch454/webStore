@@ -4,13 +4,8 @@ ALTER TABLE `Usuarios` CHANGE `fotoPerfil` `fotoPerfil` BLOB NULL DEFAULT NULL;
 Alter table Usuarios
 Add `esActivo` BIT;
 
-
-
-
 ALTER TABLE Personas
 ADD `Telefono` VARCHAR(15);
-
-
 
 select * from Usuarios;
 select * from Personas;
