@@ -157,7 +157,7 @@
 					</div>
 				 	<div id="form_status"></div>
 					<div class="contact-form">
-						<form type="POST" id="dessert-contact" onSubmit="return valid_datas( this );">
+						<form type="POST" id="dessert-contact" onSubmit="return valid_datas( this );" method="POST" action="../controllers/login.php" enctype="multipart/form-data" >
 							<p>
 								<input type="text" placeholder="Usuario" name="user" id="user">
 								<br>
@@ -167,7 +167,7 @@
 								<br>
 							</p>
 							<p></p>
-							<a href="registro.html"> ¿No tienes una cuenta? ¡Registrate ya!</a>
+							<a href="registro.php"> ¿No tienes una cuenta? ¡Registrate ya!</a>
 							<input type="hidden" name="token" value="FsWga4&@f6aw" />
 							<p><input type="submit" value="Iniciar!"></p>
 						</form>

@@ -46,8 +46,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         print_r($newUser->toJSON());
         $newUser->save($mysqli);
 
-        $json_response["msg"] = "Registro exitoso";
-        $json_response["redirect"] = "../views/inicioses.php";
+        $json_response = ["success" => true, "msg" => "Registro exitoso"];
+        //$json_response["redirect"] = "../views/inicioses.php";
         echo json_encode($json_response);
 
     }   catch (Exception $e) {

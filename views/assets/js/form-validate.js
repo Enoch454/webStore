@@ -97,7 +97,7 @@ function valid_datas(f) {
         .then(data => {
             if (data.success && data.redirect) {
                 alert('Registro exitoso. ¡Bienvenido!');
-                window.location.href = data.redirect;
+                window.location.href = '../views/inicioses.php'; // Redirecciona a inicioses.php
             } else {
                 alert('Registro exitoso, pero ocurrió un error inesperado.');
             }

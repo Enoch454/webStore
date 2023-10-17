@@ -31,7 +31,7 @@ CREATE PROCEDURE sp_InsertarUsuario(
   IN p_email VARCHAR(20),
   IN p_fotoPerfil BLOB,
   IN p_esPrivado BOOLEAN,
-  IN p_esActivo BIT
+  IN p_esActivo BIT,
   IN p_idPersona INT
 )
 BEGIN
