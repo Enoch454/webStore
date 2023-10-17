@@ -51,7 +51,7 @@
 					<div class="main-menu-wrap">
 						<!-- logo -->
 						<div class="site-logo">
-							<a href="index.html">
+							<a href="index.php">
 								<img src="assets/img/logo.png" alt="">
 							</a>
 						</div>
@@ -62,7 +62,7 @@
 								<ul>
 									<li class="current-list-item"><a href="#">Home</a>
 										<ul class="sub-menu">
-											<li><a href="index.html">Home</a></li>
+											<li><a href="index.php">Home</a></li>
 									
 										</ul>
 									</li>
@@ -70,31 +70,31 @@
 									<li><a href="#">Pages</a>
 										<ul class="sub-menu">
 											
-											<li><a href="cart.html">Carrito</a></li>
-											<li><a href="checkout.html">Check Out</a></li>
-											<li><a href="shop.html">Tienda</a></li>
+											<li><a href="cart.php">Carrito</a></li>
+											<li><a href="checkout.php">Check Out</a></li>
+											<li><a href="shop.php">Tienda</a></li>
 											
 										</ul>
 									</li>
-									<li><a href="account.html">Perfil</a>
+									<li><a href="account.php">Perfil</a>
 										<ul class="sub-menu">
-											<li><a href="account.html">Perfil</a></li>
-											<li><a href="posts.html">Posts</a></li>
+											<li><a href="account.php">Perfil</a></li>
+											<li><a href="posts.php">Posts</a></li>
 										</ul>
 									</li>
-									<li><a href="about.html">Nosotros</a></li>
-									<li><a href="shop.html">Shop</a>
+									<li><a href="about.php">Nosotros</a></li>
+									<li><a href="shop.php">Shop</a>
 										<ul class="sub-menu">
-											<li><a href="shop.html">Shop</a></li>
-											<li><a href="checkout.html">Check Out</a></li>
-											<li><a href="single-product.html">Single Product</a></li>
-											<li><a href="cart.html">Carrito</a></li>
+											<li><a href="shop.php">Shop</a></li>
+											<li><a href="checkout.php">Check Out</a></li>
+											<li><a href="single-product.php">Single Product</a></li>
+											<li><a href="cart.php">Carrito</a></li>
 										</ul>
 									</li>
 									<li>
 										<div class="header-icons">
-											<a class="shopping-cart" href="cart.html"><i class="fas fa-shopping-cart"></i></a>
-											<a class="mobile-hide search-bar-icon" href="search.html"><i class="fas fa-search"></i></a>
+											<a class="shopping-cart" href="cart.php"><i class="fas fa-shopping-cart"></i></a>
+											<a class="mobile-hide search-bar-icon" href="search.php"><i class="fas fa-search"></i></a>
 										</div>
 									</li>
 								</ul>
@@ -187,7 +187,7 @@
 				<div class="main-box clearfix">
 					<div class="profile-header">
 						<h3><span>Info de Usuario</span></h3>
-						<a href="modperfil.html" class="btn btn-primary edit-profile">
+						<a href="modperfil.php" class="btn btn-primary edit-profile">
 							<i class="fa fa-pencil-square fa-lg"></i> Editar perfil
 						</a>
 					</div>
@@ -225,10 +225,10 @@
 
 	<div class="account-buttons">
 	
-		<a href="domicilio.html" class="boxed-btn">Agregar Domicilio</a>
-		<a href="actualizardom.html" class="boxed-btn">Actualizar Domicilio</a>
-		<a href="crearPost.html" class="boxed-btn">Nuevo Post</a>
-		<a href="moderarventas.html" class="boxed-btn">Perfil Avanzado</a>
+		<a href="domicilio.php" class="boxed-btn">Agregar Domicilio</a>
+		<a href="actualizardom.php" class="boxed-btn">Actualizar Domicilio</a>
+		<a href="crearPost.php" class="boxed-btn">Nuevo Post</a>
+		<a href="moderarventas.php" class="boxed-btn">Perfil Avanzado</a>
 	</div>
 
 </div>
@@ -242,9 +242,9 @@
 				<div class="col-lg-4 col-md-6">
 					<div class="single-latest-news">
 						
-						<a href="single-news.html"><div class="latest-news-bg news-bg-1"></div></a>
+						<a href="single-news.php"><div class="latest-news-bg news-bg-1"></div></a>
 						<div class="news-text-box">
-							<h3><a href="single-news.html">compra pasteles!!!!!!</a></h3>
+							<h3><a href="single-news.php">compra pasteles!!!!!!</a></h3>
 							<p class="blog-meta">
 								<span class="author"><i class="fas fa-user"></i> Admin</span>
 								<span class="date"><i class="fas fa-calendar"></i> Septiembre 8, 2023</span>
@@ -258,12 +258,12 @@
 								
 							</div>
 							<p class="excerpt">los pasteles te hacen vivir mas años es enserio creeme</p>
-							<a href="posts.html" class="read-more-btn">Leer más <i class="fas fa-angle-right"></i></a>
+							<a href="posts.php" class="read-more-btn">Leer más <i class="fas fa-angle-right"></i></a>
 						</div>
 					</div>
 				</div>
 			</div>
-			<a href="productoVendedor.html" class="boxed-btn">Todos mis Posts</a>
+			<a href="productoVendedor.php" class="boxed-btn">Todos mis Posts</a>
 		</div>
 	</div>
 
@@ -278,9 +278,9 @@
 				<div class="col-lg-4 col-md-6">
 					<div class="single-latest-news">
 						
-						<a href="single-news.html"><div class="latest-news-bg news-bg-1"></div></a>
+						<a href="single-news.php"><div class="latest-news-bg news-bg-1"></div></a>
 						<div class="news-text-box">
-							<h3><a href="single-news.html">Galletas corazón</a></h3>
+							<h3><a href="single-news.php">Galletas corazón</a></h3>
 							<p class="blog-meta">
 								<span class="author"><i class="fas fa-user"></i> juan1234</span>
 								<span class="date"><i class="fas fa-calendar"></i> Septiembre 8, 2023</span>
@@ -294,7 +294,7 @@
 								
 							</div>
 							<p class="excerpt">Galletas organicas sujetas bajo cotizacion del cliente ya sea mayoreo o menudeo</p>
-							<a href="single-product.html" class="read-more-btn">Leer más <i class="fas fa-angle-right"></i></a>
+							<a href="single-product.php" class="read-more-btn">Leer más <i class="fas fa-angle-right"></i></a>
 						</div>
 					</div>
 				</div>
@@ -302,9 +302,9 @@
 				<div class="col-lg-4 col-md-6">
 					<div class="single-latest-news">
 						
-						<a href="single-news.html"><div class="latest-news-bg news-bg-1"></div></a>
+						<a href="single-news.php"><div class="latest-news-bg news-bg-1"></div></a>
 						<div class="news-text-box">
-							<h3><a href="single-news.html">Pastel de fresa</a></h3>
+							<h3><a href="single-news.php">Pastel de fresa</a></h3>
 							<p class="blog-meta">
 								<span class="author"><i class="fas fa-user"></i> lola567</span>
 								<span class="date"><i class="fas fa-calendar"></i> Septiembre 8, 2023</span>
@@ -318,7 +318,7 @@
 								
 							</div>
 							<p class="excerpt">Pastel redondo rosa con relleno de chocolate y pan marmoleado</p>
-							<a href="posts.html" class="read-more-btn">Leer más <i class="fas fa-angle-right"></i></a>
+							<a href="posts.php" class="read-more-btn">Leer más <i class="fas fa-angle-right"></i></a>
 						</div>
 					</div>
 				</div>
@@ -326,9 +326,9 @@
 				<div class="col-lg-4 col-md-6">
 					<div class="single-latest-news">
 						
-						<a href="single-news.html"><div class="latest-news-bg news-bg-1"></div></a>
+						<a href="single-news.php"><div class="latest-news-bg news-bg-1"></div></a>
 						<div class="news-text-box">
-							<h3><a href="single-news.html">Macarrones</a></h3>
+							<h3><a href="single-news.php">Macarrones</a></h3>
 							<p class="blog-meta">
 								<span class="author"><i class="fas fa-user"></i> Mis pastelitos</span>
 								<span class="date"><i class="fas fa-calendar"></i> Septiembre 8, 2023</span>
@@ -340,12 +340,12 @@
 								
 							</div>
 							<p class="excerpt">Paquetes de 6 piezas con 6 colores diferentes</p>
-							<a href="posts.html" class="read-more-btn">Leer más <i class="fas fa-angle-right"></i></a>
+							<a href="posts.php" class="read-more-btn">Leer más <i class="fas fa-angle-right"></i></a>
 						</div>
 					</div>
 				</div>
 				
-				<a href="miscompras.html" class="boxed-btn">Todas mis Compras</a>
+				<a href="miscompras.php" class="boxed-btn">Todas mis Compras</a>
 
 			</div>
 		</div>
@@ -365,9 +365,9 @@
 				<div class="col-lg-4 col-md-6">
 					<div class="single-latest-news">
 						
-						<a href="single-news.html"><div class="latest-news-bg news-bg-1"></div></a>
+						<a href="single-news.php"><div class="latest-news-bg news-bg-1"></div></a>
 						<div class="news-text-box">
-							<h3><a href="single-news.html">Galletas corazón</a></h3>
+							<h3><a href="single-news.php">Galletas corazón</a></h3>
 							<p class="blog-meta">
 								<span class="author"><i class="fas fa-user"></i> Hatsune Miku</span>
 								<span class="date"><i class="fas fa-calendar"></i> Septiembre 8, 2023</span>
@@ -376,7 +376,7 @@
 
 							</p>
 							<p class="excerpt">Organicas sujetas bajo cotizacion ya sea mayoreo o menudeo</p>
-							<a href="posts.html" class="read-more-btn">Leer más <i class="fas fa-angle-right"></i></a>
+							<a href="posts.php" class="read-more-btn">Leer más <i class="fas fa-angle-right"></i></a>
 						</div>
 					</div>
 				</div>
@@ -384,9 +384,9 @@
 				<div class="col-lg-4 col-md-6">
 					<div class="single-latest-news">
 						
-						<a href="single-news.html"><div class="latest-news-bg news-bg-1"></div></a>
+						<a href="single-news.php"><div class="latest-news-bg news-bg-1"></div></a>
 						<div class="news-text-box">
-							<h3><a href="single-news.html">Pastel de fresa</a></h3>
+							<h3><a href="single-news.php">Pastel de fresa</a></h3>
 							<p class="blog-meta">
 								<span class="author"><i class="fas fa-user"></i>  Hatsune Miku</span>
 								<span class="date"><i class="fas fa-calendar"></i> Septiembre 8, 2023</span>
@@ -394,7 +394,7 @@
 								<span class ="ventas"><i class ="fas fa-money-bill"></i> Unidades vendidas: 66</span>
 							</p>
 							<p class="excerpt">Pastel redondo rosa con relleno de chocolate y pan marmoleado</p>
-							<a href="posts.html" class="read-more-btn">Leer más <i class="fas fa-angle-right"></i></a>
+							<a href="posts.php" class="read-more-btn">Leer más <i class="fas fa-angle-right"></i></a>
 						</div>
 					</div>
 				</div>
@@ -402,9 +402,9 @@
 				<div class="col-lg-4 col-md-6">
 					<div class="single-latest-news">
 						
-						<a href="single-news.html"><div class="latest-news-bg news-bg-1"></div></a>
+						<a href="single-news.php"><div class="latest-news-bg news-bg-1"></div></a>
 						<div class="news-text-box">
-							<h3><a href="single-news.html">Macarrones</a></h3>
+							<h3><a href="single-news.php">Macarrones</a></h3>
 							<p class="blog-meta">
 								<span class="author"><i class="fas fa-user"></i>  Hatsune Miku</span>
 								<span class="date"><i class="fas fa-calendar"></i> Septiembre 8, 2023</span>
@@ -412,13 +412,13 @@
 								<span class ="ventas"><i class ="fas fa-money-bill"></i> Unidades vendidas: 100</span>
 							</p>
 							<p class="excerpt">Paquetes de 6 piezas con 6 colores diferentes</p>
-							<a href="posts.html" class="read-more-btn">Leer más <i class="fas fa-angle-right"></i></a>
+							<a href="posts.php" class="read-more-btn">Leer más <i class="fas fa-angle-right"></i></a>
 						</div>
 					</div>
 				</div>
 			</div>
 
-			<a href="productoVendedor.html" class="boxed-btn">Todos mis Productos</a>
+			<a href="productoVendedor.php" class="boxed-btn">Todos mis Productos</a>
 		</div>
 	</div>
 	<!-- fin de mis productos-->
@@ -478,11 +478,11 @@
 					<h2 class="widget-title">Paginas
 					</h2>
 					<ul>
-						<li><a href="index.html">Home</a></li>
-						<li><a href="about.html">Nosotros</a></li>
-						<li><a href="shop.html">tienda</a></li>
+						<li><a href="index.php">Home</a></li>
+						<li><a href="about.php">Nosotros</a></li>
+						<li><a href="shop.php">tienda</a></li>
 						
-						<li><a href="registro.html">Registrate</a></li>
+						<li><a href="registro.php">Registrate</a></li>
 					</ul>
 				</div>
 			</div>
