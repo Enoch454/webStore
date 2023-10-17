@@ -34,13 +34,30 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // Crear una instancia de la clase Usuario
     $newUser = new Usuario($username, $password, $email, null, null, $fotoPerfil, $esPrivado, $esActivo);
-
     // Crear una instancia de la clase Persona
     $newPersona = new Persona($nombre, $apellidoPat, $apellidoMat, $fechaNac, $sexo, $telefono);
-    $newUser->setIdPersona($newPersona->getIdPersona());
 
     $json_response = ["success" => true];
 
+
+    try{
+        $idNewPersona = $newPersona->save($mysqli);
+        $newUser->setIdPersona($idNewPersona);
+        print_r($newUser->toJSON());
+        $newUser->save($mysqli);
+
+        $json_response["msg"] = "Registro exitoso";
+        $json_response["redirect"] = "../views/inicioses.php";
+        echo json_encode($json_response);
+
+    }   catch (Exception $e) {
+        $json_response["success"] = false;
+        $json_response["msg"] = "Algo salió mal con el registro";
+        echo json_encode($json_response);
+
+    } 
+
+    /*
     if ($newUser->save($mysqli) && $newPersona->save($mysqli)) {
         $json_response["success"] = true;
         $json_response["msg"] = "Registro exitoso";
@@ -51,6 +68,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $json_response["msg"] = "Algo salió mal con el registro";
         echo json_encode($json_response);
     }
+    */
     
 
     // Finalizar el script

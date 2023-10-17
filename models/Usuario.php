@@ -80,25 +80,28 @@ class Usuario {
     }
     static public function parseJson($json) {
         $usuario = new Usuario(
-            isset($json["idUsuario"]) ? $json["idUsuario"] : "",
             isset($json["userName"]) ? $json["userName"] : "",
-            isset($json["contrasena"]) ? $json["contrasena"] : "",
-            isset($json["fechaIngreso"]) ? $json["fechaIngreso"] : "",
+            isset($json["contraseña"]) ? $json["contraseña"] : "",
             isset($json["email"]) ? $json["email"] : "",
+            null,
+            isset($json["fechaIngreso"]) ? $json["fechaIngreso"] : "",
             isset($json["fotoPerfil"]) ? $json["fotoPerfil"] : "",
             isset($json["esPrivado"]) ? $json["esPrivado"] : "",
             isset($json["esActivo"]) ? $json["esActivo"] : ""
+            //isset($json["idPersona"]) ? $json["idPersona"] : ""
         );
 
         if(isset($json["idUsuario"]))
             $usuario->setIdUsuario((int)$json["idUsuario"]);
+        if(isset($json["idPersona"]))
+            $usuario->setIdPersona((int)$json["idPersona"]);
         return $usuario;
 
     }
     public function save($mysqli) {
         try {
             // Define la consulta SQL con el stored procedure
-            $sql = 'CALL sp_InsertarUsuario(?, ?, ?, ?, ?, ?)';
+            $sql = 'CALL sp_InsertarUsuario(?, ?, ?, ?, ?, ?, ?)';
     
             // Verifica si la conexión a la base de datos está establecida
             if ($mysqli->connect_error) {
@@ -110,19 +113,20 @@ class Usuario {
     
             if ($stmt) {
                 // Vincula los parámetros
-                $stmt->bind_param("ssssss", $this->userName, $this->contrasena, $this->email, $this->fotoPerfil, $this->esPrivado, $this->esActivo);
+                $stmt->bind_param("sssssss", $this->userName, $this->contrasena, $this->email, $this->fotoPerfil, $this->esPrivado, $this->esActivo, $this->idPersona);
     
                 // Ejecuta la consulta
                 $isSuccess = $stmt->execute();
-    
+                
+                // Cierra la declaración
+                $stmt->close();
                 if ($isSuccess) {
                     return true;
                 } else {
                     return false;
                 }
     
-                // Cierra la declaración
-                $stmt->close();
+                
             } else {
                 return false;
             }
@@ -157,7 +161,7 @@ class Usuario {
         $stmt->execute();
         $result = $stmt->get_result(); 
         $user = $result->fetch_assoc();
-        //print_r($user);
+        print_r($user);
         return $user ? Usuario::parseJson($user) : NULL;
 
     }

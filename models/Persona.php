@@ -76,9 +76,10 @@ class Persona {
     }
 
     public function save($mysqli) {
+        /*
         try {
             // Define la consulta SQL con el stored procedure
-            $sql = 'CALL sp_InsertarPersona(?, ?, ?, ?, ?, ?)';
+            $sql = 'CALL sp_InsertarPersona(?, ?, ?, ?, ?, ?, @idNewPers)';
 
             // Verifica si la conexión a la base de datos está establecida
             if ($mysqli->connect_error) {
@@ -95,14 +96,16 @@ class Persona {
                 // Ejecuta la consulta
                 $isSuccess = $stmt->execute();
 
+                // Cierra la declaración
+                $stmt->close();
+
                 if ($isSuccess) {
                     return true;
                 } else {
                     return false;
                 }
 
-                // Cierra la declaración
-                $stmt->close();
+                
             } else {
                 return false;
             }
@@ -110,6 +113,24 @@ class Persona {
             // Maneja excepciones
             return false;
         }
+        */
+        $sql = "CALL sp_InsertarPersona('%s', '%s', '%s', '%s', '%s', '%s', @idNewPer);";
+        $sql = sprintf($sql, $this->Nombre,
+                    $this->ApellidoPat,
+                    $this->ApellidoMat,
+                    $this->FechaNac,
+                    $this->Sexo,
+                    $this->Telefono);
+        $result = mysqli_query($mysqli, $sql);
+
+        // Recuperar el valor de @res
+        $selectResult = mysqli_query($mysqli, "SELECT @idNewPer as idPer;");
+        $row = mysqli_fetch_assoc($selectResult);
+        $idPer = $row['idPer'];
+        //print_r($idPer);
+        mysqli_free_result($selectResult);
+
+        return $idPer;
     }
 
     public function toJSON() {

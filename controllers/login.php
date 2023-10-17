@@ -42,7 +42,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     } else {
         $json_response["success"]  = false;
-        $json_response["msg"] = "El usuario o la contraseña no son correctos";
+        $json_response["msg"] = "Las credenciales no son validas";
         echo json_encode($json_response);
         exit;
     }

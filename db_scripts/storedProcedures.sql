@@ -32,10 +32,11 @@ CREATE PROCEDURE sp_InsertarUsuario(
   IN p_fotoPerfil BLOB,
   IN p_esPrivado BOOLEAN,
   IN p_esActivo BIT
+  IN p_idPersona INT
 )
 BEGIN
-  INSERT INTO Usuarios (userName, contraseña, email, fotoPerfil, esPrivado, esActivo)
-  VALUES (p_userName, p_contraseña, p_email, p_fotoPerfil, p_esPrivado, p_esActivo);
+  INSERT INTO Usuarios (userName, contraseña, email, fotoPerfil, esPrivado, esActivo, idPersona)
+  VALUES (p_userName, p_contraseña, p_email, p_fotoPerfil, p_esPrivado, p_esActivo, p_idPersona);
 END //
 
 DELIMITER ;
@@ -50,12 +51,15 @@ CREATE PROCEDURE sp_InsertarPersona(
   IN p_ApellidoMat VARCHAR(50),
   IN p_FechaNac DATE,
   IN p_Sexo CHAR(1),
-  IN p_Telefono VARCHAR(15)
+  IN p_Telefono VARCHAR(15),
+  OUT p_res INT
 )
 BEGIN
   -- Insertar en la tabla Personas
   INSERT INTO Personas (Nombre, ApellidoPat, ApellidoMat, FechaNac, Sexo, Telefono)
   VALUES (p_Nombre, p_ApellidoPat, p_ApellidoMat, p_FechaNac, p_Sexo, p_Telefono);
+  SELECT LAST_INSERT_ID() INTO p_res;
+
 END //
 
 DELIMITER ;
@@ -175,5 +179,31 @@ BEGIN
 END //
 
 DELIMITER ;
+
+
+DELIMITER //
+
+CREATE PROCEDURE ConsultarUsuario(
+  IN p_idUsuario INT
+)
+BEGIN
+  SELECT
+    U.idUsuario,
+    U.userName,
+    U.contraseña,
+    U.fechaIngreso,
+    U.email,
+    U.fotoPerfil,
+    U.esPrivado,
+    U.esActivo,
+    U.idPersona
+  FROM Usuarios U
+  WHERE U.idUsuario = p_idUsuario;
+END //
+
+DELIMITER ;
+
+
+
 
 
