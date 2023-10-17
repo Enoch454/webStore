@@ -49,6 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $json_response = ["success" => true, "msg" => "Registro exitoso"];
         //$json_response["redirect"] = "../views/inicioses.php";
         echo json_encode($json_response);
+        include["../views/inicioses.php"];
 
     }   catch (Exception $e) {
         $json_response["success"] = false;
