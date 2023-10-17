@@ -85,7 +85,10 @@ function valid_datas(f) {
             
         };
 
+
         // Realiza una solicitud fetch para enviar los datos al servidor
+        console.log(userData);
+        /*
         fetch("../controllers/signup.php", {
             method: "POST",
             headers: {
@@ -93,8 +96,16 @@ function valid_datas(f) {
             },
             body: JSON.stringify(userData)
         })
+        
         .then(response => response.json())
+        .then(data => console.log(data));
+        */
+
+
+
+        /*
         .then(data => {
+            
             if (data.success && data.redirect) {
                 alert('Registro exitoso. ¡Bienvenido!');
                 window.location.href = '../views/inicioses.php'; // Redirecciona a inicioses.php
@@ -102,10 +113,12 @@ function valid_datas(f) {
                 alert('Registro exitoso, pero ocurrió un error inesperado.');
             }
         })
-        
+        */
+        /*
         .catch(error => {
             console.error("Error en la solicitud:", error);
         });
+        */
     }
 
     return false;
