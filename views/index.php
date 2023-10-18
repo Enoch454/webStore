@@ -57,7 +57,7 @@
 					<div class="main-menu-wrap">
 						<!-- logo -->
 						<div class="site-logo">
-							<a href="index.html">
+							<a href="index.php">
 								<img src="./views/assets/img/logo.png" alt="">
 							</a>
 						</div>
@@ -68,7 +68,7 @@
 							<ul>
 								<li class="current-list-item"><a href="#">Home</a>
 									<ul class="sub-menu">
-										<li><a href="index.html">Home</a></li>
+										<li><a href="index.php">Home</a></li>
 								
 									</ul>
 								</li>
@@ -76,31 +76,31 @@
 								<li><a href="#">Pages</a>
 									<ul class="sub-menu">
 										
-										<li><a href="cart.html">Carrito</a></li>
-										<li><a href="checkout.html">Check Out</a></li>
-										<li><a href="shop.html">Tienda</a></li>
+										<li><a href="cart.php">Carrito</a></li>
+										<li><a href="checkout.php">Check Out</a></li>
+										<li><a href="shop.php">Tienda</a></li>
 									
 									</ul>
 								</li>
-								<li><a href="account.html">Perfil</a>
+								<li><a href="account.php">Perfil</a>
 									<ul class="sub-menu">
-										<li><a href="account.html">Perfil</a></li>
-										<li><a href="posts.html">Posts</a></li>
-										<li><a href="wishlist.html">Wishlist</a></li>
+										<li><a href="account.php">Perfil</a></li>
+										<li><a href="posts.php">Posts</a></li>
+										<li><a href="wishlist.php">Wishlist</a></li>
 									</ul>
 								</li>
-								<li><a href="about.html">Nosotros</a></li>
-								<li><a href="shop.html">Shop</a>
+								<li><a href="about.php">Nosotros</a></li>
+								<li><a href="shop.php">Shop</a>
 									<ul class="sub-menu">
-										<li><a href="shop.html">Shop</a></li>
-										<li><a href="checkout.html">Check Out</a></li>
-										<li><a href="single-product.html">Single Product</a></li>
-										<li><a href="cart.html">Carrito</a></li>
+										<li><a href="shop.php">Shop</a></li>
+										<li><a href="checkout.php">Check Out</a></li>
+										<li><a href="single-product.php">Single Product</a></li>
+										<li><a href="cart.php">Carrito</a></li>
 									</ul>
 								</li>
 								<li>
 									<div class="header-icons">
-										<a class="shopping-cart" href="cart.html"><i class="fas fa-shopping-cart"></i></a>
+										<a class="shopping-cart" href="cart.php"><i class="fas fa-shopping-cart"></i></a>
 										<a class="mobile-hide search-bar-icon" href="#"><i class="fas fa-search"></i></a>
 									</div>
 								</li>
@@ -172,31 +172,31 @@
 				<div class="col-lg-4 col-md-6 text-center">
 					<div class="single-product-item">
 						<div class="product-image">
-							<a href="single-product.html"><img src="./views/assets/img/products/chocolate_galleta.png"></a>
+							<a href="single-product.php"><img src="./views/assets/img/products/chocolate_galleta.png"></a>
 						</div>
 						<h3>chocolate</h3>
 						<p class="product-price"><span>Per Kg</span> 85$ </p>
-						<a href="cart.html" class="cart-btn"><i class="fas fa-shopping-cart"></i> Agregar al carrito</a>
+						<a href="cart.php" class="cart-btn"><i class="fas fa-shopping-cart"></i> Agregar al carrito</a>
 					</div>
 				</div>
 				<div class="col-lg-4 col-md-6 text-center">
 					<div class="single-product-item">
 						<div class="product-image">
-							<a href="single-product.html"><img src="./views/assets/img/products/galleta_chocolate.png" alt=""></a>
+							<a href="single-product.php"><img src="./views/assets/img/products/galleta_chocolate.png" alt=""></a>
 						</div>
 						<h3>cookie</h3>
 						<p class="product-price"><span>Per Kg</span> 70$ </p>
-						<a href="cart.html" class="cart-btn"><i class="fas fa-shopping-cart"></i> Agregar al carrito</a>
+						<a href="cart.php" class="cart-btn"><i class="fas fa-shopping-cart"></i> Agregar al carrito</a>
 					</div>
 				</div>
 				<div class="col-lg-4 col-md-6 offset-md-3 offset-lg-0 text-center">
 					<div class="single-product-item">
 						<div class="product-image">
-							<a href="single-product.html"><img src="./views/assets/img/products/purepng.png" alt=""></a>
+							<a href="single-product.php"><img src="./views/assets/img/products/purepng.png" alt=""></a>
 						</div>
 						<h3>mora</h3>
 						<p class="product-price"><span>Per Kg</span> 35$ </p>
-						<a href="cart.html" class="cart-btn"><i class="fas fa-shopping-cart"></i> Agregar al carrito</a>
+						<a href="cart.php" class="cart-btn"><i class="fas fa-shopping-cart"></i> Agregar al carrito</a>
 					</div>
 				</div>
 			</div>
@@ -221,7 +221,7 @@
 						<h2>Somos <span class="orange-text">A&I Sweet Desserts</span></h2>
 						<p>holaaaaa aqui va un video de chopper</p>
 						<p>descripcion super duper epica</p>
-						<a href="about.html" class="boxed-btn mt-4">más</a>
+						<a href="about.php" class="boxed-btn mt-4">más</a>
 					</div>
 				</div>
 			</div>
@@ -351,11 +351,11 @@
 						<h2 class="widget-title">Paginas
 						</h2>
 						<ul>
-							<li><a href="index.html">Home</a></li>
-							<li><a href="about.html">Nosotros</a></li>
-							<li><a href="shop.html">tienda</a></li>
+							<li><a href="index.php">Home</a></li>
+							<li><a href="about.php">Nosotros</a></li>
+							<li><a href="shop.php">tienda</a></li>
 							
-							<li><a href="registro.html">Registrate</a></li>
+							<li><a href="registro.php">Registrate</a></li>
 						</ul>
 					</div>
 				</div>
