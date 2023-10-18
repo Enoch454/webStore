@@ -5,8 +5,7 @@ ALTER TABLE `Usuario_Rol`
 ADD `idUsuario` INT ,
 ADD `idRol` INT ;
 
-Alter table Usuarios
-Add `esActivo` BIT;
+
 
 ALTER TABLE Usuario_Rol
 ADD FOREIGN KEY (idRol)
