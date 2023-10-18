@@ -32,7 +32,11 @@ function valid_datas(f) {
             token: 'FsWga4&@f6aw' // Incluye el token si es necesario
         };
 
-        fetch('../controllers/login.php', {
+        const urlRaiz = window.location.protocol
+            + "//"
+            + window.location.host;
+
+        fetch(urlRaiz + '/controllers/login.php', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

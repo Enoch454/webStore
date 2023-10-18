@@ -34,6 +34,20 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
         //print_r(($user));
         $json_response["msg"]= "Bienvenido";
         $json_response ["user"] = $user->toJSON();
+
+        function url_actual(){
+            $url = "";
+            if(isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') {
+              $url = "https://"; 
+            }else{
+              $url = "http://"; 
+            }
+            return $url . $_SERVER['HTTP_HOST'];
+        }
+
+        $urlRaiz = url_actual();
+
+        $json_response ["redirect"] = $urlRaiz . "/controllers/myUser.php";
         
         //Inicamos la sesion
         session_start();

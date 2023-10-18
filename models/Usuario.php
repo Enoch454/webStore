@@ -161,7 +161,7 @@ class Usuario {
         $stmt->execute();
         $result = $stmt->get_result(); 
         $user = $result->fetch_assoc();
-        print_r($user);
+        //print_r($user);
         return $user ? Usuario::parseJson($user) : NULL;
 
     }
