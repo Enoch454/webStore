@@ -46,17 +46,19 @@ class Usuario {
     public function setEsPrivado ($esPrivado) {
         $this->esPrivado = $esPrivado;
     }
+
+    public function getEsActivo() {
+        return $this->esActivo;
+    }
+    public function setEsActivo ($esActivo) {
+        $this->esActivo = $esActivo;
+    }
+
     public function getIdPersona () {
         return $this->idPersona;
     }
     public function setIdPersona ($idPersona) {
         $this->idPersona = $idPersona;
-    }
-    public function getEsActivo() {
-        return $this->esActivo;
-    }
-    public function setEsActivo($esActivo) {
-        $this->esActivo = $esActivo;
     }
     /// fin sets and getters
 
@@ -64,7 +66,8 @@ class Usuario {
                                 $idUsuario = null,
                                 $fechaIngreso = null,
                                 $fotoPerfil = null,
-                                $esPrivado = null) {
+                                $esPrivado,
+                                $esActivo) {
         $this->idUsuario = $idUsuario;
         $this->userName = $userName;
         $this->contrasena = $contrasena;
@@ -72,41 +75,66 @@ class Usuario {
         $this->email = $email;
         $this->fotoPerfil = $fotoPerfil;
         $this->esPrivado = $esPrivado;
+        $this->esActivo = $esActivo;
         
     }
     static public function parseJson($json) {
         $usuario = new Usuario(
             isset($json["userName"]) ? $json["userName"] : "",
-            isset($json["contrasena"]) ? $json["contrasena"] : "",
+            isset($json["contraseña"]) ? $json["contraseña"] : "",
             isset($json["email"]) ? $json["email"] : "",
-            isset($json["idUsuario"]) ? $json["idUsuario"] : "",
+            null,
             isset($json["fechaIngreso"]) ? $json["fechaIngreso"] : "",
             isset($json["fotoPerfil"]) ? $json["fotoPerfil"] : "",
-            isset($json["esPrivado"]) ? $json["esPrivado"] : ""
+            isset($json["esPrivado"]) ? $json["esPrivado"] : "",
+            isset($json["esActivo"]) ? $json["esActivo"] : ""
+            //isset($json["idPersona"]) ? $json["idPersona"] : ""
         );
 
         if(isset($json["idUsuario"]))
             $usuario->setIdUsuario((int)$json["idUsuario"]);
+        if(isset($json["idPersona"]))
+            $usuario->setIdPersona((int)$json["idPersona"]);
         return $usuario;
 
     }
     public function save($mysqli) {
-        $sql = 'CALL InsertarUsuario(?, ?, ?)';
-        
         try {
-            $stmt= $mysqli->prepare($sql);
-            $stmt->bind_param("sss", $this->userName, $this->contrasena, $this->email);
-            $isSucces = $stmt->execute();
-            //print_r((int)$stmt->insert_id);
-            return $isSucces;
+            // Define la consulta SQL con el stored procedure
+            $sql = 'CALL sp_InsertarUsuario(?, ?, ?, ?, ?, ?, ?)';
+    
+            // Verifica si la conexión a la base de datos está establecida
+            if ($mysqli->connect_error) {
+                die("Connection failed: " . $mysqli->connect_error);
+            }
+    
+            // Prepara la consulta SQL
+            $stmt = $mysqli->prepare($sql);
+    
+            if ($stmt) {
+                // Vincula los parámetros
+                $stmt->bind_param("sssssss", $this->userName, $this->contrasena, $this->email, $this->fotoPerfil, $this->esPrivado, $this->esActivo, $this->idPersona);
+    
+                // Ejecuta la consulta
+                $isSuccess = $stmt->execute();
+                
+                // Cierra la declaración
+                $stmt->close();
+                if ($isSuccess) {
+                    return true;
+                } else {
+                    return false;
+                }
+    
+                
+            } else {
+                return false;
+            }
         } catch (Exception $e) {
-            //echo 'Excepción capturada: ',  $e->getMessage(), "\n";
+            // Maneja excepciones
             return false;
         }
-        
-        
     }
-
     
     public static function validateCredendtials($mysqli, $userName, $password) {
         $sql = "CALL IniciarSesion('%s', '%s', @res);";

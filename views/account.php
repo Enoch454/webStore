@@ -10,27 +10,27 @@
 	<title>Perfil</title>
 
 	<!-- fotito -->
-	<link rel="shortcut icon" type="image/png" href="/views/assets/img/pasteles.png">
+	<link rel="shortcut icon" type="image/png" href="assets/img/pasteles.png">
 
 	<!-- google font -->
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
 	<!-- fontawesome -->
-	<link rel="stylesheet" href="/views/assets/css/all.min.css">
+	<link rel="stylesheet" href="assets/css/all.min.css">
 	<!-- bootstrap -->
-	<link rel="stylesheet" href="/views/assets/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
 	<!-- owl carousel -->
-	<link rel="stylesheet" href="/views/assets/css/owl.carousel.css">
+	<link rel="stylesheet" href="assets/css/owl.carousel.css">
 	<!-- magnific popup -->
-	<link rel="stylesheet" href="/views/assets/css/magnific-popup.css">
+	<link rel="stylesheet" href="assets/css/magnific-popup.css">
 	<!-- animate css -->
-	<link rel="stylesheet" href="/views/assets/css/animate.css">
+	<link rel="stylesheet" href="assets/css/animate.css">
 	<!-- mean menu css -->
-	<link rel="stylesheet" href="/views/assets/css/meanmenu.min.css">
+	<link rel="stylesheet" href="assets/css/meanmenu.min.css">
 	<!-- main style -->
-	<link rel="stylesheet" href="/views/assets/css/main.css">
+	<link rel="stylesheet" href="assets/css/main.css">
 	<!-- responsive -->
-	<link rel="stylesheet" href="/views/assets/css/responsive.css">
+	<link rel="stylesheet" href="assets/css/responsive.css">
 
 </head>
 <body>
@@ -51,8 +51,8 @@
 					<div class="main-menu-wrap">
 						<!-- logo -->
 						<div class="site-logo">
-							<a href="index.html">
-								<img src="/views/assets/img/logo.png" alt="">
+							<a href="index.php">
+								<img src="assets/img/logo.png" alt="">
 							</a>
 						</div>
 						<!-- logo -->
@@ -62,7 +62,7 @@
 								<ul>
 									<li class="current-list-item"><a href="#">Home</a>
 										<ul class="sub-menu">
-											<li><a href="index.html">Home</a></li>
+											<li><a href="index.php">Home</a></li>
 									
 										</ul>
 									</li>
@@ -70,31 +70,31 @@
 									<li><a href="#">Pages</a>
 										<ul class="sub-menu">
 											
-											<li><a href="cart.html">Carrito</a></li>
-											<li><a href="checkout.html">Check Out</a></li>
-											<li><a href="shop.html">Tienda</a></li>
+											<li><a href="cart.php">Carrito</a></li>
+											<li><a href="checkout.php">Check Out</a></li>
+											<li><a href="shop.php">Tienda</a></li>
 											
 										</ul>
 									</li>
-									<li><a href="account.html">Perfil</a>
+									<li><a href="account.php">Perfil</a>
 										<ul class="sub-menu">
-											<li><a href="account.html">Perfil</a></li>
-											<li><a href="posts.html">Posts</a></li>
+											<li><a href="account.php">Perfil</a></li>
+											<li><a href="posts.php">Posts</a></li>
 										</ul>
 									</li>
-									<li><a href="about.html">Nosotros</a></li>
-									<li><a href="shop.html">Shop</a>
+									<li><a href="about.php">Nosotros</a></li>
+									<li><a href="shop.php">Shop</a>
 										<ul class="sub-menu">
-											<li><a href="shop.html">Shop</a></li>
-											<li><a href="checkout.html">Check Out</a></li>
-											<li><a href="single-product.html">Single Product</a></li>
-											<li><a href="cart.html">Carrito</a></li>
+											<li><a href="shop.php">Shop</a></li>
+											<li><a href="checkout.php">Check Out</a></li>
+											<li><a href="single-product.php">Single Product</a></li>
+											<li><a href="cart.php">Carrito</a></li>
 										</ul>
 									</li>
 									<li>
 										<div class="header-icons">
-											<a class="shopping-cart" href="cart.html"><i class="fas fa-shopping-cart"></i></a>
-											<a class="mobile-hide search-bar-icon" href="search.html"><i class="fas fa-search"></i></a>
+											<a class="shopping-cart" href="cart.php"><i class="fas fa-shopping-cart"></i></a>
+											<a class="mobile-hide search-bar-icon" href="search.php"><i class="fas fa-search"></i></a>
 										</div>
 									</li>
 								</ul>
@@ -152,7 +152,7 @@
 					<div class="profile-status">
 						<i class="fa fa-check-circle"></i> Vendedor Verificado
 					</div>
-					<img src="/views/assets/img/avaters/meek.jpg" alt="" class="profile-img img-responsive center-block">
+					<img src="assets/img/avaters/meek.jpg" alt="" class="profile-img img-responsive center-block">
 					<div class="profile-label">
 						<span class="label label-danger">Admin</span>
 					</div>
@@ -187,7 +187,7 @@
 				<div class="main-box clearfix">
 					<div class="profile-header">
 						<h3><span>Info de Usuario</span></h3>
-						<a href="modperfil.html" class="btn btn-primary edit-profile">
+						<a href="modperfil.php" class="btn btn-primary edit-profile">
 							<i class="fa fa-pencil-square fa-lg"></i> Editar perfil
 						</a>
 					</div>
@@ -225,10 +225,10 @@
 
 	<div class="account-buttons">
 	
-		<a href="domicilio.html" class="boxed-btn">Agregar Domicilio</a>
-		<a href="actualizardom.html" class="boxed-btn">Actualizar Domicilio</a>
-		<a href="crearPost.html" class="boxed-btn">Nuevo Post</a>
-		<a href="moderarventas.html" class="boxed-btn">Perfil Avanzado</a>
+		<a href="domicilio.php" class="boxed-btn">Agregar Domicilio</a>
+		<a href="actualizardom.php" class="boxed-btn">Actualizar Domicilio</a>
+		<a href="crearPost.php" class="boxed-btn">Nuevo Post</a>
+		<a href="moderarventas.php" class="boxed-btn">Perfil Avanzado</a>
 	</div>
 
 </div>
@@ -242,9 +242,9 @@
 				<div class="col-lg-4 col-md-6">
 					<div class="single-latest-news">
 						
-						<a href="single-news.html"><div class="latest-news-bg news-bg-1"></div></a>
+						<a href="single-news.php"><div class="latest-news-bg news-bg-1"></div></a>
 						<div class="news-text-box">
-							<h3><a href="single-news.html">compra pasteles!!!!!!</a></h3>
+							<h3><a href="single-news.php">compra pasteles!!!!!!</a></h3>
 							<p class="blog-meta">
 								<span class="author"><i class="fas fa-user"></i> Admin</span>
 								<span class="date"><i class="fas fa-calendar"></i> Septiembre 8, 2023</span>
@@ -258,12 +258,12 @@
 								
 							</div>
 							<p class="excerpt">los pasteles te hacen vivir mas años es enserio creeme</p>
-							<a href="posts.html" class="read-more-btn">Leer más <i class="fas fa-angle-right"></i></a>
+							<a href="posts.php" class="read-more-btn">Leer más <i class="fas fa-angle-right"></i></a>
 						</div>
 					</div>
 				</div>
 			</div>
-			<a href="productoVendedor.html" class="boxed-btn">Todos mis Posts</a>
+			<a href="productoVendedor.php" class="boxed-btn">Todos mis Posts</a>
 		</div>
 	</div>
 
@@ -278,9 +278,9 @@
 				<div class="col-lg-4 col-md-6">
 					<div class="single-latest-news">
 						
-						<a href="single-news.html"><div class="latest-news-bg news-bg-1"></div></a>
+						<a href="single-news.php"><div class="latest-news-bg news-bg-1"></div></a>
 						<div class="news-text-box">
-							<h3><a href="single-news.html">Galletas corazón</a></h3>
+							<h3><a href="single-news.php">Galletas corazón</a></h3>
 							<p class="blog-meta">
 								<span class="author"><i class="fas fa-user"></i> juan1234</span>
 								<span class="date"><i class="fas fa-calendar"></i> Septiembre 8, 2023</span>
@@ -294,7 +294,7 @@
 								
 							</div>
 							<p class="excerpt">Galletas organicas sujetas bajo cotizacion del cliente ya sea mayoreo o menudeo</p>
-							<a href="single-product.html" class="read-more-btn">Leer más <i class="fas fa-angle-right"></i></a>
+							<a href="single-product.php" class="read-more-btn">Leer más <i class="fas fa-angle-right"></i></a>
 						</div>
 					</div>
 				</div>
@@ -302,9 +302,9 @@
 				<div class="col-lg-4 col-md-6">
 					<div class="single-latest-news">
 						
-						<a href="single-news.html"><div class="latest-news-bg news-bg-1"></div></a>
+						<a href="single-news.php"><div class="latest-news-bg news-bg-1"></div></a>
 						<div class="news-text-box">
-							<h3><a href="single-news.html">Pastel de fresa</a></h3>
+							<h3><a href="single-news.php">Pastel de fresa</a></h3>
 							<p class="blog-meta">
 								<span class="author"><i class="fas fa-user"></i> lola567</span>
 								<span class="date"><i class="fas fa-calendar"></i> Septiembre 8, 2023</span>
@@ -318,7 +318,7 @@
 								
 							</div>
 							<p class="excerpt">Pastel redondo rosa con relleno de chocolate y pan marmoleado</p>
-							<a href="posts.html" class="read-more-btn">Leer más <i class="fas fa-angle-right"></i></a>
+							<a href="posts.php" class="read-more-btn">Leer más <i class="fas fa-angle-right"></i></a>
 						</div>
 					</div>
 				</div>
@@ -326,9 +326,9 @@
 				<div class="col-lg-4 col-md-6">
 					<div class="single-latest-news">
 						
-						<a href="single-news.html"><div class="latest-news-bg news-bg-1"></div></a>
+						<a href="single-news.php"><div class="latest-news-bg news-bg-1"></div></a>
 						<div class="news-text-box">
-							<h3><a href="single-news.html">Macarrones</a></h3>
+							<h3><a href="single-news.php">Macarrones</a></h3>
 							<p class="blog-meta">
 								<span class="author"><i class="fas fa-user"></i> Mis pastelitos</span>
 								<span class="date"><i class="fas fa-calendar"></i> Septiembre 8, 2023</span>
@@ -340,12 +340,12 @@
 								
 							</div>
 							<p class="excerpt">Paquetes de 6 piezas con 6 colores diferentes</p>
-							<a href="posts.html" class="read-more-btn">Leer más <i class="fas fa-angle-right"></i></a>
+							<a href="posts.php" class="read-more-btn">Leer más <i class="fas fa-angle-right"></i></a>
 						</div>
 					</div>
 				</div>
 				
-				<a href="miscompras.html" class="boxed-btn">Todas mis Compras</a>
+				<a href="miscompras.php" class="boxed-btn">Todas mis Compras</a>
 
 			</div>
 		</div>
@@ -365,9 +365,9 @@
 				<div class="col-lg-4 col-md-6">
 					<div class="single-latest-news">
 						
-						<a href="single-news.html"><div class="latest-news-bg news-bg-1"></div></a>
+						<a href="single-news.php"><div class="latest-news-bg news-bg-1"></div></a>
 						<div class="news-text-box">
-							<h3><a href="single-news.html">Galletas corazón</a></h3>
+							<h3><a href="single-news.php">Galletas corazón</a></h3>
 							<p class="blog-meta">
 								<span class="author"><i class="fas fa-user"></i> Hatsune Miku</span>
 								<span class="date"><i class="fas fa-calendar"></i> Septiembre 8, 2023</span>
@@ -376,7 +376,7 @@
 
 							</p>
 							<p class="excerpt">Organicas sujetas bajo cotizacion ya sea mayoreo o menudeo</p>
-							<a href="posts.html" class="read-more-btn">Leer más <i class="fas fa-angle-right"></i></a>
+							<a href="posts.php" class="read-more-btn">Leer más <i class="fas fa-angle-right"></i></a>
 						</div>
 					</div>
 				</div>
@@ -384,9 +384,9 @@
 				<div class="col-lg-4 col-md-6">
 					<div class="single-latest-news">
 						
-						<a href="single-news.html"><div class="latest-news-bg news-bg-1"></div></a>
+						<a href="single-news.php"><div class="latest-news-bg news-bg-1"></div></a>
 						<div class="news-text-box">
-							<h3><a href="single-news.html">Pastel de fresa</a></h3>
+							<h3><a href="single-news.php">Pastel de fresa</a></h3>
 							<p class="blog-meta">
 								<span class="author"><i class="fas fa-user"></i>  Hatsune Miku</span>
 								<span class="date"><i class="fas fa-calendar"></i> Septiembre 8, 2023</span>
@@ -394,7 +394,7 @@
 								<span class ="ventas"><i class ="fas fa-money-bill"></i> Unidades vendidas: 66</span>
 							</p>
 							<p class="excerpt">Pastel redondo rosa con relleno de chocolate y pan marmoleado</p>
-							<a href="posts.html" class="read-more-btn">Leer más <i class="fas fa-angle-right"></i></a>
+							<a href="posts.php" class="read-more-btn">Leer más <i class="fas fa-angle-right"></i></a>
 						</div>
 					</div>
 				</div>
@@ -402,9 +402,9 @@
 				<div class="col-lg-4 col-md-6">
 					<div class="single-latest-news">
 						
-						<a href="single-news.html"><div class="latest-news-bg news-bg-1"></div></a>
+						<a href="single-news.php"><div class="latest-news-bg news-bg-1"></div></a>
 						<div class="news-text-box">
-							<h3><a href="single-news.html">Macarrones</a></h3>
+							<h3><a href="single-news.php">Macarrones</a></h3>
 							<p class="blog-meta">
 								<span class="author"><i class="fas fa-user"></i>  Hatsune Miku</span>
 								<span class="date"><i class="fas fa-calendar"></i> Septiembre 8, 2023</span>
@@ -412,13 +412,13 @@
 								<span class ="ventas"><i class ="fas fa-money-bill"></i> Unidades vendidas: 100</span>
 							</p>
 							<p class="excerpt">Paquetes de 6 piezas con 6 colores diferentes</p>
-							<a href="posts.html" class="read-more-btn">Leer más <i class="fas fa-angle-right"></i></a>
+							<a href="posts.php" class="read-more-btn">Leer más <i class="fas fa-angle-right"></i></a>
 						</div>
 					</div>
 				</div>
 			</div>
 
-			<a href="productoVendedor.html" class="boxed-btn">Todos mis Productos</a>
+			<a href="productoVendedor.php" class="boxed-btn">Todos mis Productos</a>
 		</div>
 	</div>
 	<!-- fin de mis productos-->
@@ -433,19 +433,19 @@
 				<div class="col-lg-12">
 					<div class="logo-carousel-inner">
 						<div class="single-logo-item">
-							<img src="/views/assets/img/4001495.png" alt="">
+							<img src="assets/img/4001495.png" alt="">
 						</div>
 						<div class="single-logo-item">
-							<img src="/views/assets/img/awww.png" alt="">
+							<img src="assets/img/awww.png" alt="">
 						</div>
 						<div class="single-logo-item">
-							<img src="/views/assets/img/pastelito.png" alt="">
+							<img src="assets/img/pastelito.png" alt="">
 						</div>
 						<div class="single-logo-item">
-							<img src="/views/assets/img/cap.png" alt="">
+							<img src="assets/img/cap.png" alt="">
 						</div>
 						<div class="single-logo-item">
-							<img src="/views/assets/img/pasteles.png" alt="">
+							<img src="assets/img/pasteles.png" alt="">
 						</div>
 					</div>
 				</div>
@@ -478,16 +478,16 @@
 					<h2 class="widget-title">Paginas
 					</h2>
 					<ul>
-						<li><a href="index.html">Home</a></li>
-						<li><a href="about.html">Nosotros</a></li>
-						<li><a href="shop.html">tienda</a></li>
+						<li><a href="index.php">Home</a></li>
+						<li><a href="about.php">Nosotros</a></li>
+						<li><a href="shop.php">tienda</a></li>
 						
-						<li><a href="registro.html">Registrate</a></li>
+						<li><a href="registro.php">Registrate</a></li>
 					</ul>
 				</div>
 			</div>
 			<div class="col-lg-3 col-md-6">
-				<img src="/views/assets/img/mishi.jpg" alt="">
+				<img src="assets/img/mishi.jpg" alt="">
 			</div>
 		</div>
 	</div>
@@ -495,25 +495,25 @@
 <!-- end footer -->
 	
 	<!-- jquery -->
-	<script src="/views/assets/js/jquery-1.11.3.min.js"></script>
+	<script src="assets/js/jquery-1.11.3.min.js"></script>
 	<!-- bootstrap -->
-	<script src="/views/assets/bootstrap/js/bootstrap.min.js"></script>
+	<script src="assets/bootstrap/js/bootstrap.min.js"></script>
 	<!-- count down -->
-	<script src="/views/assets/js/jquery.countdown.js"></script>
+	<script src="assets/js/jquery.countdown.js"></script>
 	<!-- isotope -->
-	<script src="/views/assets/js/jquery.isotope-3.0.6.min.js"></script>
+	<script src="assets/js/jquery.isotope-3.0.6.min.js"></script>
 	<!-- waypoints -->
-	<script src="/views/assets/js/waypoints.js"></script>
+	<script src="assets/js/waypoints.js"></script>
 	<!-- owl carousel -->
-	<script src="/views/assets/js/owl.carousel.min.js"></script>
+	<script src="assets/js/owl.carousel.min.js"></script>
 	<!-- magnific popup -->
-	<script src="/views/assets/js/jquery.magnific-popup.min.js"></script>
+	<script src="assets/js/jquery.magnific-popup.min.js"></script>
 	<!-- mean menu -->
-	<script src="/views/assets/js/jquery.meanmenu.min.js"></script>
+	<script src="assets/js/jquery.meanmenu.min.js"></script>
 	<!-- sticker js -->
-	<script src="/views/assets/js/sticker.js"></script>
+	<script src="assets/js/sticker.js"></script>
 	<!-- main js -->
-	<script src="/views/assets/js/main.js"></script>
+	<script src="assets/js/main.js"></script>
 
 	
 

@@ -24,10 +24,48 @@ function valid_datas(f) {
 
     if (valid) {
         // Resto del código para enviar el formulario o realizar otras acciones
-        alert('Inicio de sesión exitoso. ¡Bienvenido!');
+
+        // Aquí puedes agregar el código para enviar los datos al servidor
+        var userData = {
+            userName: userField.value,
+            contrasena: contraField.value,
+            token: 'FsWga4&@f6aw' // Incluye el token si es necesario
+        };
+
+        const urlRaiz = window.location.protocol
+            + "//"
+            + window.location.host;
+
+        fetch(urlRaiz + '/controllers/login.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(userData)
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    // Procesa la respuesta exitosa (por ejemplo, redirección, mostrar un mensaje, etc.)
+                    if (data.msg === 'Bienvenido') {
+                        // Muestra el mensaje solo si el mensaje es "Bienvenido"
+                        alert(data.msg);
+                        if (data.redirect) {
+                            window.location.href = data.redirect;
+                        }
+                    }
+                } else {
+                    // Procesa la respuesta en caso de error (por ejemplo, mostrar un mensaje de error)
+                    alert('Error: ' + data.msg);
+                }
+            })
+            .catch(error => {
+                // Procesa errores en la solicitud
+                console.error('Error en la solicitud:', error);
+            });
     }
 
-	return false;
+    return false;
 
     // Resto del código para enviar el formulario o realizar otras acciones
 }
