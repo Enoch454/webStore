@@ -43,19 +43,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     try{
         $idNewPersona = $newPersona->save($mysqli);
         $newUser->setIdPersona($idNewPersona);
-        print_r($newUser->toJSON());
+        //print_r($newUser->toJSON());
         $newUser->save($mysqli);
 
         $json_response = ["success" => true, "msg" => "Registro exitoso"];
         //$json_response["redirect"] = "../views/inicioses.php";
-        echo json_encode($json_response);
-        include["../views/inicioses.php"];
+        //echo json_encode($json_response);
+        //include["../views/inicioses.php"];
 
     }   catch (Exception $e) {
         $json_response["success"] = false;
         $json_response["msg"] = "Algo salió mal con el registro";
-        echo json_encode($json_response);
-
+        
     } 
 
     /*
@@ -73,6 +72,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     
 
     // Finalizar el script
+    echo json_encode($json_response);
     exit;
 }
 ?>

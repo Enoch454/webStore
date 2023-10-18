@@ -85,40 +85,40 @@ function valid_datas(f) {
             
         };
 
-
         // Realiza una solicitud fetch para enviar los datos al servidor
         console.log(userData);
-        /*
-        fetch("../controllers/signup.php", {
+        const urlRaiz = window.location.protocol
+            + "//"
+            + window.location.host;
+        console.log(urlRaiz);
+
+        fetch(urlRaiz + "/controllers/signup.php", {
             method: "POST",
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
             },
             body: JSON.stringify(userData)
         })
-        
-        .then(response => response.json())
-        .then(data => console.log(data));
-        */
-
-
-
-        /*
+        .then(response => {if (!response.ok) {
+            throw new Error('La solicitud no fue exitosa');
+          }
+          return response.json();
+        })
+        //.then(data => console.log(data));
         .then(data => {
-            
-            if (data.success && data.redirect) {
+            if (data.success) {
                 alert('Registro exitoso. ¡Bienvenido!');
-                window.location.href = '../views/inicioses.php'; // Redirecciona a inicioses.php
+                window.location.href = urlRaiz + '/views/inicioses.php'; // Redirecciona a inicioses.php
             } else {
                 alert('Registro exitoso, pero ocurrió un error inesperado.');
             }
         })
-        */
-        /*
         .catch(error => {
-            console.error("Error en la solicitud:", error);
+            console.error("Error en la solicitud:");
+            console.error(error);
         });
-        */
+        
+    
     }
 
     return false;

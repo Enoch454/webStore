@@ -156,7 +156,19 @@
 					</div>
 				 	<div id="form_status"></div>
 					<div class="contact-form">
-						<form  type= "POST" id="dessert-contact" onSubmit="return valid_datas( this );" method="POST" action="../controllers/signup.php" enctype="multipart/form-data">
+						<?php
+							function url_actual(){
+								$url = "";
+								if(isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') {
+								  $url = "https://"; 
+								}else{
+								  $url = "http://"; 
+								}
+								return $url .  $_SERVER['HTTP_HOST'];
+							}
+							$urlRaiz = url_actual();
+						?>
+						<form  type= "POST" id="dessert-contact" onSubmit="return valid_datas( this );" method="POST" action="<?php echo $urlRaiz?>/controllers/signup.php" enctype="multipart/form-data">
 							<p>
 								<input class="formulario" type="text" placeholder="Nombre" name="Nombre" id="Nombre">
 							</p>
