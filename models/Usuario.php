@@ -1,4 +1,5 @@
 <?php
+namespace Models;
 
 class Usuario {
     private $idUsuario;
@@ -130,7 +131,7 @@ class Usuario {
             } else {
                 return false;
             }
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             // Maneja excepciones
             return false;
         }

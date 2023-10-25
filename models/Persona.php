@@ -1,4 +1,5 @@
 <?php
+namespace Models;
 
 class Persona {
     private $idPersona;
