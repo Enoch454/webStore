@@ -92,7 +92,7 @@ function valid_datas(f) {
             + window.location.host;
         console.log(urlRaiz);
 
-        fetch(urlRaiz + "/controllers/signup.php", {
+        fetch(urlRaiz + "/signup", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -108,7 +108,7 @@ function valid_datas(f) {
         .then(data => {
             if (data.success) {
                 alert('Registro exitoso. ¡Bienvenido!');
-                window.location.href = urlRaiz + '/views/inicioses.php'; // Redirecciona a inicioses.php
+                window.location.replace(urlRaiz + '/login'); // Redirecciona a inicioses.php
             } else {
                 alert('Registro exitoso, pero ocurrió un error inesperado.');
             }

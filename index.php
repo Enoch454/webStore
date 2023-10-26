@@ -3,9 +3,12 @@
 require_once __DIR__.'/router.php';
 require_once __DIR__.'/controllers/home.php';
 require_once __DIR__.'/controllers/signup.php';
+require_once __DIR__.'/controllers/login.php';
 
 use \Controllers\Home as Home;
 use \Controllers\SignUp as SignUp;
+use \Controllers\Login as Login;
+
 // ##################################################
 // ##################################################
 // ##################################################
@@ -21,6 +24,14 @@ get('/signup', function (){
 });
 post('/signup', function (){
     SignUp::recibirSignup();
+});
+
+// Login
+get('/login', function (){
+    Login::verLogin();
+});
+post('/login', function (){
+    Login::recibirLogin();
 });
 
 // For GET or POST
