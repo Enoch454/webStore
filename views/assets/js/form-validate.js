@@ -79,7 +79,8 @@ function valid_datas(f) {
                 "email": f.email.value,
                 "Telefono": f.Telefono.value,
                 "FechaNac": f.FechaNac.value,
-                "Genero": $('#Genero').val(),
+                //"Femenino" o "Masculino"
+                "Genero": $('#Genero').val().substring(0,1),
                 "Username": f.Username.value,
                 "Contraseña": f.Contraseña.value,
             
@@ -92,7 +93,7 @@ function valid_datas(f) {
             + window.location.host;
         console.log(urlRaiz);
 
-        fetch(urlRaiz + "/controllers/signup.php", {
+        fetch(urlRaiz + "/signup", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -108,9 +109,10 @@ function valid_datas(f) {
         .then(data => {
             if (data.success) {
                 alert('Registro exitoso. ¡Bienvenido!');
-                window.location.href = urlRaiz + '/views/inicioses.php'; // Redirecciona a inicioses.php
+                window.location.replace(urlRaiz + '/login'); // Redirecciona a inicioses.php
             } else {
                 alert('Registro exitoso, pero ocurrió un error inesperado.');
+                console.log(data.details);
             }
         })
         .catch(error => {

@@ -145,8 +145,8 @@
 							<p class="subtitle">¡Bienvenidx!</p>
 							<h1>Postres recien hechos y deliciosos</h1>
 							<div class="hero-btns">
-								<a href="./views/registro.php" class="boxed-btn">Registrate!</a>
-								<a href="./views/inicioses.php" class="bordered-btn">Inicia Sesion!</a>
+								<a href="/signup" class="boxed-btn">Registrate!</a>
+								<a href="/login" class="bordered-btn">Inicia Sesion!</a>
 							</div>
 						</div>
 					</div>

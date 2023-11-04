@@ -1,5 +1,5 @@
 <?php
-
+namespace Conexion;
 class Conexion {
     private $server;
     private $user;
@@ -14,7 +14,7 @@ class Conexion {
             $this->$key = $value;
         }
 
-        $this->conexion = new mysqli($this->server,
+        $this->conexion = new \mysqli($this->server,
             $this->user,
             $this->password,
             $this->database,
