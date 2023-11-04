@@ -19,6 +19,7 @@ class Login {
         $mysqli = $conexion->conexion;
     
         $idUsr = Usuario::validateCredendtials($mysqli, $json['userName'], $json['contrasena']);
+        /*
         //print_r($idUsr);
         
         //Sanitizar JSON
@@ -34,7 +35,7 @@ class Login {
         // foreach($json as $key=>$value) {
         //     $json_safe[$key] = filter_var($value, $filters[$key], $options[$key]);
         // }
-    
+        */
         header('Content-Type: application/json');
         $json_response = ["success" => true];
     
@@ -56,7 +57,7 @@ class Login {
     
             $urlRaiz = url_actual();
     
-            $json_response ["redirect"] = $urlRaiz . "/controllers/myUser.php";
+            $json_response ["redirect"] = $urlRaiz . "/profile";
             
             //Inicamos la sesion
             session_start();
