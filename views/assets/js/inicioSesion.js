@@ -29,14 +29,14 @@ function valid_datas(f) {
         var userData = {
             userName: userField.value,
             contrasena: contraField.value,
-            token: 'FsWga4&@f6aw' // Incluye el token si es necesario
+            //token: 'FsWga4&@f6aw' // Incluye el token si es necesario
         };
 
         const urlRaiz = window.location.protocol
             + "//"
             + window.location.host;
 
-        fetch(urlRaiz + '/controllers/login.php', {
+        fetch(urlRaiz + '/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

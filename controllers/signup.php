@@ -51,7 +51,7 @@ class SignUp {
 
         $json_response = ["success" => true];
 
-
+        
         try{
             $idNewPersona = $newPersona->save($mysqli);
             $newUser->setIdPersona($idNewPersona);
@@ -66,6 +66,7 @@ class SignUp {
         }   catch (\Exception $e) {
             $json_response["success"] = false;
             $json_response["msg"] = "Algo salió mal con el registro";
+            $json_response["details"] = "".$e;
             
         } 
 

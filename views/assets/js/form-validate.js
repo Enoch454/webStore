@@ -79,7 +79,8 @@ function valid_datas(f) {
                 "email": f.email.value,
                 "Telefono": f.Telefono.value,
                 "FechaNac": f.FechaNac.value,
-                "Genero": $('#Genero').val(),
+                //"Femenino" o "Masculino"
+                "Genero": $('#Genero').val().substring(0,1),
                 "Username": f.Username.value,
                 "Contraseña": f.Contraseña.value,
             
@@ -111,6 +112,7 @@ function valid_datas(f) {
                 window.location.replace(urlRaiz + '/login'); // Redirecciona a inicioses.php
             } else {
                 alert('Registro exitoso, pero ocurrió un error inesperado.');
+                console.log(data.details);
             }
         })
         .catch(error => {

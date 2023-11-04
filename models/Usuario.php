@@ -100,7 +100,6 @@ class Usuario {
 
     }
     public function save($mysqli) {
-        try {
             // Define la consulta SQL con el stored procedure
             $sql = 'CALL sp_InsertarUsuario(?, ?, ?, ?, ?, ?, ?)';
     
@@ -114,7 +113,14 @@ class Usuario {
     
             if ($stmt) {
                 // Vincula los parámetros
-                $stmt->bind_param("sssssss", $this->userName, $this->contrasena, $this->email, $this->fotoPerfil, $this->esPrivado, $this->esActivo, $this->idPersona);
+                $stmt->bind_param("sssssss",
+                    $this->userName,
+                    $this->contrasena,
+                    $this->email,
+                    $this->fotoPerfil,
+                    $this->esPrivado,
+                    $this->esActivo,
+                    $this->idPersona);
     
                 // Ejecuta la consulta
                 $isSuccess = $stmt->execute();
@@ -131,10 +137,7 @@ class Usuario {
             } else {
                 return false;
             }
-        } catch (\Exception $e) {
-            // Maneja excepciones
-            return false;
-        }
+        
     }
     
     public static function validateCredendtials($mysqli, $userName, $password) {
