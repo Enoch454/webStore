@@ -3,9 +3,11 @@ namespace Controllers;
 
 require_once __DIR__."/conexion/conexion.php";
 require_once __DIR__."/../models/Usuario.php";
+require_once __DIR__."/../models/Persona.php";
 
 use \Conexion\Conexion as Conexion;
 use \Models\Usuario as Usuario;
+use \Models\Persona as Persona;
 
 class Login {
     public static function verLogin() {
@@ -44,7 +46,8 @@ class Login {
             //print_r(($user));
             $json_response["msg"]= "Bienvenido";
             $json_response ["user"] = $user->toJSON();
-    
+            $personaData = Persona::findUserById($mysqli, $idUsr);
+            $json_response ["persona"] = $personaData->toJSON();
             function url_actual(){
                 $url = "";
                 if(isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') {
@@ -64,7 +67,23 @@ class Login {
             
             //Guardamos el ID del usuario en la sesion
             $_SESSION["AUTH"] = (string)$user->getIdUsuario();
+            
+            
+
+            if ($personaData !== null) {
+                $_SESSION["Nombre"] = $personaData->getNombre();
+                $_SESSION["ApellidoPat"] = $personaData->getApellidoPat();
+                $_SESSION["email"] = $user->getEmail();
+                $_SESSION["userName"] = $user->getUserName();
+               //$json_response ["persona"] = $personaData->toJSON();
+            } else {
+                // En caso de que no encuentres la Persona asociada, puedes manejarlo aquí.
+                // Puedes redirigir al usuario o mostrar un mensaje de error.
+            }
+            
+
             echo json_encode($json_response);
+            
             exit;
     
         } else {

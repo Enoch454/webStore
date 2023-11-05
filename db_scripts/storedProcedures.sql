@@ -204,6 +204,25 @@ END //
 DELIMITER ;
 
 
+DELIMITER //
 
+CREATE PROCEDURE ConsultaPersona(
+  IN p_idPersona INT
+)
+BEGIN
+  SELECT
+    P.idPersona,
+    P.Nombre,
+    P.ApellidoPat,
+    P.ApellidoMat,
+    P.FechaNac,
+    P.Sexo,
+    P.idDomicilio,
+    P.Telefono
+  FROM Personas P
+  WHERE P.idPersona = p_idPersona;
+END //
 
+DELIMITER ;
 
+CALL ConsultaPersona(3);

@@ -1,3 +1,15 @@
+<?php
+session_start();
+
+$nombre = isset($_SESSION["Nombre"]) ? $_SESSION["Nombre"] : "";
+$apellido = isset($_SESSION["ApellidoPat"]) ? $_SESSION["ApellidoPat"] : "";
+$email = isset($_SESSION["email"]) ? $_SESSION["email"] : "";
+$userName = isset($_SESSION["userName"]) ? $_SESSION["userName"] :"";
+
+// Resto de tu código HTML...
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,10 +25,10 @@
 	<link rel="shortcut icon" type="image/png" href="/views/assets/img/pasteles.png">
 
 	<!-- google font -->
-	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet" type="text/css">
+	<link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet" type="text/css">
 	<!-- fontawesome -->
-	<link rel="stylesheet" href="/views/assets/css/all.min.css">
+	<link rel="stylesheet" href="/views/assets/css/all.min.css" type="text/css">
 	<!-- bootstrap -->
 	<link rel="stylesheet" href="/views/assets/bootstrap/css/bootstrap.min.css">
 	<!-- owl carousel -->
@@ -28,7 +40,7 @@
 	<!-- mean menu css -->
 	<link rel="stylesheet" href="/views/assets/css/meanmenu.min.css">
 	<!-- main style -->
-	<link rel="stylesheet" href="/views/assets/css/main.css">
+	<link rel="stylesheet" href="/views/assets/css/main.css" type="text/css">
 	<!-- responsive -->
 	<link rel="stylesheet" href="/views/assets/css/responsive.css">
 
@@ -148,7 +160,7 @@
 		<div class="row" id="user-profile">
 			<div class="col-lg-3 col-md-4 col-sm-4">
 				<div class="main-box clearfix">
-					<h2>Hatsune Miku </h2>
+					<h2> <?php echo $userName; ?> </h2>
 					<div class="profile-status">
 						<i class="fa fa-check-circle"></i> Vendedor Verificado
 					</div>
@@ -200,15 +212,15 @@
 									Nombre
 								</div>
 								<div class="profile-user-details-value">
-									Miku
-								</div>
+            					<?php echo $nombre; ?>
+        						</div>
 							</div>
 							<div class="profile-user-details clearfix">
 								<div class="profile-user-details-label">
 									Apellido 
 								</div>
 								<div class="profile-user-details-value">
-									Hatsune
+								<?php echo $apellido; ?>
 								</div>
 							</div>
 							</div>
@@ -217,7 +229,7 @@
 									Email
 								</div>
 								<div class="profile-user-details-value">
-								mikuh@gmailcom
+								<?php echo $email; ?>
 								</div>
 							</div>
 						
