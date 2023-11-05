@@ -75,6 +75,7 @@ class Login {
                 $_SESSION["ApellidoPat"] = $personaData->getApellidoPat();
                 $_SESSION["email"] = $user->getEmail();
                 $_SESSION["userName"] = $user->getUserName();
+                $_SESSION["fechaIngreso"] = $user->getFechaIngreso();
                //$json_response ["persona"] = $personaData->toJSON();
             } else {
                 // En caso de que no encuentres la Persona asociada, puedes manejarlo aquí.

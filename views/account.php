@@ -5,6 +5,7 @@ $nombre = isset($_SESSION["Nombre"]) ? $_SESSION["Nombre"] : "";
 $apellido = isset($_SESSION["ApellidoPat"]) ? $_SESSION["ApellidoPat"] : "";
 $email = isset($_SESSION["email"]) ? $_SESSION["email"] : "";
 $userName = isset($_SESSION["userName"]) ? $_SESSION["userName"] :"";
+$fechaIngreso = isset($_SESSION["fechaIngreso"]) ? $_SESSION["fechaIngreso"] :"";
 
 // Resto de tu código HTML...
 ?>
@@ -179,7 +180,7 @@ $userName = isset($_SESSION["userName"]) ? $_SESSION["userName"] :"";
 					</div>
 	
 					<div class="profile-since">
-						Miembro desde: Septiembre 2023
+						Miembro desde: <?php echo $fechaIngreso; ?>
 					</div>
 	
 					<div class="profile-details">
@@ -244,7 +245,7 @@ $userName = isset($_SESSION["userName"]) ? $_SESSION["userName"] :"";
 	</div>
 
 </div>
-
+			
 	<!-- publicaciones -->
 	<div class="latest-news mt-150 mb-150">
 		<div class="container">
@@ -372,9 +373,10 @@ $userName = isset($_SESSION["userName"]) ? $_SESSION["userName"] :"";
 	<div class="latest-news mt-150 mb-150">
 		<div class="container">
 			<h2>Mis Productos</h2>
-			<div class="row">
-				
-				<div class="col-lg-4 col-md-6">
+			<div id="product-container"  class="row">
+				<p>Ahora mismo no tiene productos por mostrar</p>
+				<!--
+	<div class="col-lg-4 col-md-6">
 					<div class="single-latest-news">
 						
 						<a href="single-news.php"><div class="latest-news-bg news-bg-1"></div></a>
@@ -385,7 +387,16 @@ $userName = isset($_SESSION["userName"]) ? $_SESSION["userName"] :"";
 								<span class="date"><i class="fas fa-calendar"></i> Septiembre 8, 2023</span>
 								<br>
 								<span class ="ventas"><i class ="fas fa-money-bill"></i> Unidades vendidas: 25</span>
-
+								
+								<div class="rating">
+                					<?php
+                						//$rating = 4.5; // Reemplaza esto con la valoración real de tu producto
+                						//	for ($i = 1; $i <= 5; $i++) {
+                   						//	 $starClass = ($i <= $rating) ? 'fas' : 'far';
+                    					//		echo '<i class="' . $starClass . ' fa-star"></i>';
+                						//}
+                						//?>
+            					</div>
 							</p>
 							<p class="excerpt">Organicas sujetas bajo cotizacion ya sea mayoreo o menudeo</p>
 							<a href="posts.php" class="read-more-btn">Leer más <i class="fas fa-angle-right"></i></a>
@@ -428,11 +439,15 @@ $userName = isset($_SESSION["userName"]) ? $_SESSION["userName"] :"";
 						</div>
 					</div>
 				</div>
-			</div>
+			
+				-->
+				</div>
+	
 
 			<a href="productoVendedor.php" class="boxed-btn">Todos mis Productos</a>
 		</div>
 	</div>
+</div>
 	<!-- fin de mis productos-->
 
 
@@ -464,6 +479,9 @@ $userName = isset($_SESSION["userName"]) ? $_SESSION["userName"] :"";
 			</div>
 		</div>
 	</div>
+
+	</div>
+</div>
 	<!-- end logo carousel -->
 
 <!-- footer -->
