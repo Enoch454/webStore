@@ -101,7 +101,7 @@ class Usuario {
     }
     public function save($mysqli) {
             // Define la consulta SQL con el stored procedure
-            $sql = 'CALL sp_InsertarUsuario(?, ?, ?, ?, ?, ?, ?)';
+            $sql = 'CALL sp_InsertarUsuario(?, ?, ?, ?, ?, ?, ?, @idNewUsr)';
     
             // Verifica si la conexión a la base de datos está establecida
             if ($mysqli->connect_error) {
@@ -123,15 +123,13 @@ class Usuario {
                     $this->idPersona);
     
                 // Ejecuta la consulta
-                $isSuccess = $stmt->execute();
+                $stmt->execute();
                 
-                // Cierra la declaración
-                $stmt->close();
-                if ($isSuccess) {
-                    return true;
-                } else {
-                    return false;
-                }
+                // Recuperar el valor de @res
+                $selectResult = mysqli_query($mysqli, "SELECT @idNewUsr as idUsr;");
+                $row = mysqli_fetch_assoc($selectResult);
+                $idPer = $row['idUsr'];
+                return $idPer;
     
                 
             } else {
@@ -173,4 +171,20 @@ class Usuario {
     public function toJSON() {
         return get_object_vars($this);
     }
+
+    // dado cuatro roles preestablecidos en la bd, se
+    // declara a que rol pertenece esta instancia de 
+    // usuario, esta insertando en la tabla 'Usuario_Rol'
+    // el id del usuario presente y del rol correspondiente
+    // 1 - SuperAdmin, 2 - Admin, 3 - Comprador, 4 - Vendedor
+    public static function setRol($mysqli, $idUsuario, $idRol) {
+        $sql = "CALL sp_InsertarUsuarioRol(?, ?)";
+        $stmt = $mysqli->prepare($sql);
+        $stmt->bind_param("ii",
+            $idUsuario,
+            $idRol);
+        $stmt->execute();
+
+    }
+
 }

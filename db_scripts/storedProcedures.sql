@@ -204,6 +204,29 @@ END //
 DELIMITER ;
 
 
+------
+DELIMITER //
 
+CREATE PROCEDURE sp_InsertarUsuarioRol(
+    IN p_idUsuario INT,
+    IN p_idRol INT
+)
+BEGIN
+    INSERT INTO Usuario_Rol (idUsuario, idRol)
+    VALUES (p_idUsuario, p_idRol);
+END //
 
+DELIMITER ;
+
+DELIMITER //
+
+CREATE PROCEDURE sp_InsertarComprador(
+    IN p_idUsuario INT
+)
+BEGIN
+	INSERT INTO Compradores (idUsuario)
+	VALUES (p_idUsuario);
+END;
+
+DELIMITER ;
 
