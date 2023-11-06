@@ -34,3 +34,14 @@ ALTER TABLE `Personas` ADD `Telefono` VARCHAR(10) NULL AFTER `idDomicilio`;
 
 -- Se cambia el tipo de p_esActivo a boolean
 DROP PROCEDURE `sp_InsertarUsuario`; CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_InsertarUsuario`(IN `p_userName` VARCHAR(15), IN `p_contraseña` VARCHAR(15), IN `p_email` VARCHAR(20), IN `p_fotoPerfil` BLOB, IN `p_esPrivado` BOOLEAN, IN `p_esActivo` BOOLEAN, IN `p_idPersona` INT) NOT DETERMINISTIC CONTAINS SQL SQL SECURITY DEFINER BEGIN INSERT INTO Usuarios (userName, contraseña, email, fotoPerfil, esPrivado, esActivo, idPersona) VALUES (p_userName, p_contraseña, p_email, p_fotoPerfil, p_esPrivado, p_esActivo, p_idPersona); END
+
+-- Insercion de roles en tabla Roles
+INSERT INTO `Roles` (`idRol`, `Nombre`, `Descripcion`)
+VALUES
+(NULL, 'SuperAdmin', 'Super Administrador'),
+(NULL, 'Admin', 'Administrador'),
+(NULL, 'Comprador', 'Comprador'),
+(NULL, 'Vendedor', 'Vendedor');
+
+-- Se cambio sp_InsertarUsuario para que retorne el id recien ingresado
+DROP PROCEDURE `sp_InsertarUsuario`; CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_InsertarUsuario`(IN `p_userName` VARCHAR(15), IN `p_contraseña` VARCHAR(15), IN `p_email` VARCHAR(20), IN `p_fotoPerfil` BLOB, IN `p_esPrivado` BOOLEAN, IN `p_esActivo` BOOLEAN, IN `p_idPersona` INT, OUT `p_res` INT) NOT DETERMINISTIC CONTAINS SQL SQL SECURITY DEFINER BEGIN INSERT INTO Usuarios (userName, contraseña, email, fotoPerfil, esPrivado, esActivo, idPersona) VALUES (p_userName, p_contraseña, p_email, p_fotoPerfil, p_esPrivado, p_esActivo, p_idPersona); SELECT LAST_INSERT_ID() INTO p_res; END

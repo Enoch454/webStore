@@ -4,10 +4,13 @@ namespace Controllers;
 require_once __DIR__."/conexion/conexion.php";
 require_once __DIR__."/../models/Usuario.php";
 require_once __DIR__."/../models/Persona.php";
+require_once __DIR__."/../models/Comprador.php";
 
 use Models\Usuario as Usuario;
 use Models\Persona as Persona;
+use Models\Comprador as Comprador;
 use Conexion\Conexion as Conexion;
+
 
 class SignUp {
     public static function verSignup(): void {
@@ -48,7 +51,7 @@ class SignUp {
         $newUser = new Usuario($username, $password, $email, null, null, $fotoPerfil, $esPrivado, $esActivo);
         // Crear una instancia de la clase Persona
         $newPersona = new Persona($nombre, $apellidoPat, $apellidoMat, $fechaNac, $sexo, $telefono);
-
+        
         $json_response = ["success" => true];
 
         
@@ -56,7 +59,11 @@ class SignUp {
             $idNewPersona = $newPersona->save($mysqli);
             $newUser->setIdPersona($idNewPersona);
             //print_r($newUser->toJSON());
-            $newUser->save($mysqli);
+            $idNewUsuario = $newUser->save($mysqli);
+            //set rol
+            Usuario::setRol($mysqli, $idNewUsuario, 3);
+            $newComprador = new Comprador($idNewUsuario);
+            $newComprador->save($mysqli);
 
             $json_response = ["success" => true, "msg" => "Registro exitoso"];
             //$json_response["redirect"] = "../views/inicioses.php";
