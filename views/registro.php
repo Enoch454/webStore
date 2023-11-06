@@ -13,8 +13,8 @@
 	<link rel="shortcut icon" type="image/png" href="./views/assets/img/pasteles.png">
 
 	<!-- google font -->
-	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet" type="text/css">
+	<link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet" type="text/css">
 	<!-- fontawesome -->
 	<link rel="stylesheet" href="./views/assets/css/all.min.css">
 	<!-- bootstrap -->

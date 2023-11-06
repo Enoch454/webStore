@@ -14,8 +14,8 @@
 
 
 	<!-- google font -->
-	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet" type="text/css">
+	<link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet" type="text/css">
 	<!-- fontawesome -->
 	<link rel="stylesheet" href="./views/assets/css/all.min.css">
 	<!-- bootstrap -->
@@ -68,7 +68,7 @@
 							<ul>
 								<li class="current-list-item"><a href="#">Home</a>
 									<ul class="sub-menu">
-										<li><a href="index.html">Home</a></li>
+										<li><a href="index.php">Home</a></li>
 								
 									</ul>
 								</li>
@@ -76,31 +76,31 @@
 								<li><a href="#">Pages</a>
 									<ul class="sub-menu">
 										
-										<li><a href="cart.html">Carrito</a></li>
-										<li><a href="checkout.html">Check Out</a></li>
-										<li><a href="shop.html">Tienda</a></li>
+										<li><a href="cart.php">Carrito</a></li>
+										<li><a href="checkout.php">Check Out</a></li>
+										<li><a href="shop.php">Tienda</a></li>
 									
 									</ul>
 								</li>
 								<li><a href="account.html">Perfil</a>
 									<ul class="sub-menu">
-										<li><a href="account.html">Perfil</a></li>
-										<li><a href="posts.html">Posts</a></li>
-										<li><a href="wishlist.html">Wishlist</a></li>
+										<li><a href="account.php">Perfil</a></li>
+										<li><a href="posts.php">Posts</a></li>
+										<li><a href="wishlist.php">Wishlist</a></li>
 									</ul>
 								</li>
-								<li><a href="about.html">Nosotros</a></li>
-								<li><a href="shop.html">Shop</a>
+								<li><a href="about.php">Nosotros</a></li>
+								<li><a href="shop.php">Shop</a>
 									<ul class="sub-menu">
-										<li><a href="shop.html">Shop</a></li>
-										<li><a href="checkout.html">Check Out</a></li>
-										<li><a href="single-product.html">Single Product</a></li>
-										<li><a href="cart.html">Carrito</a></li>
+										<li><a href="shop.php">Shop</a></li>
+										<li><a href="checkout.php">Check Out</a></li>
+										<li><a href="single-product.php">Single Product</a></li>
+										<li><a href="cart.php">Carrito</a></li>
 									</ul>
 								</li>
 								<li>
 									<div class="header-icons">
-										<a class="shopping-cart" href="cart.html"><i class="fas fa-shopping-cart"></i></a>
+										<a class="shopping-cart" href="cart.php"><i class="fas fa-shopping-cart"></i></a>
 										<a class="mobile-hide search-bar-icon" href="#"><i class="fas fa-search"></i></a>
 									</div>
 								</li>
