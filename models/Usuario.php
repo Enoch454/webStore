@@ -61,6 +61,13 @@ class Usuario {
     public function setIdPersona ($idPersona) {
         $this->idPersona = $idPersona;
     }
+
+    public function getEmail () {
+        return $this->email;
+    }
+    public function setEmail ($email) {
+        $this->email = $email;
+    }
     /// fin sets and getters
 
     public function __construct($userName, $contrasena, $email,

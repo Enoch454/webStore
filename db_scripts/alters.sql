@@ -7,6 +7,12 @@ Add `esActivo` BIT;
 ALTER TABLE Personas
 ADD `Telefono` VARCHAR(15);
 
+ALTER TABLE Carrito_Producto
+ADD `Cantidad` int;
+
+Alter table Productos
+drop column Cantidad;
+
 -- select * from Usuarios;
 -- select * from Personas;
 

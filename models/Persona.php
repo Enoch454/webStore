@@ -134,7 +134,39 @@ class Persona {
         return $idPer;
     }
 
+    public static function findUserById($mysqli, $id) {
+
+        $sql = "CALL ConsultaPersona(?);";
+        $stmt = $mysqli->prepare($sql);
+        $stmt->bind_param("i",$id);
+        $stmt->execute();
+        $result = $stmt->get_result(); 
+        $persona = $result->fetch_assoc();
+        //print_r($user);
+        return $persona ? Persona::parseJson($persona) : NULL;
+
+    }
+    
     public function toJSON() {
         return get_object_vars($this);
+    }
+
+    static public function parseJson($json) {
+        $persona = new Persona(
+            isset($json["Nombre"]) ? $json["Nombre"] : "",
+            isset($json["ApellidoPat"]) ? $json["ApellidoPat"] : "",
+            isset($json["ApellidoMat"]) ? $json["ApellidoMat"] : "",
+            isset($json["FechaNac"]) ? $json["FechaNac"] : "",
+            isset($json["Sexo"]) ? $json["Sexo"] : "",
+            null,
+            isset($json["Telefono"]) ? $json["Telefono"] :""
+        );
+
+        if (isset($json["idPersona"])) {
+            $persona->setIdPersona((int)$json["idPersona"]);
+        }
+
+        return $persona;
+    
     }
 }

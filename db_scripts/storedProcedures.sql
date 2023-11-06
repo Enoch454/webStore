@@ -41,6 +41,8 @@ END //
 
 DELIMITER ;
 
+
+
 -- Insertar Persona atributos completos
 
 DELIMITER //
@@ -218,6 +220,29 @@ END //
 
 DELIMITER ;
 
+
+
+DELIMITER //
+
+CREATE PROCEDURE ConsultaPersona(
+  IN p_idPersona INT
+)
+BEGIN
+  SELECT
+    P.idPersona,
+    P.Nombre,
+    P.ApellidoPat,
+    P.ApellidoMat,
+    P.FechaNac,
+    P.Sexo,
+    P.idDomicilio,
+    P.Telefono
+  FROM Personas P
+  WHERE P.idPersona = p_idPersona;
+END //
+
+DELIMITER ;
+
 DELIMITER //
 
 CREATE PROCEDURE sp_InsertarComprador(
@@ -229,4 +254,48 @@ BEGIN
 END;
 
 DELIMITER ;
+
+DELIMITER //
+
+CREATE PROCEDURE sp_InsertarProducto(
+  IN p_Nombre VARCHAR(50),
+  IN p_Descripcion VARCHAR(50),
+  IN p_esCotizable BOOLEAN,
+  IN p_Precio DECIMAL(10,2),
+  IN p_Stock INT,
+  IN p_Rating DECIMAL(2,1),
+  IN p_Status BOOLEAN,
+  IN p_idVendedor INT,
+  IN p_idAdmin INT
+)
+BEGIN
+  INSERT INTO Productos (Nombre, Descripcion, esCotizable, Precio, Stock, Rating, Status, idVendedor, idAdmin)
+  VALUES (p_Nombre, p_Descripcion, p_esCotizable, p_Precio, p_Stock, p_Rating, p_Status, p_idVendedor, p_idAdmin);
+END //
+
+DELIMITER ;
+
+DELIMITER //
+
+CREATE PROCEDURE ConsultarProducto(
+  IN p_idProducto INT
+)
+BEGIN
+  SELECT
+    P.idProducto,
+    P.Nombre,
+    P.Descripcion,
+    P.esCotizable,
+    P.Precio,
+    P.Stock,
+    P.Rating,
+    P.Status,
+    P.idVendedor,
+    P.idAdmin
+  FROM Productos P
+  WHERE P.idProducto = p_idProducto;
+END //
+
+DELIMITER ;
+
 

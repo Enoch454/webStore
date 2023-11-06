@@ -1,3 +1,16 @@
+<?php
+session_start();
+
+$nombre = isset($_SESSION["Nombre"]) ? $_SESSION["Nombre"] : "";
+$apellido = isset($_SESSION["ApellidoPat"]) ? $_SESSION["ApellidoPat"] : "";
+$email = isset($_SESSION["email"]) ? $_SESSION["email"] : "";
+$userName = isset($_SESSION["userName"]) ? $_SESSION["userName"] :"";
+$fechaIngreso = isset($_SESSION["fechaIngreso"]) ? $_SESSION["fechaIngreso"] :"";
+
+// Resto de tu código HTML...
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,10 +26,10 @@
 	<link rel="shortcut icon" type="image/png" href="/views/assets/img/pasteles.png">
 
 	<!-- google font -->
-	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet" type="text/css">
+	<link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet" type="text/css">
 	<!-- fontawesome -->
-	<link rel="stylesheet" href="/views/assets/css/all.min.css">
+	<link rel="stylesheet" href="/views/assets/css/all.min.css" type="text/css">
 	<!-- bootstrap -->
 	<link rel="stylesheet" href="/views/assets/bootstrap/css/bootstrap.min.css">
 	<!-- owl carousel -->
@@ -28,7 +41,7 @@
 	<!-- mean menu css -->
 	<link rel="stylesheet" href="/views/assets/css/meanmenu.min.css">
 	<!-- main style -->
-	<link rel="stylesheet" href="/views/assets/css/main.css">
+	<link rel="stylesheet" href="/views/assets/css/main.css" type="text/css">
 	<!-- responsive -->
 	<link rel="stylesheet" href="/views/assets/css/responsive.css">
 
@@ -148,7 +161,7 @@
 		<div class="row" id="user-profile">
 			<div class="col-lg-3 col-md-4 col-sm-4">
 				<div class="main-box clearfix">
-					<h2>Hatsune Miku </h2>
+					<h2> <?php echo $userName; ?> </h2>
 					<div class="profile-status">
 						<i class="fa fa-check-circle"></i> Vendedor Verificado
 					</div>
@@ -167,7 +180,7 @@
 					</div>
 	
 					<div class="profile-since">
-						Miembro desde: Septiembre 2023
+						Miembro desde: <?php echo $fechaIngreso; ?>
 					</div>
 	
 					<div class="profile-details">
@@ -200,15 +213,15 @@
 									Nombre
 								</div>
 								<div class="profile-user-details-value">
-									Miku
-								</div>
+            					<?php echo $nombre; ?>
+        						</div>
 							</div>
 							<div class="profile-user-details clearfix">
 								<div class="profile-user-details-label">
 									Apellido 
 								</div>
 								<div class="profile-user-details-value">
-									Hatsune
+								<?php echo $apellido; ?>
 								</div>
 							</div>
 							</div>
@@ -217,7 +230,7 @@
 									Email
 								</div>
 								<div class="profile-user-details-value">
-								mikuh@gmailcom
+								<?php echo $email; ?>
 								</div>
 							</div>
 						
@@ -232,7 +245,7 @@
 	</div>
 
 </div>
-
+			
 	<!-- publicaciones -->
 	<div class="latest-news mt-150 mb-150">
 		<div class="container">
@@ -360,9 +373,10 @@
 	<div class="latest-news mt-150 mb-150">
 		<div class="container">
 			<h2>Mis Productos</h2>
-			<div class="row">
-				
-				<div class="col-lg-4 col-md-6">
+			<div id="product-container"  class="row">
+				<p>Ahora mismo no tiene productos por mostrar</p>
+				<!--
+	<div class="col-lg-4 col-md-6">
 					<div class="single-latest-news">
 						
 						<a href="single-news.php"><div class="latest-news-bg news-bg-1"></div></a>
@@ -373,7 +387,16 @@
 								<span class="date"><i class="fas fa-calendar"></i> Septiembre 8, 2023</span>
 								<br>
 								<span class ="ventas"><i class ="fas fa-money-bill"></i> Unidades vendidas: 25</span>
-
+								
+								<div class="rating">
+                					<?php
+                						//$rating = 4.5; // Reemplaza esto con la valoración real de tu producto
+                						//	for ($i = 1; $i <= 5; $i++) {
+                   						//	 $starClass = ($i <= $rating) ? 'fas' : 'far';
+                    					//		echo '<i class="' . $starClass . ' fa-star"></i>';
+                						//}
+                						//?>
+            					</div>
 							</p>
 							<p class="excerpt">Organicas sujetas bajo cotizacion ya sea mayoreo o menudeo</p>
 							<a href="posts.php" class="read-more-btn">Leer más <i class="fas fa-angle-right"></i></a>
@@ -416,11 +439,15 @@
 						</div>
 					</div>
 				</div>
-			</div>
+			
+				-->
+				</div>
+	
 
 			<a href="productoVendedor.php" class="boxed-btn">Todos mis Productos</a>
 		</div>
 	</div>
+</div>
 	<!-- fin de mis productos-->
 
 
@@ -452,6 +479,9 @@
 			</div>
 		</div>
 	</div>
+
+	</div>
+</div>
 	<!-- end logo carousel -->
 
 <!-- footer -->
