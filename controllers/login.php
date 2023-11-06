@@ -40,13 +40,11 @@ class Login {
         */
         header('Content-Type: application/json');
         $json_response = ["success" => true];
-    
         if($idUsr > 0) {
             $user = Usuario::findUserById($mysqli, $idUsr);
-            //print_r(($user));
             $json_response["msg"]= "Bienvenido";
             $json_response ["user"] = $user->toJSON();
-            $personaData = Persona::findUserById($mysqli, $idUsr);
+            $personaData = Persona::findUserById($mysqli, $user->getIdPersona());
             $json_response ["persona"] = $personaData->toJSON();
             function url_actual(){
                 $url = "";
@@ -67,8 +65,12 @@ class Login {
             
             //Guardamos el ID del usuario en la sesion
             $_SESSION["AUTH"] = (string)$user->getIdUsuario();
-            
-            
+            $_SESSION["idPersona"] = (string)$user->getIdPersona();
+            $_SESSION["idComprador"] = (string)$user->queryIdComprador($mysqli, $idUsr);
+            $_SESSION["idVendedor"] = (string)$user->queryIdVendedor($mysqli, $idUsr);
+            $_SESSION["idAdmin"] = (string)$user->queryIdAdmin($mysqli, $idUsr);
+
+            echo json_encode($_SESSION);
 
             if ($personaData !== null) {
                 $_SESSION["Nombre"] = $personaData->getNombre();
@@ -78,6 +80,8 @@ class Login {
                 $_SESSION["fechaIngreso"] = $user->getFechaIngreso();
                //$json_response ["persona"] = $personaData->toJSON();
             } else {
+                $json_response["success"]  = false;
+                $json_response["msg"] = "No se encontro la persona asociada";
                 // En caso de que no encuentres la Persona asociada, puedes manejarlo aquí.
                 // Puedes redirigir al usuario o mostrar un mensaje de error.
             }

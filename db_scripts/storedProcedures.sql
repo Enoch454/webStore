@@ -298,4 +298,40 @@ END //
 
 DELIMITER ;
 
+--- Procedimiento almacenado para que, dado un id de usuario, se devuelva el id de su comprador
+DELIMITER //
+CREATE PROCEDURE sp_ConsultarIdComprador(
+  IN p_idUsuario INT
+)
+BEGIN
+  SELECT idComprador
+  FROM Compradores
+  WHERE idUsuario = p_idUsuario;
+END //
+DELIMITER ;
+
+--- Procedimiento almacenado para que, dado un id de usuario, se devuelva el id de su vendedor
+DELIMITER //
+CREATE PROCEDURE sp_ConsultarIdVendedor(
+  IN p_idUsuario INT,
+)
+BEGIN
+  SELECT idVendedor
+  FROM Vendedores
+  WHERE idUsuario = p_idUsuario;
+END //
+DELIMITER ;
+
+--- Procedimiento almacenado para que, dado un id de usuario, se devuelva el id de su administrador
+DELIMITER // 
+CREATE PROCEDURE sp_ConsultarIdAdministrador(
+  IN p_idUsuario INT,
+)
+BEGIN
+  SELECT idAdministrador
+  FROM Administradores
+  WHERE idUsuario = p_idUsuario;
+END //
+DELIMITER ;
+
 

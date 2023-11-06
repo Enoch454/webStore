@@ -149,6 +149,7 @@ class Usuario {
         $sql = "CALL IniciarSesion('%s', '%s', @res);";
         $sql = sprintf($sql, $userName, $password);
         $result = mysqli_query($mysqli, $sql);
+        
 
         // Recuperar el valor de @res
         $selectResult = mysqli_query($mysqli, "SELECT @res as idUsuario;");
@@ -170,7 +171,6 @@ class Usuario {
         $stmt->execute();
         $result = $stmt->get_result(); 
         $user = $result->fetch_assoc();
-        //print_r($user);
         return $user ? Usuario::parseJson($user) : NULL;
 
     }
@@ -193,5 +193,64 @@ class Usuario {
         $stmt->execute();
 
     }
+
+    // funcion 'queryIdComprador':
+    // el id de un usuario, se obtiene el id de comprador
+    // correspondiente a este usuario, esto se logra haciedo uso
+    // del procedimiento amacenado 'sp_ConsultarIdComprador'
+    // de dos parametros (in idUsuario y out idComprador).
+    // En el caso de que la consulta no arroje resultados, se
+    // retorna un valor de -1
+    public function queryIdComprador($mysqli, $idUsuario) {
+        $sql = "CALL sp_ConsultarIdComprador(?);";
+        $stmt = $mysqli->prepare($sql);
+        $stmt->bind_param("i",$idUsuario);
+        $stmt->execute();
+        $result = $stmt->get_result(); 
+        $row = $result->fetch_assoc();
+        $idComprador = $row['idComprador'];
+        //echo $idComprador;
+        return $idComprador ? $idComprador : -1;
+    }
+    
+
+    // funcion 'queryIdVendedor':
+    // el id de un usuario, se obtiene el id de vendedor
+    // correspondiente a este usuario, esto se logra haciedo uso
+    // del procedimiento amacenado 'sp_ConsultarIdVendedor'.
+    // En el caso de que la consulta no arroje resultados, se
+    // retorna un valor de -1
+    public function queryIdVendedor($mysqli, $idUsuario) {
+        $sql = "CALL sp_ConsultarIdVendedor(?);";
+        $stmt = $mysqli->prepare($sql);
+        $stmt->bind_param("i",$idUsuario);
+        $stmt->execute();
+        $result = $stmt->get_result(); 
+        $row = $result->fetch_assoc();
+        $idVendedor = $row['idVendedor'];
+        //echo $idVendedor;
+        return $idVendedor ? $idVendedor : -1;
+    }
+    
+
+    // funcion 'queryIdAdmin':
+    // el id de un usuario, se obtiene el id de administrador
+    // correspondiente a este usuario, esto se logra haciedo uso
+    // del procedimiento amacenado 'sp_ConsultarIdAdministrador'.
+    // En el caso de que la consulta no arroje resultados, se
+    // retorna un valor de -1
+    public function queryIdAdmin($mysqli, $idUsuario) {
+        $sql = "CALL sp_ConsultarIdAdministrador(?);";
+        $stmt = $mysqli->prepare($sql);
+        $stmt->bind_param("i",$idUsuario);
+        $stmt->execute();
+        $result = $stmt->get_result(); 
+        $row = $result->fetch_assoc();
+        $idAdmin = $row['idAdministrador'];
+        echo $idAdmin;
+        return $idAdmin ? $idAdmin : -1;
+    }
+    
+
 
 }
