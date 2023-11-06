@@ -40,6 +40,9 @@ post('/login', function (){
 get('/profile', function () {
     Profile::verProfile();
 });
+post('/account/upgradeVendedor', function () {
+    Profile::upgradeVendedor();
+});
 
 
 // For GET or POST

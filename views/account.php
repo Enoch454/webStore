@@ -242,6 +242,14 @@ $fechaIngreso = isset($_SESSION["fechaIngreso"]) ? $_SESSION["fechaIngreso"] :""
 		<a href="actualizardom.php" class="boxed-btn">Actualizar Domicilio</a>
 		<a href="crearPost.php" class="boxed-btn">Nuevo Post</a>
 		<a href="moderarventas.php" class="boxed-btn">Perfil Avanzado</a>
+		<?php
+		// Si el usuario es un vendedor, entonces no se muestra el siguiente botón
+		if(!isset($_SESSION["idVendedor"]) || $_SESSION["idVendedor"] == -1){
+		?>
+		<a id="btn-upgradeVendedor" class="boxed-btn">Quiero ser vendedor!!!</a>
+		<?php
+		}
+		?>
 	</div>
 
 </div>
@@ -282,7 +290,7 @@ $fechaIngreso = isset($_SESSION["fechaIngreso"]) ? $_SESSION["fechaIngreso"] :""
 
 <!-- fin de posts-->
 
-<!--Mis compras-->
+	<!--Mis compras-->
 	<div class="latest-news mt-150 mb-150">
 		<div class="container">
 			<h2>Mis compras</h2>
@@ -368,8 +376,11 @@ $fechaIngreso = isset($_SESSION["fechaIngreso"]) ? $_SESSION["fechaIngreso"] :""
 	</div>
 	<!-- fin de mis compras-->
 
-
 	<!--Mis productos-->
+	<?php
+	// Si el usuario es un vendedor, entonces mostramos sus productos
+	if(isset($_SESSION["idVendedor"]) && $_SESSION["idVendedor"] > 0){
+	?>
 	<div class="latest-news mt-150 mb-150">
 		<div class="container">
 			<h2>Mis Productos</h2>
@@ -447,6 +458,11 @@ $fechaIngreso = isset($_SESSION["fechaIngreso"]) ? $_SESSION["fechaIngreso"] :""
 			<a href="productoVendedor.php" class="boxed-btn">Todos mis Productos</a>
 		</div>
 	</div>
+	<?php
+	}
+	?>
+	
+
 </div>
 	<!-- fin de mis productos-->
 
@@ -544,6 +560,8 @@ $fechaIngreso = isset($_SESSION["fechaIngreso"]) ? $_SESSION["fechaIngreso"] :""
 	<script src="/views/assets/js/sticker.js"></script>
 	<!-- main js -->
 	<script src="/views/assets/js/main.js"></script>
+	<!-- script account.js -->
+	<script src="/views/assets/js/account.js"></script>
 
 	
 

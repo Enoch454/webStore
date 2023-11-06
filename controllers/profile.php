@@ -41,6 +41,12 @@ class Profile {
         }
     }
 
+    public static function upgradeVendedor(){
+        $response = array();
+        $response["success"] = true;
+        echo json_encode($response);
+    }
+
 }
 /*
 // Comprueba si se está utilizando el método POST

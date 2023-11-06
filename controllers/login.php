@@ -70,7 +70,7 @@ class Login {
             $_SESSION["idVendedor"] = (string)$user->queryIdVendedor($mysqli, $idUsr);
             $_SESSION["idAdmin"] = (string)$user->queryIdAdmin($mysqli, $idUsr);
 
-            echo json_encode($_SESSION);
+            //echo json_encode($_SESSION);
 
             if ($personaData !== null) {
                 $_SESSION["Nombre"] = $personaData->getNombre();
