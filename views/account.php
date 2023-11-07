@@ -162,9 +162,16 @@ $fechaIngreso = isset($_SESSION["fechaIngreso"]) ? $_SESSION["fechaIngreso"] :""
 			<div class="col-lg-3 col-md-4 col-sm-4">
 				<div class="main-box clearfix">
 					<h2> <?php echo $userName; ?> </h2>
+					<?php
+						// Si el usuario es un vendedor, entonces se muestra la sig insignia
+						if(isset($_SESSION["idVendedor"]) && $_SESSION["idVendedor"] > -1){
+					?>
 					<div class="profile-status">
 						<i class="fa fa-check-circle"></i> Vendedor Verificado
 					</div>
+					<?php
+						}
+					?>
 					<img src="/views/assets/img/avaters/meek.jpg" alt="" class="profile-img img-responsive center-block">
 					<div class="profile-label">
 						<span class="label label-danger">Admin</span>

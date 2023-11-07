@@ -334,4 +334,25 @@ BEGIN
 END //
 DELIMITER ;
 
+--- Procedimiento almacenado para que, dado un id de usuario, se inserta un nuevo registro en la tabla Vendedores
+DELIMITER //
+CREATE PROCEDURE sp_InsertarVendedor(
+  IN p_idUsuario INT
+)
+BEGIN
+  INSERT INTO Vendedores (idUsuario)
+  VALUES (p_idUsuario);
+END //
+
+--- Procedimiento almacenado para que, dado un id de usuario, se devuelva el id de vendedor correspondiente
+DELIMITER //
+CREATE PROCEDURE sp_ConsultarIdVendedor(
+  IN p_idUsuario INT
+)
+BEGIN
+  SELECT idVendedor
+  FROM Vendedores
+  WHERE idUsuario = p_idUsuario;
+END //
+
 
