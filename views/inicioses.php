@@ -167,7 +167,7 @@
 								<br>
 							</p>
 							<p></p>
-							<a href="registro.php"> ¿No tienes una cuenta? ¡Registrate ya!</a>
+							<a href="/signup"> ¿No tienes una cuenta? ¡Registrate ya!</a>
 							<input type="hidden" name="token" value="FsWga4&@f6aw" />
 							<p><input type="submit" value="Iniciar!"></p>
 						</form>
