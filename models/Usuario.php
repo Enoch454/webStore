@@ -1,6 +1,8 @@
 <?php
 namespace Models;
 
+use Exception;
+
 class Usuario {
     private $idUsuario;
     private $userName;
@@ -221,36 +223,49 @@ class Usuario {
     // En el caso de que la consulta no arroje resultados, se
     // retorna un valor de -1
     public function queryIdVendedor($mysqli, $idUsuario) {
-        $sql = "CALL sp_ConsultarIdVendedor(?);";
-        $stmt = $mysqli->prepare($sql);
-        $stmt->bind_param("i",$idUsuario);
-        $stmt->execute();
-        $result = $stmt->get_result(); 
-        $row = $result->fetch_assoc();
-        $idVendedor = $row['idVendedor'];
-        //echo $idVendedor;
-        return $idVendedor ? $idVendedor : -1;
+        $idVendedor = -1; // Establece un valor predeterminado
+    
+        try {
+            $sql = "CALL sp_ConsultarIdVendedor(?);";
+            $stmt = $mysqli->prepare($sql);
+            $stmt->bind_param("i", $idUsuario);
+            $stmt->execute();
+            $result = $stmt->get_result(); 
+    
+            if ($result) {
+                $row = $result->fetch_assoc();
+                if ($row && isset($row['idVendedor'])) {
+                    $idVendedor = $row['idVendedor'];
+                }
+            }
+        } catch (Exception $e) {
+            // Manejo de errores
+        }
+    
+        return $idVendedor;
     }
     
-
-    // funcion 'queryIdAdmin':
-    // el id de un usuario, se obtiene el id de administrador
-    // correspondiente a este usuario, esto se logra haciedo uso
-    // del procedimiento amacenado 'sp_ConsultarIdAdministrador'.
-    // En el caso de que la consulta no arroje resultados, se
-    // retorna un valor de -1
     public function queryIdAdmin($mysqli, $idUsuario) {
-        $sql = "CALL sp_ConsultarIdAdministrador(?);";
-        $stmt = $mysqli->prepare($sql);
-        $stmt->bind_param("i",$idUsuario);
-        $stmt->execute();
-        $result = $stmt->get_result(); 
-        $row = $result->fetch_assoc();
-        $idAdmin = $row['idAdministrador'];
-        echo $idAdmin;
-        return $idAdmin ? $idAdmin : -1;
-    }
+        $idAdmin = -1; // Establece un valor predeterminado
     
-
+        try {
+            $sql = "CALL sp_ConsultarIdAdministrador(?);";
+            $stmt = $mysqli->prepare($sql);
+            $stmt->bind_param("i", $idUsuario);
+            $stmt->execute();
+            $result = $stmt->get_result();
+    
+            if ($result) {
+                $row = $result->fetch_assoc();
+                if ($row && isset($row['idAdministrador'])) {
+                    $idAdmin = $row['idAdministrador'];
+                }
+            }
+        } catch (Exception $e) {
+            // Manejo de errores
+        }
+    
+        return $idAdmin;
+    }
 
 }
