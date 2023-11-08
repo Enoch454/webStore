@@ -310,10 +310,10 @@ BEGIN
 END //
 DELIMITER ;
 
---- Procedimiento almacenado para que, dado un id de usuario, se devuelva el id de su vendedor
+/*--Procedimiento almacenado para que, dado un id de usuario, se devuelva el id de su vendedor */
 DELIMITER //
 CREATE PROCEDURE sp_ConsultarIdVendedor(
-  IN p_idUsuario INT,
+  IN p_idUsuario INT
 )
 BEGIN
   SELECT idVendedor
@@ -322,10 +322,10 @@ BEGIN
 END //
 DELIMITER ;
 
---- Procedimiento almacenado para que, dado un id de usuario, se devuelva el id de su administrador
+/*---Procedimiento almacenado para que, dado un id de usuario, se devuelva el id de su administrador*/
 DELIMITER // 
 CREATE PROCEDURE sp_ConsultarIdAdministrador(
-  IN p_idUsuario INT,
+  IN p_idUsuario INT
 )
 BEGIN
   SELECT idAdministrador
@@ -344,15 +344,6 @@ BEGIN
   VALUES (p_idUsuario);
 END //
 
---- Procedimiento almacenado para que, dado un id de usuario, se devuelva el id de vendedor correspondiente
-DELIMITER //
-CREATE PROCEDURE sp_ConsultarIdVendedor(
-  IN p_idUsuario INT
-)
-BEGIN
-  SELECT idVendedor
-  FROM Vendedores
-  WHERE idUsuario = p_idUsuario;
-END //
+
 
 
