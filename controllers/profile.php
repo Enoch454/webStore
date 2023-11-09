@@ -4,17 +4,43 @@ namespace Controllers;
 require_once __DIR__."/conexion/conexion.php";
 require_once __DIR__."/../models/Usuario.php";
 require_once __DIR__."/../models/Vendedor.php";
+require_once __DIR__."/../models/Producto.php";
+
 
 use \Conexion\Conexion as Conexion;
 use \Models\Usuario as Usuario;
 use \Models\Vendedor as Vendedor;
+use \Models\Producto as Producto;
 
 class Profile {
     public static function verProfile() {
-        session_start();
-        // Manejar aquí las solicitudes GET, si es necesario
+        //session_start();
         include './views/account.php';
+        /*
+        // Verifica si se ha iniciado sesión y si se ha creado un vendedor
+        if (isset($_SESSION["AUTH"]) && isset($_SESSION["idVendedor"])) {
+            $idVendedor = $_SESSION["idVendedor"];
+    
+            // Crea una instancia de la clase Conexion y obtén la conexión
+            $conexion = new Conexion;
+            $mysqli = $conexion->conexion;
+    
+            // Obtén la lista de productos del vendedor
+            $productos = Producto::getProductosByVendedor($mysqli, $idVendedor);
+    
+            // Verificar si se obtienen los productos correctamente
+            var_dump($productos);
+    
+            // Incluye la vista de perfil y pasa los productos a la vista
+            include './views/account.php';
+        } else {
+            http_response_code(400);
+            echo json_encode(['error' => 'Error en Productos del Vendedor']);
+        }
+
+        */
     }
+
     public static function getDataProfile($id) {
         // Verifica si se ha recibido el ID de usuario
         if (isset($_SESSION['AUTH'])) {
