@@ -392,7 +392,35 @@ $idVendedor = isset($_SESSION["idVendedor"]) ? $_SESSION["idVendedor"] :"";
 		<div class="container">
 			<h2>Mis Productos</h2>
 			<div id="product-container"  class="row">
-				<p>Ahora mismo no tiene productos por mostrar</p>
+			<?php
+        if (empty($productos)) {
+            echo '<p>Ahora mismo no tiene productos por mostrar</p>';
+        } else {
+            foreach ($productos as $producto) {
+                echo '<div class="col-lg-4 col-md-6">
+                    <div class="single-latest-news">
+                        <h3>' . $producto["nombre"] . '</h3>
+                        <p class="excerpt">' . $producto["descripcion"] . '</p>
+                        <p class="price">Precio: $' . $producto["precio"] . '</p>';
+
+                        // Mostrar el rating como estrellas
+                        $rating = $producto["rating"];
+                        echo '<div class="rating">';
+                        for ($i = 1; $i <= 5; $i++) {
+                            $starClass = ($i <= $rating) ? 'fas' : 'far';
+                            echo '<i class="' . $starClass . ' fa-star"></i>';
+                        }
+                        echo '</div>';
+
+                        // Continúa con otros detalles del producto si es necesario
+
+                    echo '</div>
+                </div>';
+            }
+        }
+        ?>
+				
+				
 				<!--
 	<div class="col-lg-4 col-md-6">
 					<div class="single-latest-news">
