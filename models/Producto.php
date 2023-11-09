@@ -1,6 +1,8 @@
 <?php
 namespace Models;
 
+use Exception;
+
 class Producto {
     private $idProducto;
     private $nombre;
@@ -93,7 +95,7 @@ class Producto {
         $this->idAdmin = $idAdmin;
     }
 
-    public function __construct($nombre, $descripcion, $esCotizable, $precio, $stock, $rating, $status, $idAdmin = null, $idVendedor = null) {
+    public function __construct($nombre, $descripcion, $esCotizable, $precio, $stock, $rating, $status, $idVendedor = null, $idAdmin = null) {
         $this->nombre = $nombre;
         $this->descripcion = $descripcion;
         $this->esCotizable = $esCotizable;
@@ -101,8 +103,9 @@ class Producto {
         $this->stock = $stock;
         $this->rating = $rating;
         $this->status = $status;
-        $this->idAdmin = $idAdmin;
         $this->idVendedor = $idVendedor;
+        $this->idAdmin = $idAdmin;
+        
     }
 
     static public function parseJson($json) {
@@ -114,15 +117,17 @@ class Producto {
             isset($json["stock"]) ? $json["stock"] : "",
             isset($json["rating"]) ? $json["rating"] : "",
             isset($json["status"]) ? $json["status"] : "",
-            isset($json["idAdmin"]) ? $json["idAdmin"] : "",
-            isset($json["idVendedor"]) ? $json["idVendedor"] : ""
+            isset($json["idVendedor"]) ? $json["idVendedor"] : "",
+            isset($json["idAdmin"]) ? $json["idAdmin"] : ""
+            
         );
-
+    
         if (isset($json["idProducto"])) {
             $producto->setIdProducto((int)$json["idProducto"]);
         }
         return $producto;
     }
+    
 
     public function save($mysqli) {
         // Define la consulta SQL con el stored procedure
@@ -146,8 +151,9 @@ class Producto {
                 $this->stock,
                 $this->rating,
                 $this->status,
+                $this->idVendedor,
                 $this->idAdmin,
-                $this->idVendedor
+                
             );
 
             // Ejecuta la consulta
@@ -179,6 +185,32 @@ class Producto {
     public function toJSON() {
         return get_object_vars($this);
     }
+
+    public static function getProductosByVendedor($mysqli, $idVendedor) {
+        $productos = [];
+    
+        // Llama al procedimiento almacenado para obtener los productos
+        $sql = "CALL sp_getProductosByVendedor(?)";
+        $stmt = $mysqli->prepare($sql);
+        $stmt->bind_param("i", $idVendedor);
+        
+        if ($stmt->execute()) {
+            $result = $stmt->get_result();
+            
+            // Itera sobre los resultados y crea objetos Producto
+            while ($row = $result->fetch_assoc()) {
+                $productos[] = Producto::parseJson($row);
+            }
+        } else {
+            echo "Error al ejecutar el procedimiento almacenado: " . $stmt->error;
+        }
+    
+        return $productos;
+    }
+    
+
 }
+
+
 
 ?>
