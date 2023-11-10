@@ -7,6 +7,7 @@ $email = isset($_SESSION["email"]) ? $_SESSION["email"] : "";
 $userName = isset($_SESSION["userName"]) ? $_SESSION["userName"] :"";
 $fechaIngreso = isset($_SESSION["fechaIngreso"]) ? $_SESSION["fechaIngreso"] :"";
 $idVendedor = isset($_SESSION["idVendedor"]) ? $_SESSION["idVendedor"] :"";
+//$productos = isset($_SESSION["productos"]) ? $_SESSION["productos"] :"";
 // Resto de tu código HTML...
 ?>
 
@@ -392,104 +393,10 @@ $idVendedor = isset($_SESSION["idVendedor"]) ? $_SESSION["idVendedor"] :"";
 		<div class="container">
 			<h2>Mis Productos</h2>
 			<div id="product-container"  class="row">
-			<?php
-        if (empty($productos)) {
-            echo '<p>Ahora mismo no tiene productos por mostrar</p>';
-        } else {
-            foreach ($productos as $producto) {
-                echo '<div class="col-lg-4 col-md-6">
-                    <div class="single-latest-news">
-                        <h3>' . $producto["nombre"] . '</h3>
-                        <p class="excerpt">' . $producto["descripcion"] . '</p>
-                        <p class="price">Precio: $' . $producto["precio"] . '</p>';
-
-                        // Mostrar el rating como estrellas
-                        $rating = $producto["rating"];
-                        echo '<div class="rating">';
-                        for ($i = 1; $i <= 5; $i++) {
-                            $starClass = ($i <= $rating) ? 'fas' : 'far';
-                            echo '<i class="' . $starClass . ' fa-star"></i>';
-                        }
-                        echo '</div>';
-
-                        // Continúa con otros detalles del producto si es necesario
-
-                    echo '</div>
-                </div>';
-            }
-        }
-        ?>
-				
-				
-				<!--
-	<div class="col-lg-4 col-md-6">
-					<div class="single-latest-news">
-						
-						<a href="single-news.php"><div class="latest-news-bg news-bg-1"></div></a>
-						<div class="news-text-box">
-							<h3><a href="single-news.php">Galletas corazón</a></h3>
-							<p class="blog-meta">
-								<span class="author"><i class="fas fa-user"></i> Hatsune Miku</span>
-								<span class="date"><i class="fas fa-calendar"></i> Septiembre 8, 2023</span>
-								<br>
-								<span class ="ventas"><i class ="fas fa-money-bill"></i> Unidades vendidas: 25</span>
-								
-								<div class="rating">
-                					<?php
-                						//$rating = 4.5; // Reemplaza esto con la valoración real de tu producto
-                						//	for ($i = 1; $i <= 5; $i++) {
-                   						//	 $starClass = ($i <= $rating) ? 'fas' : 'far';
-                    					//		echo '<i class="' . $starClass . ' fa-star"></i>';
-                						//}
-                						//?>
-            					</div>
-							</p>
-							<p class="excerpt">Organicas sujetas bajo cotizacion ya sea mayoreo o menudeo</p>
-							<a href="posts.php" class="read-more-btn">Leer más <i class="fas fa-angle-right"></i></a>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-lg-4 col-md-6">
-					<div class="single-latest-news">
-						
-						<a href="single-news.php"><div class="latest-news-bg news-bg-1"></div></a>
-						<div class="news-text-box">
-							<h3><a href="single-news.php">Pastel de fresa</a></h3>
-							<p class="blog-meta">
-								<span class="author"><i class="fas fa-user"></i>  Hatsune Miku</span>
-								<span class="date"><i class="fas fa-calendar"></i> Septiembre 8, 2023</span>
-								<br>
-								<span class ="ventas"><i class ="fas fa-money-bill"></i> Unidades vendidas: 66</span>
-							</p>
-							<p class="excerpt">Pastel redondo rosa con relleno de chocolate y pan marmoleado</p>
-							<a href="posts.php" class="read-more-btn">Leer más <i class="fas fa-angle-right"></i></a>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-lg-4 col-md-6">
-					<div class="single-latest-news">
-						
-						<a href="single-news.php"><div class="latest-news-bg news-bg-1"></div></a>
-						<div class="news-text-box">
-							<h3><a href="single-news.php">Macarrones</a></h3>
-							<p class="blog-meta">
-								<span class="author"><i class="fas fa-user"></i>  Hatsune Miku</span>
-								<span class="date"><i class="fas fa-calendar"></i> Septiembre 8, 2023</span>
-								<br>
-								<span class ="ventas"><i class ="fas fa-money-bill"></i> Unidades vendidas: 100</span>
-							</p>
-							<p class="excerpt">Paquetes de 6 piezas con 6 colores diferentes</p>
-							<a href="posts.php" class="read-more-btn">Leer más <i class="fas fa-angle-right"></i></a>
-						</div>
-					</div>
-				</div>
 			
-				-->
-				</div>
-	
 
+			
+			</div>
 			<a href="productoVendedor.php" class="boxed-btn">Todos mis Productos</a>
 		</div>
 	</div>

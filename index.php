@@ -40,6 +40,12 @@ post('/login', function (){
 get('/profile', function () {
     Profile::verProfile();
 });
+
+post('/profile/verProductos', function(){
+
+    Profile::verProductosPerfil();
+});
+
 post('/profile/upgradeVendedor', function () {
     //echo 'post upgradeVendedor';
     Profile::upgradeVendedor();

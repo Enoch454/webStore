@@ -1,4 +1,6 @@
 <?php
+
+
 namespace Controllers;
 
 require_once __DIR__."/conexion/conexion.php";
@@ -13,32 +15,38 @@ use \Models\Vendedor as Vendedor;
 use \Models\Producto as Producto;
 
 class Profile {
+
+    
     public static function verProfile() {
-        //session_start();
+        session_start();
         include './views/account.php';
-        /*
-        // Verifica si se ha iniciado sesión y si se ha creado un vendedor
+
+    }
+
+    public static function verProductosPerfil(){
+        session_start();
         if (isset($_SESSION["AUTH"]) && isset($_SESSION["idVendedor"])) {
             $idVendedor = $_SESSION["idVendedor"];
-    
-            // Crea una instancia de la clase Conexion y obtén la conexión
             $conexion = new Conexion;
             $mysqli = $conexion->conexion;
-    
-            // Obtén la lista de productos del vendedor
             $productos = Producto::getProductosByVendedor($mysqli, $idVendedor);
-    
-            // Verificar si se obtienen los productos correctamente
-            var_dump($productos);
-    
-            // Incluye la vista de perfil y pasa los productos a la vista
-            include './views/account.php';
+            $productosJson = [];
+            foreach ($productos as $producto) {
+                $productosJson[] = ($producto->toJSON());
+            }
+            header('Content-Type: application/json');
+            $response = array();
+            $response['succes'] = true;
+            $response['data'] = ($productosJson); 
+            echo json_encode($response);
+            //var_dump($productos);
+            
         } else {
-            http_response_code(400);
-            echo json_encode(['error' => 'Error en Productos del Vendedor']);
+            $response['succes'] = false;
+            $response['error'] = 'Error ver productos';
+            echo json_encode( $response );
         }
-
-        */
+        
     }
 
     public static function getDataProfile($id) {

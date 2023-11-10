@@ -95,7 +95,10 @@ class Producto {
         $this->idAdmin = $idAdmin;
     }
 
-    public function __construct($nombre, $descripcion, $esCotizable, $precio, $stock, $rating, $status, $idVendedor = null, $idAdmin = null) {
+    public function __construct($nombre, $descripcion,
+        $esCotizable, $precio,
+        $stock, $rating, $status,
+        $idVendedor = null, $idAdmin = null) {
         $this->nombre = $nombre;
         $this->descripcion = $descripcion;
         $this->esCotizable = $esCotizable;
@@ -110,21 +113,22 @@ class Producto {
 
     static public function parseJson($json) {
         $producto = new Producto(
-            isset($json["nombre"]) ? $json["nombre"] : "",
-            isset($json["descripcion"]) ? $json["descripcion"] : "",
+            isset($json["Nombre"]) ? $json["Nombre"] : "",
+            isset($json["Descripcion"]) ? $json["Descripcion"] : "",
             isset($json["esCotizable"]) ? $json["esCotizable"] : "",
-            isset($json["precio"]) ? $json["precio"] : "",
-            isset($json["stock"]) ? $json["stock"] : "",
-            isset($json["rating"]) ? $json["rating"] : "",
-            isset($json["status"]) ? $json["status"] : "",
+            isset($json["Precio"]) ? $json["Precio"] : "",
+            isset($json["Stock"]) ? $json["Stock"] : "",
+            isset($json["Rating"]) ? $json["Rating"] : "",
+            isset($json["Status"]) ? $json["Status"] : "",
             isset($json["idVendedor"]) ? $json["idVendedor"] : "",
             isset($json["idAdmin"]) ? $json["idAdmin"] : ""
             
         );
-    
-        if (isset($json["idProducto"])) {
+        //echo json_encode($producto->toJSON());
+        if (!isset($json["idProducto"])) {
             $producto->setIdProducto((int)$json["idProducto"]);
         }
+
         return $producto;
     }
     
@@ -188,7 +192,7 @@ class Producto {
 
     public static function getProductosByVendedor($mysqli, $idVendedor) {
         $productos = [];
-    
+
         // Llama al procedimiento almacenado para obtener los productos
         $sql = "CALL sp_getProductosByVendedor(?)";
         $stmt = $mysqli->prepare($sql);
@@ -199,6 +203,11 @@ class Producto {
             
             // Itera sobre los resultados y crea objetos Producto
             while ($row = $result->fetch_assoc()) {
+                //implode("','",$a1)
+                //echo implode (" - ", $row)."";
+                //foreach(array_keys($row) as $key){
+                //    echo $key.'-';
+                //}
                 $productos[] = Producto::parseJson($row);
             }
         } else {
