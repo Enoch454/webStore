@@ -5,11 +5,13 @@ require_once __DIR__.'/controllers/home.php';
 require_once __DIR__.'/controllers/signup.php';
 require_once __DIR__.'/controllers/login.php';
 require_once __DIR__.'/controllers/profile.php';
+require_once __DIR__ .'/controllers/product.php';
 
 use \Controllers\Home as Home;
 use \Controllers\SignUp as SignUp;
 use \Controllers\Login as Login;
 use \Controllers\Profile as Profile;
+use \Controllers\Product as Product;
 
 // ##################################################
 // ##################################################
@@ -49,6 +51,12 @@ post('/profile/verProductos', function(){
 post('/profile/upgradeVendedor', function () {
     //echo 'post upgradeVendedor';
     Profile::upgradeVendedor();
+});
+
+//Product
+get('/newProduct', function(){
+
+    Product::verNewProduct();
 });
 
 
