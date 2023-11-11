@@ -398,7 +398,7 @@ $idVendedor = isset($_SESSION["idVendedor"]) ? $_SESSION["idVendedor"] :"";
 			
 			</div>
 			<a href="productoVendedor.php" class="boxed-btn">Todos mis Productos</a>
-			<a href="/newProduct" class="boxed-btn">Agregar Producto</a>
+			<a href="/product" class="boxed-btn">Agregar Producto</a>
 		</div>
 	</div>
 	<?php

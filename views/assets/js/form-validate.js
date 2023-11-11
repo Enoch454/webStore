@@ -68,7 +68,7 @@ function valid_datas(f) {
 
     
     if (valid) {
-        alert('Antes del fetch. ¡Bienvenido!');
+        //alert('¡Bienvenido!');
         
         // Combina los datos en un solo objeto
         const userData = {

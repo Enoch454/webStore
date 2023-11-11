@@ -156,7 +156,7 @@
 					</div>
 				 	<div id="form_status"></div>
 					<div class="contact-form">
-						<form type="POST" id="dessert-contact" onsubmit="return valid_datas(this); event.preventDefault();">
+					<form  type= "POST" id="dessert-contact" onSubmit="return valid_datas( this );" method="POST" action="<?php echo $urlRaiz?>/controllers/product.php" enctype="multipart/form-data">
 							<p>
 								<input type="text" placeholder="Name" name="name" id="name">
 								<p id="name-error" style="display: none; color: red;">Por favor, ingrese el nombre.</p>

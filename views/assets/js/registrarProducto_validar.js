@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     submitButton.addEventListener('click', function (event) {
         var hasErrors = false;
-
+        
         // Validar el campo de nombre (solo letras y números)
         if (!/^[a-zA-Z0-9\s]+$/.test(nameField.value)) {
             nameError.style.display = 'block';
@@ -77,7 +77,49 @@ document.addEventListener('DOMContentLoaded', function () {
         if (hasErrors) {
             event.preventDefault();
         } else {
-            alert('Producto enviado para ser aprobado por un administrador. Por favor, espere la confirmación.');
+                const productData = {
+                    "Nombre": nameField.value,
+                    "Stock": stockField.value,
+                    "Precio": precioField.value,
+                    "Descripcion": messageField.value,
+                    "esCotizable": cotizableCheckbox.checked ? 1 : 0
+                };
+                console.log(productData);
+                const urlRaiz = window.location.protocol
+                + "//"
+                + window.location.host;
+                console.log(urlRaiz);
+
+                fetch(urlRaiz + "/product", {
+
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(productData)
+                })
+                .then(response => {if (!response.ok) {
+                    throw new Error('La solicitud no fue exitosa');
+                  }
+                  return response.json();
+                })
+                
+                
+                .then(data => {
+                    if (data.success) {
+                        alert('Registro exitoso. Espere su aprobacion');
+                        window.location.replace(urlRaiz + '/profile'); // Redirecciona a account.php
+                    } else {
+                        alert('Registro exitoso, pero ocurrió un error inesperado.');
+                        console.log(data.details);
+                    }
+                })
+                .catch(error => {
+                    console.error("Error en la solicitud:", error);
+                    //console.error(error);
+                }); 
+            //alert('Producto enviado para ser aprobado por un administrador. Por favor, espere la confirmación.');
         }
+        return false;
     });
 });

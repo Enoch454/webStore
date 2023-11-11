@@ -54,11 +54,13 @@ post('/profile/upgradeVendedor', function () {
 });
 
 //Product
-get('/newProduct', function(){
+get('/product', function(){
 
     Product::verNewProduct();
 });
-
+post('/product', function (){
+    Product::recibirNewProduct();
+});
 
 // For GET or POST
 // The 404.php which is inside the views folder will be called

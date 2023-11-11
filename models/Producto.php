@@ -147,18 +147,17 @@ class Producto {
 
         if ($stmt) {
             // Vincula los parámetros
-            $stmt->bind_param("ssfdsiiii",
-                $this->nombre,
-                $this->descripcion,
-                $this->esCotizable,
-                $this->precio,
-                $this->stock,
-                $this->rating,
-                $this->status,
-                $this->idVendedor,
-                $this->idAdmin,
-                
-            );
+            $stmt->bind_param("ssididiii",
+            $this->nombre,
+            $this->descripcion,
+            $this->esCotizable,
+            $this->precio,
+            $this->stock,
+            $this->rating,
+            $this->status,
+            $this->idVendedor,
+            $this->idAdmin
+        );
 
             // Ejecuta la consulta
             $isSuccess = $stmt->execute();
