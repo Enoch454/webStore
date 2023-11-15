@@ -7,6 +7,7 @@ $email = isset($_SESSION["email"]) ? $_SESSION["email"] : "";
 $userName = isset($_SESSION["userName"]) ? $_SESSION["userName"] :"";
 $fechaIngreso = isset($_SESSION["fechaIngreso"]) ? $_SESSION["fechaIngreso"] :"";
 $idVendedor = isset($_SESSION["idVendedor"]) ? $_SESSION["idVendedor"] :"";
+$vendedorStatus = isset($_SESSION["vendedorStatus"]) ? $_SESSION["vendedorStatus"] :"";
 //$productos = isset($_SESSION["productos"]) ? $_SESSION["productos"] :"";
 // Resto de tu código HTML...
 ?>
@@ -111,6 +112,9 @@ $idVendedor = isset($_SESSION["idVendedor"]) ? $_SESSION["idVendedor"] :"";
 											<a class="mobile-hide search-bar-icon" href="search.php"><i class="fas fa-search"></i></a>
 										</div>
 									</li>
+									<li>
+										<a href="/logout">Cerrar Sesion</a>
+                                	</li>
 								</ul>
 							</nav>
 							<a class="mobile-show search-bar-icon" href="#"><i class="fas fa-search"></i></a>
