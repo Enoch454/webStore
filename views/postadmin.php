@@ -7,7 +7,7 @@
 	>
 
 	<!-- title -->
-	<title>publicaciones</title>
+	<title>Admin Home</title>
 
 	<!-- fotito -->
 	<link rel="shortcut icon" type="image/png" href="assets/img/pasteles.png">
@@ -44,6 +44,11 @@
     <!--PreLoader Ends-->
 	
 	<!-- header -->
+
+	<!--
+
+		
+	-->
 	<div class="top-header-area" id="sticker">
 		<div class="container">
 			<div class="row">
@@ -57,7 +62,7 @@
 						</div>
 						<!-- logo -->
 
-							<!-- menu start -->
+							<!-- menu start 
 						<nav class="main-menu">
 							<ul>
 								<li class="current-list-item"><a href="#">Home</a>
@@ -102,7 +107,7 @@
 						</nav>
 						<a class="mobile-show search-bar-icon" href="#"><i class="fas fa-search"></i></a>
 						<div class="mobile-menu"></div>
-						<!-- menu end -->
+						Smenu end -->
 					</div>
 				</div>
 			</div>
@@ -137,7 +142,8 @@
 				<div class="col-lg-8 offset-lg-2 text-center">
 					<div class="breadcrumb-text">
 						
-						<h1>Publicacion</h1>
+						<h1>Sección Administrador</h1>
+						<h5>Las solicitudes estarán en espera hasta ser aprobadas o rechazados</h5>
 					</div>
 				</div>
 			</div>
@@ -149,18 +155,47 @@
 	<div class="mt-150 mb-150">
 		<div class="container">
 			<div class="row">
-				<div class="col-lg-8">
+				<div class = "aprobarProductos">
+				<h2>Solicitudes de aprobacion de Productos</h2>
+				<div class="col-lg-4">
 					<div class="single-article-section">
 						<div class="single-article-text">
 							<img src="assets/img/products/pastellll.jpg" alt="">
-							
 							<p class="blog-meta">
-								
 								<span class="author"><i class="fas fa-user"></i> Nombre Usuario</span>
 								<span class="date"><i class="fas fa-calendar"></i> Septiembre 8, 2023</span>
 							</p>
+							<p>Compra mi pastel !!! Los doctores dicen que los pateles multiplican tu vida x20 por eso hay que comprar!!!!!! </p>
+						</div>
+
+						
+						<div class="comments-list-wrap">
 							
-							<h2>Los pasteles te hacen vivir más</h2>
+							<div class="comment-list">
+								
+								<p><input type="aprobar" value="Aprobar Publicacion"></p>
+
+								<p><input type="rechazar" value="Rechazar Publicacion"></p>
+		
+							</div>
+						</div>
+
+						
+					</div>
+				</div>
+			</div>
+
+
+			<div class = "aprobarVendedores">
+				<h2>Solicitud de aprobacion de vendedores</h2>
+				<div class="col-lg-4">
+					<div class="single-article-section">
+						<div class="single-article-text">
+							<img src="assets/img/products/pastellll.jpg" alt="">
+							<p class="blog-meta">
+								<span class="author"><i class="fas fa-user"></i> Nombre Usuario</span>
+								<span class="date"><i class="fas fa-calendar"></i> Septiembre 8, 2023</span>
+							</p>
 							<p>Compra mi pastel !!! Los doctores dicen que los pateles multiplican tu vida x20 por eso hay que comprar!!!!!! </p>
 						</div>
 
@@ -171,26 +206,30 @@
 								<p><input type="aprobar" value="Aprobar Publicacion"></p>
 
 								<p><input type="rechazar" value="Rechazar Publicacion"></p>
-								
+		
 							</div>
 						</div>
 
 						
 					</div>
 				</div>
+			</div>
+
+			<!--
+
 				<div class="col-lg-4">
 					<div class="sidebar-section">
 						<div class="recent-posts">
 							<h4>Posts recientes del Usuario</h4>
 							<ul>
 								<li><a>Pastel de vainilla bueno bonito</a></li>
-							<!--<li><a href="single-news.php">A man's worth has its season, like tomato.</a></li>
+							<<li><a href="single-news.php">A man's worth has its season, like tomato.</a></li>
 								<li><a href="single-news.html">Good thoughts bear good fresh juicy fruit.</a></li>
 								<li><a href="single-news.html">Fall in love with the fresh orange</a></li>
-								<li><a href="single-news.html">Why the berries always look delecious</a></li> -->	
+								<li><a href="single-news.html">Why the berries always look delecious</a></li> 	
 							</ul>
 						</div>
-				<!--		<div class="archive-posts">
+						<div class="archive-posts">
 							<h4>Archive Posts</h4>
 							<ul>
 								<li><a href="single-news.html">JAN 2019 (5)</a></li>
@@ -199,7 +238,8 @@
 								<li><a href="single-news.html">SEP 2019 (4)</a></li>
 								<li><a href="single-news.html">DEC 2019 (3)</a></li>
 							</ul>
-						</div>-->
+						</div>
+						
 						<div class="tag-section">
 							<h4>Filtros</h4>
 							<ul>
@@ -213,6 +253,8 @@
 						</div>
 					</div>
 				</div>
+			-->
+				
 			</div>
 		</div>
 	</div>
