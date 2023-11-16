@@ -166,11 +166,13 @@
 					<div class="single-product-content">
 						<h3>Cupcake de Chocolate</h3>
 						<p>Un delicioso cupcake con pan de chocolate y un betun de chocolate en crema hecho con ingredientes 100% organicos</p>
-						<p class="single-product-pricing"> $50</p>
+						<p class="single-product-pricing"></p>
+						<span class="price">$50</span>
 						<div class="single-product-form">
 							<form action="index.php">
 								<input type="number" placeholder="0">
 							</form>
+							<p class="stock-info"><strong>Stock disponible:</strong> <span class="stock-count">10</span></p>
 							<a href="cart.php" class="cart-btn"><i class="fas fa-shopping-cart"></i> Agregar al Carrito</a>
 							<p><strong>Categorias: </strong>Chocolate, Organic</p>
 						</div>

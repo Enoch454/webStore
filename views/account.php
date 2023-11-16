@@ -108,7 +108,7 @@ $vendedorStatus = isset($_SESSION["vendedorStatus"]) ? $_SESSION["vendedorStatus
 										
 									</li>
 
-									<li> <a href="#">Cerrar Sesion</a></li>
+									<li> <a href="/logout">Cerrar Sesion</a></li>
 
 									<li>
 										<div class="header-icons">
@@ -116,10 +116,6 @@ $vendedorStatus = isset($_SESSION["vendedorStatus"]) ? $_SESSION["vendedorStatus
 											<a class="mobile-hide search-bar-icon" href="search.php"><i class="fas fa-search"></i></a>
 										</div>
 									</li>
-
-									<li>
-										<a href="/logout">Cerrar Sesion</a>
-                                	</li>
 							
 								</ul>
 							</nav>

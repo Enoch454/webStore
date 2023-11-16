@@ -68,6 +68,7 @@ post('/product', function (){
 get('/products/$id', function($productoId){
     Product::queryProduct($productoId);
 });
+
 get('/products/ver/$id', function ($productoId){
     //echo $productoId;
     Product::verProductoDetalle($productoId);
