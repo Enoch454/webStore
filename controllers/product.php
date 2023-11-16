@@ -26,6 +26,7 @@ class Product{
         $mysqli = $conexion->conexion;
 
         //Capturar los valores del forms de Producto
+        
         $nombre = $data['Nombre'];
         $descripcion = $data['Descripcion'];
         $cotizable = $data['esCotizable'];
@@ -65,11 +66,48 @@ class Product{
             echo json_encode($json_response);
 
         }
-        
+   
+    }
 
+    public static function verProductoDetalle($productoId): void{
+        include './views/single-product.php';
 
+    }
+
+    public static function getDataProducto($id): void{
         
-        
+        if(isset($_GET['id'])){
+            $idProd = $_GET['id'];
+
+            //Crea una instancia de clase Conexion y obtiene la conexion
+            $conexion = new Conexion;
+            $mysqli = $conexion->conexion;
+
+            //Llama a la funcion findProductById para obtener el producto
+            $singleProduct = Producto::findProductById($mysqli, $idProd);
+
+            //Verifica si se encontró el producto
+            if($singleProduct){
+                header('Content-Type: application/json');
+                echo json_encode($singleProduct->toJSON());
+
+            } else {
+                http_response_code(404);
+                echo json_encode(['error' => 'Producto no encontrado']);
+
+            }
+        } else {
+            http_response_code(400);
+            echo json_encode(['error' => 'ID de Producto no proporcionado']);
+
+        }
+
+    }
+
+    public static function queryProduct($idProducto){
+        $conexion = new Conexion;
+        $mysqli = $conexion->conexion;
+        echo json_encode(Producto::findProductById($mysqli, $idProducto)->toJSON());
     }
 }
 ?>

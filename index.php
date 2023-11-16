@@ -12,6 +12,7 @@ use \Controllers\SignUp as SignUp;
 use \Controllers\Login as Login;
 use \Controllers\Profile as Profile;
 use \Controllers\Product as Product;
+use Models\Producto;
 
 // ##################################################
 // ##################################################
@@ -48,10 +49,6 @@ get('/profile', function () {
     Profile::verProfile();
 });
 
-post('/profile/verProductos', function(){
-
-    Profile::verProductosPerfil();
-});
 
 post('/profile/upgradeVendedor', function () {
     //echo 'post upgradeVendedor';
@@ -59,12 +56,27 @@ post('/profile/upgradeVendedor', function () {
 });
 
 //Product
-get('/product', function(){
+get('/newProduct', function(){
 
     Product::verNewProduct();
 });
 post('/product', function (){
     Product::recibirNewProduct();
+});
+
+//Single product
+get('/products/$id', function($productoId){
+    Product::queryProduct($productoId);
+});
+get('/products/ver/$id', function ($productoId){
+    //echo $productoId;
+    Product::verProductoDetalle($productoId);
+});
+
+//Profile lista productos
+get('/products', function(){
+
+    Profile::verProductosPerfil();
 });
 
 // For GET or POST

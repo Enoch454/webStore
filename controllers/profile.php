@@ -38,6 +38,7 @@ class Profile {
             $productos = Producto::getProductosByVendedor($mysqli, $idVendedor);
             $productosJson = [];
             foreach ($productos as $producto) {
+                //echo json_encode($producto->toJSON());
                 if($producto->getStatus() == 1){
                     $productosJson[] = ($producto->toJSON());
                 }

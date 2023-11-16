@@ -124,8 +124,8 @@ class Producto {
             isset($json["idAdmin"]) ? $json["idAdmin"] : ""
             
         );
-        //echo json_encode($producto->toJSON());
-        if (!isset($json["idProducto"])) {
+        //echo json_encode($json);
+        if (isset($json["idProducto"])) {
             $producto->setIdProducto((int)$json["idProducto"]);
         }
 
@@ -202,6 +202,7 @@ class Producto {
             
             // Itera sobre los resultados y crea objetos Producto
             while ($row = $result->fetch_assoc()) {
+                //echo json_encode($row);
                 //implode("','",$a1)
                 //echo implode (" - ", $row)."";
                 //foreach(array_keys($row) as $key){
@@ -209,6 +210,10 @@ class Producto {
                 //}
                 $productos[] = Producto::parseJson($row);
             }
+            //foreach( $productos as $producto ) {
+            //    echo json_encode($producto->toJSON());
+            //}
+            
         } else {
             echo "Error al ejecutar el procedimiento almacenado: " . $stmt->error;
         }

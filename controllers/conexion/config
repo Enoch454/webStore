@@ -1,8 +1,8 @@
 {
     "conexion":{
-        "server": "enoch-db.mysql.database.azure.com",
-        "user": "enoch",
-        "password": "Ariuro_100",
+        "server": "localhost",
+        "user": "root",
+        "password": "",
         "database": "webStore_db",
         "port": "3306"
     }

@@ -22,13 +22,13 @@ async function requestUpgradeVendedor(){
 
 async function requestProductos() {
     const options = {
-        method: 'POST',
+        method: 'GET',
     }
     
     let productosData;
     
     // Realizar la solicitud al servidor para obtener los productos
-    const response = await fetch('/profile/verProductos', options)
+    const response = await fetch('/products', options)
         .catch(e => {
             console.log("Error en la conexion");
         })
@@ -59,6 +59,7 @@ async function requestProductos() {
         for (const key in productosData) {
             if (productosData.hasOwnProperty(key)) {
                 const producto = productosData[key];
+                console.log(producto.idProducto);
                 const productHTML = `
                     <div class="col-lg-4 col-md-6">
                         <div class="single-latest-news">
@@ -70,10 +71,11 @@ async function requestProductos() {
                             <div class="rating">
                                 ${getStarRatingHTML(producto.rating)}
                             </div>
+                            <a href="/products/ver/${producto.idProducto}" class="read-more-btn">Leer más <i class="fas fa-angle-right"></i></a>
                         </div>
                     </div>
                 `;
-
+                
                 productContainer.append(productHTML);
                 console.log(productosData);
             }
