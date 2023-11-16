@@ -1,7 +1,4 @@
-
-
-  
- // Función para actualizar la información del producto en la interfaz de usuario
+// Función para actualizar la información del producto en la interfaz de usuario
 async function actualizarInformacionProducto() {
     // Obtener el ID del producto de la URL
     const auxArray = window.location.href.split('/');
@@ -49,17 +46,6 @@ async function actualizarInformacionProducto() {
       }
     }
   }
-  
-  // Resto del código ...
-  
-  // Llamar a la función para actualizar la información del producto
-  actualizarInformacionProducto();
-  
-  
-  // Resto del código ...
-  
-  // Llamar a la función para actualizar la información del producto
-  actualizarInformacionProducto();
   
 
   // Función para obtener la información de un producto según su ID
