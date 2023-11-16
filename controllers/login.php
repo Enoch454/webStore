@@ -69,6 +69,7 @@ class Login {
             $_SESSION["idComprador"] = (string)$user->queryIdComprador($mysqli, $idUsr);
             $_SESSION["idVendedor"] = (string)$user->queryIdVendedor($mysqli, $idUsr);
             $_SESSION["idAdmin"] = (string)$user->queryIdAdmin($mysqli, $idUsr);
+            $_SESSION["vendedorStatus"] = (string)$;
 
             //echo json_encode($_SESSION);
 
@@ -97,6 +98,12 @@ class Login {
             echo json_encode($json_response);
             exit;
         }
+    }
+
+    public static function logout() {
+        session_start();
+        session_destroy();
+        header('Location: /');
     }
 }
 

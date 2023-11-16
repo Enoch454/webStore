@@ -248,7 +248,7 @@ class Usuario {
     public function queryIdAdmin($mysqli, $idUsuario) {
         $idAdmin = -1; // Establece un valor predeterminado
     
-        try {
+        
             $sql = "CALL sp_ConsultarIdAdministrador(?);";
             $stmt = $mysqli->prepare($sql);
             $stmt->bind_param("i", $idUsuario);
@@ -257,13 +257,11 @@ class Usuario {
     
             if ($result) {
                 $row = $result->fetch_assoc();
-                if ($row && isset($row['idAdministrador'])) {
-                    $idAdmin = $row['idAdministrador'];
+                if ($row && isset($row['idAdmin'])) {
+                    $idAdmin = $row['idAdmin'];
                 }
             }
-        } catch (Exception $e) {
-            // Manejo de errores
-        }
+        
     
         return $idAdmin;
     }

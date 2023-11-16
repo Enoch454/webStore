@@ -38,6 +38,11 @@ post('/login', function (){
     Login::recibirLogin();
 });
 
+// Logout
+get('/logout', function (){
+    Login::logout();
+});
+
 // Profile
 get('/profile', function () {
     Profile::verProfile();

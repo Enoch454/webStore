@@ -4,33 +4,33 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	>
+	
 
 	<!-- title -->
 	<title>Admin Home</title>
 
 	<!-- fotito -->
-	<link rel="shortcut icon" type="image/png" href="assets/img/pasteles.png">
+	<link rel="shortcut icon" type="image/png" href="/views/assets/img/pasteles.png">
 
 	<!-- google font -->
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
 	<!-- fontawesome -->
-	<link rel="stylesheet" href="assets/css/all.min.css">
+	<link rel="stylesheet" href="/views/assets/css/all.min.css">
 	<!-- bootstrap -->
-	<link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/views/assets/bootstrap/css/bootstrap.min.css">
 	<!-- owl carousel -->
-	<link rel="stylesheet" href="assets/css/owl.carousel.css">
+	<link rel="stylesheet" href="/views/assets/css/owl.carousel.css">
 	<!-- magnific popup -->
-	<link rel="stylesheet" href="assets/css/magnific-popup.css">
+	<link rel="stylesheet" href="/views/assets/css/magnific-popup.css">
 	<!-- animate css -->
-	<link rel="stylesheet" href="assets/css/animate.css">
+	<link rel="stylesheet" href="/views/assets/css/animate.css">
 	<!-- mean menu css -->
-	<link rel="stylesheet" href="assets/css/meanmenu.min.css">
+	<link rel="stylesheet" href="/views/assets/css/meanmenu.min.css">
 	<!-- main style -->
-	<link rel="stylesheet" href="assets/css/main.css">
+	<link rel="stylesheet" href="/views/assets/css/main.css">
 	<!-- responsive -->
-	<link rel="stylesheet" href="assets/css/responsive.css">
+	<link rel="stylesheet" href="/views/assets/css/responsive.css">
 
 </head>
 <body>
@@ -57,24 +57,22 @@
 						<!-- logo -->
 						<div class="site-logo">
 							<a href="index.php">
-								<img src="assets/img/logo.png" alt="">
+								<img src="/views/assets/img/logo.png" alt="">
 							</a>
 						</div>
 						<!-- logo -->
 
-							<!-- menu start -->
+						<!-- menu start -->
 						<nav class="main-menu">
 							<ul>
-								
-							
-								<li><a href="#">Cerrar Sesion</a>
-									
-								</li>
-							</ul>
+                                <li><a href="/logout">Cerrar Sesion</a>
+                                </li>
+                            </ul>	
 						</nav>
 						<a class="mobile-show search-bar-icon" href="#"><i class="fas fa-search"></i></a>
 						<div class="mobile-menu"></div>
-						<!--menu end -->
+						<!-- Smenu end -->
+						
 					</div>
 				</div>
 			</div>
@@ -127,7 +125,7 @@
 				<div class="col-lg-4">
 					<div class="single-article-section">
 						<div class="single-article-text">
-							<img src="assets/img/products/pastellll.jpg" alt="">
+							<img src="/views/assets/img/products/pastellll.jpg" alt="">
 							<p class="blog-meta">
 								<span class="author"><i class="fas fa-user"></i> Nombre Usuario</span>
 								<span class="date"><i class="fas fa-calendar"></i> Septiembre 8, 2023</span>
@@ -158,7 +156,7 @@
 				<div class="col-lg-4">
 					<div class="single-article-section">
 						<div class="single-article-text">
-							<img src="assets/img/products/pastellll.jpg" alt="">
+							<img src="/views/assets/img/products/pastellll.jpg" alt="">
 							<p class="blog-meta">
 								<span class="author"><i class="fas fa-user"></i> Nombre Usuario</span>
 								<span class="date"><i class="fas fa-calendar"></i> Septiembre 8, 2023</span>
@@ -234,19 +232,19 @@
 				<div class="col-lg-12">
 					<div class="logo-carousel-inner">
 						<div class="single-logo-item">
-							<img src="assets/img/4001495.png" alt="">
+							<img src="/views/assets/img/4001495.png" alt="">
 						</div>
 						<div class="single-logo-item">
-							<img src="assets/img/awww.png" alt="">
+							<img src="/views/assets/img/awww.png" alt="">
 						</div>
 						<div class="single-logo-item">
-							<img src="assets/img/pastelito.png" alt="">
+							<img src="/views/assets/img/pastelito.png" alt="">
 						</div>
 						<div class="single-logo-item">
-							<img src="assets/img/cap.png" alt="">
+							<img src="/views/assets/img/cap.png" alt="">
 						</div>
 						<div class="single-logo-item">
-							<img src="assets/img/pasteles.png" alt="">
+							<img src="/views/assets/img/pasteles.png" alt="">
 						</div>
 					</div>
 				</div>
@@ -288,7 +286,7 @@
 					</div>
 				</div>
 				<div class="col-lg-3 col-md-6">
-					<img src="assets/img/mishi.jpg" alt="">
+					<img src="/views/assets/img/mishi.jpg" alt="">
 				</div>
 			</div>
 		</div>
@@ -297,25 +295,25 @@
 	
 	
 	<!-- jquery -->
-	<script src="assets/js/jquery-1.11.3.min.js"></script>
+	<script src="/views/assets/js/jquery-1.11.3.min.js"></script>
 	<!-- bootstrap -->
-	<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+	<script src="/views/assets/bootstrap/js/bootstrap.min.js"></script>
 	<!-- count down -->
-	<script src="assets/js/jquery.countdown.js"></script>
+	<script src="/views/assets/js/jquery.countdown.js"></script>
 	<!-- isotope -->
-	<script src="assets/js/jquery.isotope-3.0.6.min.js"></script>
+	<script src="/views/assets/js/jquery.isotope-3.0.6.min.js"></script>
 	<!-- waypoints -->
-	<script src="assets/js/waypoints.js"></script>
+	<script src="/views/assets/js/waypoints.js"></script>
 	<!-- owl carousel -->
-	<script src="assets/js/owl.carousel.min.js"></script>
+	<script src="/views/assets/js/owl.carousel.min.js"></script>
 	<!-- magnific popup -->
-	<script src="assets/js/jquery.magnific-popup.min.js"></script>
+	<script src="/views/assets/js/jquery.magnific-popup.min.js"></script>
 	<!-- mean menu -->
-	<script src="assets/js/jquery.meanmenu.min.js"></script>
+	<script src="/views/assets/js/jquery.meanmenu.min.js"></script>
 	<!-- sticker js -->
-	<script src="assets/js/sticker.js"></script>
+	<script src="/views/assets/js/sticker.js"></script>
 	<!-- main js -->
-	<script src="assets/js/main.js"></script>
+	<script src="/views/assets/js/main.js"></script>
 
 </body>
 </html>

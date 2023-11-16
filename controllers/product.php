@@ -32,7 +32,7 @@ class Product{
         $precio = $data['Precio'];
         $stock = $data['Stock'];
         $rating = 0; //Rating en nuevo producto será 0, será del 1 al 5
-        $status = 1; //0 está Inactivo, 1 Activo
+        $status = 2; //1 -> aprovado, 2 -> espera, 3 -> rechazado
         $idVendedor = $_SESSION['idVendedor'];
         $idAdmin = null;
         

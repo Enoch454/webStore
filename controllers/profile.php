@@ -19,8 +19,14 @@ class Profile {
     
     public static function verProfile() {
         session_start();
-        include './views/account.php';
-
+        //echo 'session auth: '.$_SESSION["AUTH"];
+        //echo "<br>";
+        //echo 'session idAdmin: '.$_SESSION["idAdmin"];
+        if ($_SESSION["idAdmin"] == -1){
+            include './views/account.php';
+        } else {
+            include './views/postadmin.php';
+        }
     }
 
     public static function verProductosPerfil(){
@@ -32,7 +38,9 @@ class Profile {
             $productos = Producto::getProductosByVendedor($mysqli, $idVendedor);
             $productosJson = [];
             foreach ($productos as $producto) {
-                $productosJson[] = ($producto->toJSON());
+                if($producto->getStatus() == 1){
+                    $productosJson[] = ($producto->toJSON());
+                }
             }
             header('Content-Type: application/json');
             $response = array();

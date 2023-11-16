@@ -4,6 +4,7 @@ namespace Models;
 class Vendedor {
     private $idVendedor;
     private $idUsuario;
+    private $status;
 
     public function getIdVendedor() {
         return $this->idVendedor;
@@ -17,15 +18,25 @@ class Vendedor {
     public function setIdUsuario($id) {
         $this->idUsuario = $id;
     }
+
+    // metodos set y get para el atributo status
+    public function getStatus() {
+        return $this->status;
+    }
+    public function setStatus($status) {
+        $this->status = $status;
+    }
     public function toJSON() {
         return json_encode([
             'idVendedor' => $this->getIdVendedor(),
-            'idUsuario' => $this->getIdUsuario()
+            'idUsuario' => $this->getIdUsuario(),
+            'status' => $this->getStatus()
         ]);
     }
-    public function __construct($idVendedor, $idUsuario) {
+    public function __construct($idVendedor, $idUsuario, $status) {
         $this->idVendedor = $idVendedor;
         $this->idUsuario = $idUsuario;
+        $this->status = $status;
     }
 
     // haciendo uso del procedimiento almacenado 'sp_InsertarVendedor'
@@ -48,7 +59,8 @@ class Vendedor {
         $result = $stmt->get_result(); 
         $row = $result->fetch_assoc();
         $idVendedor = $row['idVendedor'];
+        $status = $row['Status'];
         //echo $idVendedor;
-        return $idVendedor ? new Vendedor($idVendedor, $idUsuario) : null;
+        return $idVendedor ? new Vendedor($idVendedor, $idUsuario, $status) : null;
     }
 }
