@@ -4,10 +4,12 @@ namespace Controllers;
 require_once __DIR__."/conexion/conexion.php";
 require_once __DIR__."/../models/Usuario.php";
 require_once __DIR__."/../models/Persona.php";
+require_once __DIR__."/../models/Vendedor.php";
 
 use \Conexion\Conexion as Conexion;
 use \Models\Usuario as Usuario;
 use \Models\Persona as Persona;
+use \Models\Vendedor as Vendedor;
 
 class Login {
     public static function verLogin() {
@@ -46,7 +48,8 @@ class Login {
             $json_response ["user"] = $user->toJSON();
             $personaData = Persona::findUserById($mysqli, $user->getIdPersona());
             $json_response ["persona"] = $personaData->toJSON();
-            function url_actual(){
+            
+            /*function url_actual(){
                 $url = "";
                 if(isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') {
                   $url = "https://"; 
@@ -57,8 +60,9 @@ class Login {
             }
     
             $urlRaiz = url_actual();
-    
-            $json_response ["redirect"] = $urlRaiz . "/profile";
+            */
+
+            $json_response ["redirect"] = "/profile";
             
             //Inicamos la sesion
             session_start();
@@ -69,7 +73,8 @@ class Login {
             $_SESSION["idComprador"] = (string)$user->queryIdComprador($mysqli, $idUsr);
             $_SESSION["idVendedor"] = (string)$user->queryIdVendedor($mysqli, $idUsr);
             $_SESSION["idAdmin"] = (string)$user->queryIdAdmin($mysqli, $idUsr);
-            $_SESSION["vendedorStatus"] = (string)$;
+            $_SESSION["vendedorStatus"] = (string)(Vendedor::findVendedorByIdUsuario($mysqli, $idUsr) ?
+                Vendedor::findVendedorByIdUsuario($mysqli, $idUsr)->getStatus() : -1 );
 
             //echo json_encode($_SESSION);
 

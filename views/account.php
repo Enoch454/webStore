@@ -175,7 +175,7 @@ $vendedorStatus = isset($_SESSION["vendedorStatus"]) ? $_SESSION["vendedorStatus
 					<h2> <?php echo $userName; ?> </h2>
 					<?php
 						// Si el usuario es un vendedor, entonces se muestra la sig insignia
-						if(isset($_SESSION["idVendedor"]) && intval($idVendedor) > -1){
+						if((isset($_SESSION["idVendedor"]) && intval($idVendedor) > -1) && intval($vendedorStatus) == 1){
 					?>
 					<div class="profile-status">
 						<i class="fa fa-check-circle"></i> Vendedor Verificado
@@ -264,7 +264,11 @@ $vendedorStatus = isset($_SESSION["vendedorStatus"]) ? $_SESSION["vendedorStatus
 		// Si el usuario es un vendedor, entonces no se muestra el siguiente botón
 		if(!isset($_SESSION["idVendedor"]) || intval($idVendedor) == -1){
 		?>
-		<a id="btn-upgradeVendedor" class="boxed-btn">Quiero ser vendedor!!!</a>
+			<a id="btn-upgradeVendedor" class="boxed-btn">Quiero ser vendedor!!!</a>
+		<?php
+		} elseif ($vendedorStatus == 2){
+		?>
+			<a class="boxed-btn">Su petición para ser vendedor esta en espera ...</a>
 		<?php
 		}
 		?>
@@ -397,7 +401,7 @@ $vendedorStatus = isset($_SESSION["vendedorStatus"]) ? $_SESSION["vendedorStatus
 	<!--Mis productos-->
 	<?php
 	// Si el usuario es un vendedor, entonces mostramos sus productos
-	if(isset($_SESSION["idVendedor"]) && intval($idVendedor) > 0){
+	if((isset($_SESSION["idVendedor"]) && intval($idVendedor) > -1) && intval($vendedorStatus) == 1){
 	?>
 	<div class="latest-news mt-150 mb-150">
 		<div class="container">

@@ -107,16 +107,17 @@ class Profile {
 
             // Llama a la función estática findVendedorByIdUsuario para obtener el id del
             // vendedor creado
-            $idVendedor = Vendedor::findVendedorByIdUsuario($mysqli, $idUsr);
+            $vendedor = Vendedor::findVendedorByIdUsuario($mysqli, $idUsr);
 
             // Verifica si se encontró un vendedor
-            if ($idVendedor) {
+            if ($vendedor) {
                 // Prepara la respuesta en formato JSON
                 header('Content-Type: application/json');
-                $_SESSION['idVendedor'] = $idVendedor;
+                $_SESSION['idVendedor'] = $vendedor->getIdVendedor();
+                $_SESSION['vendedorStatus'] = "2";
                 $json_response = ["success" => true];
                 $json_response["msg"]= "Vendedor creado";
-                $json_response ["idVendedor"] = $idVendedor;
+                $json_response ["idVendedor"] = $vendedor->getIdVendedor();
                 echo json_encode($json_response);
             } else {
             // Vendedor no encontrado
