@@ -62,52 +62,19 @@
 						</div>
 						<!-- logo -->
 
-							<!-- menu start 
+							<!-- menu start -->
 						<nav class="main-menu">
 							<ul>
-								<li class="current-list-item"><a href="#">Home</a>
-									<ul class="sub-menu">
-										<li><a href="index.php">Home</a></li>
 								
-									</ul>
-								</li>
 							
-								<li><a href="#">Pages</a>
-									<ul class="sub-menu">
-										
-										<li><a href="cart.php">Carrito</a></li>
-										<li><a href="checkout.php">Check Out</a></li>
-										<li><a href="shop.php">Tienda</a></li>
-										
-									</ul>
-								</li>
-								<li><a href="account.php">Perfil</a>
-									<ul class="sub-menu">
-										<li><a href="account.php">Perfil</a></li>
-										<li><a href="posts.php">Posts</a></li>
-										<li><a href="wishlist.php">Wishlist</a></li>
-									</ul>
-								</li>
-								<li><a href="about.php">Nosotros</a></li>
-								<li><a href="shop.php">Shop</a>
-									<ul class="sub-menu">
-										<li><a href="shop.php">Shop</a></li>
-										<li><a href="checkout.php">Check Out</a></li>
-										<li><a href="single-product.php">Single Product</a></li>
-										<li><a href="cart.php">Carrito</a></li>
-									</ul>
-								</li>
-								<li>
-									<div class="header-icons">
-										<a class="shopping-cart" href="cart.php"><i class="fas fa-shopping-cart"></i></a>
-										<a class="mobile-hide search-bar-icon" href="#"><i class="fas fa-search"></i></a>
-									</div>
+								<li><a href="#">Cerrar Sesion</a>
+									
 								</li>
 							</ul>
 						</nav>
 						<a class="mobile-show search-bar-icon" href="#"><i class="fas fa-search"></i></a>
 						<div class="mobile-menu"></div>
-						Smenu end -->
+						<!--menu end -->
 					</div>
 				</div>
 			</div>
@@ -168,7 +135,7 @@
 							<p>Compra mi pastel !!! Los doctores dicen que los pateles multiplican tu vida x20 por eso hay que comprar!!!!!! </p>
 						</div>
 
-						
+
 						<div class="comments-list-wrap">
 							
 							<div class="comment-list">
