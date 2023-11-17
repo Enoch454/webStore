@@ -1,6 +1,6 @@
 <?php
 namespace Models;
-
+use Exception;
 class Vendedor {
     private $idVendedor;
     private $idUsuario;
@@ -52,15 +52,31 @@ class Vendedor {
     // se obtienen el id de vendedor correspondiente a un  id de usuario
     // dado, dicho resultado se retorna como una instancia de esta clase
     public static function findVendedorByIdUsuario($mysqli, $idUsuario) {
+        $idVendedor =-1;
+        $status = -1;
+
+        try{
+
         $sql = "CALL sp_ConsultarIdVendedor(?);";
         $stmt = $mysqli->prepare($sql);
         $stmt->bind_param("i",$idUsuario);
         $stmt->execute();
         $result = $stmt->get_result(); 
-        $row = $result->fetch_assoc();
-        $idVendedor = $row['idVendedor'];
-        $status = $row['Status'];
-        //echo $idVendedor;
+
+        if($result){
+            $row = $result->fetch_assoc();
+            if($row && isset($row['idVendedor'])){
+                $idVendedor = $row['idVendedor'];
+                $status = $row['Status'];
+            }
+
+        }
+
+        } catch(Exception $e){
+
+
+        }
+        
         return $idVendedor ? new Vendedor($idVendedor, $idUsuario, $status) : null;
     }
 }
