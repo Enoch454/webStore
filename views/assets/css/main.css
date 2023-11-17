@@ -3607,6 +3607,45 @@ body{margin-top:20px;
 .product-box {
   display: none;
 }
+
+/* Estilos para el contenedor adicional */
+.button-container {
+  position: relative;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+/* Agregamos estilos para los botones circulares */
+.circle-button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+/* Estilos específicos para el botón de aprobación (verde) */
+.approve {
+  background-color: #4CAF50; /* Verde */
+  /* Puedes ajustar otros estilos según tus preferencias */
+}
+
+/* Estilos específicos para el botón de rechazo (rojo) */
+.reject {
+  background-color: #FF5733; /* Rojo */
+  /* Puedes ajustar otros estilos según tus preferencias */
+}
+
+
+
+
+
 /* -----------------------------------------------------------------------------
 
 

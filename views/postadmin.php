@@ -117,67 +117,213 @@
 	<!-- end breadcrumb section -->
 	
 	<!-- single article section -->
+	
 	<div class="mt-150 mb-150">
 		<div class="container">
+		<h1>Productos</h1>
 			<div class="row">
-				<div class = "aprobarProductos">
-				<h2>Solicitudes de aprobacion de Productos</h2>
-				<div class="col-lg-4">
-					<div class="single-article-section">
-						<div class="single-article-text">
+			<p><h2>Solicitudes de aprobacion</h2></p>
+				<div id = "esperaProductos" class="row">
+				<div class="col-lg-4 col-md-6">
+					<div class="single-latest-news">
 							<img src="/views/assets/img/products/pastellll.jpg" alt="">
 							<p class="blog-meta">
 								<span class="author"><i class="fas fa-user"></i> Nombre Usuario</span>
 								<span class="date"><i class="fas fa-calendar"></i> Septiembre 8, 2023</span>
 							</p>
 							<p>Compra mi pastel !!! Los doctores dicen que los pateles multiplican tu vida x20 por eso hay que comprar!!!!!! </p>
+							<div class="button-container">
+							<div class="circle-button approve" id="btnAprobar" style="background-color: #4CAF50;"></div>
+							<div class="circle-button reject" id="btnRechazar" style="background-color: #FF5733;"></div>
+       					</div>
 						</div>
-
-
-						<div class="comments-list-wrap">
-							
-							<div class="comment-list">
-								
-								<p><input type="aprobar" value="Aprobar Publicacion"></p>
-
-								<p><input type="rechazar" value="Rechazar Publicacion"></p>
-		
-							</div>
+				</div>
+				
+				<div class="col-lg-4 col-md-6">
+						<div class="single-latest-news">
+							<img src="/views/assets/img/products/pastellll.jpg" alt="">
+							<p class="blog-meta">
+								<span class="author"><i class="fas fa-user"></i> Nombre Usuario</span>
+								<span class="date"><i class="fas fa-calendar"></i> Septiembre 8, 2023</span>
+							</p>
+							<p>Compra mi pastel !!! Los doctores dicen que los pateles multiplican tu vida x20 por eso hay que comprar!!!!!! </p>
+							<div class="button-container">
+							<div class="circle-button approve" style="background-color: #4CAF50;"></div>
+							<div class="circle-button reject" style="background-color: #FF5733;"></div>
+       						</div>
 						</div>
-
-						
 					</div>
 				</div>
+
+				
+					
+				
+
 			</div>
 
 
-			<div class = "aprobarVendedores">
-				<h2>Solicitud de aprobacion de vendedores</h2>
-				<div class="col-lg-4">
-					<div class="single-article-section">
-						<div class="single-article-text">
+			<div class="row">
+			<p><h2>Productos aprobados</h2></p>
+				<div id = "aprobadosProductos" class="row">
+				<div class="col-lg-4 col-md-6">
+					<div class="single-latest-news">
 							<img src="/views/assets/img/products/pastellll.jpg" alt="">
 							<p class="blog-meta">
 								<span class="author"><i class="fas fa-user"></i> Nombre Usuario</span>
 								<span class="date"><i class="fas fa-calendar"></i> Septiembre 8, 2023</span>
 							</p>
 							<p>Compra mi pastel !!! Los doctores dicen que los pateles multiplican tu vida x20 por eso hay que comprar!!!!!! </p>
-						</div>
-
-						<div class="comments-list-wrap">
 							
-							<div class="comment-list">
-								
-								<p><input type="aprobar" value="Aprobar Publicacion"></p>
-
-								<p><input type="rechazar" value="Rechazar Publicacion"></p>
-		
-							</div>
 						</div>
-
-						
+				</div>
+				
+				<div class="col-lg-4 col-md-6">
+						<div class="single-latest-news">
+							<img src="/views/assets/img/products/pastellll.jpg" alt="">
+							<p class="blog-meta">
+								<span class="author"><i class="fas fa-user"></i> Nombre Usuario</span>
+								<span class="date"><i class="fas fa-calendar"></i> Septiembre 8, 2023</span>
+							</p>
+							<p>Compra mi pastel !!! Los doctores dicen que los pateles multiplican tu vida x20 por eso hay que comprar!!!!!! </p>
+							
+						</div>
 					</div>
 				</div>
+
+			</div>
+
+			<div class="row">
+			<p><h2>Productos rechazados</h2></p>
+				<div id = "rechazadosProductos" class="row">
+				<div class="col-lg-4 col-md-6">
+					<div class="single-latest-news">
+							<img src="/views/assets/img/products/pastellll.jpg" alt="">
+							<p class="blog-meta">
+								<span class="author"><i class="fas fa-user"></i> Nombre Usuario</span>
+								<span class="date"><i class="fas fa-calendar"></i> Septiembre 8, 2023</span>
+							</p>
+							<p>Compra mi pastel !!! Los doctores dicen que los pateles multiplican tu vida x20 por eso hay que comprar!!!!!! </p>
+							
+						</div>
+				</div>
+				
+				<div class="col-lg-4 col-md-6">
+						<div class="single-latest-news">
+							<img src="/views/assets/img/products/pastellll.jpg" alt="">
+							<p class="blog-meta">
+								<span class="author"><i class="fas fa-user"></i> Nombre Usuario</span>
+								<span class="date"><i class="fas fa-calendar"></i> Septiembre 8, 2023</span>
+							</p>
+							<p>Compra mi pastel !!! Los doctores dicen que los pateles multiplican tu vida x20 por eso hay que comprar!!!!!! </p>
+							
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+
+
+			<h1>Vendedores</h1>
+			<div class="row">
+			<p><h2>Solicitudes de aprobacion</h2></p>
+				<div id = "esperaVendedores" class="row">
+				<div class="col-lg-4 col-md-6">
+					<div class="single-latest-news">
+							<img src="/views/assets/img/products/pastellll.jpg" alt="">
+							<p class="blog-meta">
+								<span class="author"><i class="fas fa-user"></i> Nombre Usuario</span>
+								<span class="date"><i class="fas fa-calendar"></i> Septiembre 8, 2023</span>
+							</p>
+							<p>Compra mi pastel !!! Los doctores dicen que los pateles multiplican tu vida x20 por eso hay que comprar!!!!!! </p>
+							<div class="button-container">
+							<div class="circle-button approve" id="btnAprobar" style="background-color: #4CAF50;"></div>
+							<div class="circle-button reject" id="btnRechazar" style="background-color: #FF5733;"></div>
+       					</div>
+						</div>
+				</div>
+				
+				<div class="col-lg-4 col-md-6">
+						<div class="single-latest-news">
+							<img src="/views/assets/img/products/pastellll.jpg" alt="">
+							<p class="blog-meta">
+								<span class="author"><i class="fas fa-user"></i> Nombre Usuario</span>
+								<span class="date"><i class="fas fa-calendar"></i> Septiembre 8, 2023</span>
+							</p>
+							<p>Compra mi pastel !!! Los doctores dicen que los pateles multiplican tu vida x20 por eso hay que comprar!!!!!! </p>
+							<div class="button-container">
+							<div class="circle-button approve" style="background-color: #4CAF50;"></div>
+							<div class="circle-button reject" style="background-color: #FF5733;"></div>
+       						</div>
+						</div>
+					</div>
+				</div>
+
+				
+					
+				
+
+			</div>
+
+
+			<div class="row">
+			<p><h2>Vendedores aprobados</h2></p>
+				<div id = "aprobadosVendedores" class="row">
+				<div class="col-lg-4 col-md-6">
+					<div class="single-latest-news">
+							<img src="/views/assets/img/products/pastellll.jpg" alt="">
+							<p class="blog-meta">
+								<span class="author"><i class="fas fa-user"></i> Nombre Usuario</span>
+								<span class="date"><i class="fas fa-calendar"></i> Septiembre 8, 2023</span>
+							</p>
+							<p>Compra mi pastel !!! Los doctores dicen que los pateles multiplican tu vida x20 por eso hay que comprar!!!!!! </p>
+							
+						</div>
+				</div>
+				
+				<div class="col-lg-4 col-md-6">
+						<div class="single-latest-news">
+							<img src="/views/assets/img/products/pastellll.jpg" alt="">
+							<p class="blog-meta">
+								<span class="author"><i class="fas fa-user"></i> Nombre Usuario</span>
+								<span class="date"><i class="fas fa-calendar"></i> Septiembre 8, 2023</span>
+							</p>
+							<p>Compra mi pastel !!! Los doctores dicen que los pateles multiplican tu vida x20 por eso hay que comprar!!!!!! </p>
+							
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+			<div class="row">
+			<p><h2>Vendedores rechazados</h2></p>
+				<div id = "rechazadosVendedores" class="row">
+				<div class="col-lg-4 col-md-6">
+					<div class="single-latest-news">
+							<img src="/views/assets/img/products/pastellll.jpg" alt="">
+							<p class="blog-meta">
+								<span class="author"><i class="fas fa-user"></i> Nombre Usuario</span>
+								<span class="date"><i class="fas fa-calendar"></i> Septiembre 8, 2023</span>
+							</p>
+							<p>Compra mi pastel !!! Los doctores dicen que los pateles multiplican tu vida x20 por eso hay que comprar!!!!!! </p>
+							
+						</div>
+				</div>
+				
+				<div class="col-lg-4 col-md-6">
+						<div class="single-latest-news">
+							<img src="/views/assets/img/products/pastellll.jpg" alt="">
+							<p class="blog-meta">
+								<span class="author"><i class="fas fa-user"></i> Nombre Usuario</span>
+								<span class="date"><i class="fas fa-calendar"></i> Septiembre 8, 2023</span>
+							</p>
+							<p>Compra mi pastel !!! Los doctores dicen que los pateles multiplican tu vida x20 por eso hay que comprar!!!!!! </p>
+							
+						</div>
+					</div>
+				</div>
+
 			</div>
 
 			<!--
@@ -312,6 +458,8 @@
 	<script src="/views/assets/js/jquery.meanmenu.min.js"></script>
 	<!-- sticker js -->
 	<script src="/views/assets/js/sticker.js"></script>
+	<!-- Post Admin js-->
+	<script src= "/views/assets/js/postAdmin.js"></script>
 	<!-- main js -->
 	<script src="/views/assets/js/main.js"></script>
 
