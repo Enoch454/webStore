@@ -12,7 +12,7 @@ use \Controllers\SignUp as SignUp;
 use \Controllers\Login as Login;
 use \Controllers\Profile as Profile;
 use \Controllers\Product as Product;
-use Models\Producto;
+
 
 // ##################################################
 // ##################################################
@@ -79,6 +79,13 @@ get('/products', function(){
 
     Profile::verProductosPerfil();
 });
+
+
+//Profile admin
+get('/productsWait', function(){
+    Profile::productosEsperaAdmin();
+});
+
 
 // For GET or POST
 // The 404.php which is inside the views folder will be called

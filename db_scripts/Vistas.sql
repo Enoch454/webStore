@@ -151,3 +151,38 @@ GROUP BY
 ORDER BY
     CantidadTotalVendida DESC
 LIMIT 10;
+
+
+
+
+CREATE VIEW vw_productosespera_admin AS
+SELECT
+    p.idProducto,
+    p.Nombre,
+    p.Descripcion,
+    p.esCotizable,
+    p.Precio,
+    p.Stock,
+    p.Rating,
+    p.Status,
+    p.idVendedor,
+    u.idUsuario,
+    u.userName
+FROM
+    productos p
+JOIN
+    vendedores v ON p.idVendedor = v.idVendedor
+JOIN
+    usuarios u ON v.idUsuario = u.idUsuario
+    
+    WHERE p.Status = 2;
+    
+    select * from vw_productosespera_admin;
+    
+    select* FROM
+    productos 
+JOIN
+    vendedores  ON productos.idVendedor = vendedores.idVendedor
+JOIN
+    usuarios ON vendedores.idUsuario = usuarios.idUsuario;
+    

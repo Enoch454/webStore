@@ -58,6 +58,47 @@ class Profile {
         
     }
 
+    public static function productosEsperaAdmin(){
+        session_start();
+        if (isset($_SESSION["AUTH"]) && isset($_SESSION["idAdmin"])) {
+            
+            $conexion = new Conexion;
+            $mysqli = $conexion->conexion;
+            $productos = Producto::getProductosEspera($mysqli);
+            $user = Usuario::getProductosEspera_Usuario($mysqli);
+            $productosJson = [];
+            $userJson = [];
+            foreach ($productos as $producto) {
+                //echo json_encode($producto->toJSON());
+        
+                    $productosJson[] = ($producto->toJSON());
+                    
+            }
+
+            foreach ($user as $usuario) {
+                //echo json_encode($producto->toJSON());
+        
+                    $userJson[] = ($usuario->toJSON());
+                    
+            }
+            
+
+            header('Content-Type: application/json');
+            $response = array();
+            $response['succes'] = true;
+            $response['data'] = ($productosJson);
+            //$response['data']['usuarios'] = ($userJson); 
+            echo json_encode($response);
+            //var_dump($productos);
+            
+        } else {
+            $response['succes'] = false;
+            $response['error'] = 'Error ver productos';
+            echo json_encode( $response );
+        }
+
+    }
+
     public static function getDataProfile($id) {
         // Verifica si se ha recibido el ID de usuario
         if (isset($_SESSION['AUTH'])) {
@@ -86,6 +127,8 @@ class Profile {
             echo json_encode(['error' => 'ID de usuario no proporcionado']);
         }
     }
+
+
 
     // funcion para actualizar el rol de usuario a vendedor.
     // Haciendo uso de las funciones de la clase Vendedor,

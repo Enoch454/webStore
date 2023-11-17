@@ -220,6 +220,25 @@ class Producto {
     
         return $productos;
     }
+
+    public static function getProductosEspera($mysqli){
+        $productos = [];
+        
+        $sql = "SELECT * FROM vw_productosespera_admin";
+        $result = $mysqli->query($sql);
+
+        if ($result) {
+            // Itera sobre los resultados y crea objetos Producto
+            while ($row = $result->fetch_assoc()) {
+                $productos[] = Producto::parseJson($row);
+            }
+        } else {
+            echo "Error al ejecutar la consulta SQL: " . $mysqli->error;
+        }
+
+        return $productos;
+
+    }
     
 
 }

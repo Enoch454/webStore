@@ -266,4 +266,23 @@ class Usuario {
         return $idAdmin;
     }
 
+    public static function getProductosEspera_Usuario($mysqli){
+        $user = [];
+        
+        $sql = "SELECT * FROM vw_productosespera_admin";
+        $result = $mysqli->query($sql);
+
+        if ($result) {
+            // Itera sobre los resultados y crea objetos Producto
+            while ($row = $result->fetch_assoc()) {
+                $user[] = Usuario::parseJson($row);
+            }
+        } else {
+            echo "Error al ejecutar la consulta SQL: " . $mysqli->error;
+        }
+
+        return $user;
+
+    }
+
 }

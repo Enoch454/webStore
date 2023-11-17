@@ -124,41 +124,9 @@
 			<div class="row">
 			<p><h2>Solicitudes de aprobacion</h2></p>
 				<div id = "esperaProductos" class="row">
-				<div class="col-lg-4 col-md-6">
-					<div class="single-latest-news">
-							<img src="/views/assets/img/products/pastellll.jpg" alt="">
-							<p class="blog-meta">
-								<span class="author"><i class="fas fa-user"></i> Nombre Usuario</span>
-								<span class="date"><i class="fas fa-calendar"></i> Septiembre 8, 2023</span>
-							</p>
-							<p>Compra mi pastel !!! Los doctores dicen que los pateles multiplican tu vida x20 por eso hay que comprar!!!!!! </p>
-							<div class="button-container">
-							<div class="circle-button approve" id="btnAprobar" style="background-color: #4CAF50;"></div>
-							<div class="circle-button reject" id="btnRechazar" style="background-color: #FF5733;"></div>
-       					</div>
-						</div>
+				
+				
 				</div>
-				
-				<div class="col-lg-4 col-md-6">
-						<div class="single-latest-news">
-							<img src="/views/assets/img/products/pastellll.jpg" alt="">
-							<p class="blog-meta">
-								<span class="author"><i class="fas fa-user"></i> Nombre Usuario</span>
-								<span class="date"><i class="fas fa-calendar"></i> Septiembre 8, 2023</span>
-							</p>
-							<p>Compra mi pastel !!! Los doctores dicen que los pateles multiplican tu vida x20 por eso hay que comprar!!!!!! </p>
-							<div class="button-container">
-							<div class="circle-button approve" style="background-color: #4CAF50;"></div>
-							<div class="circle-button reject" style="background-color: #FF5733;"></div>
-       						</div>
-						</div>
-					</div>
-				</div>
-
-				
-					
-				
-
 			</div>
 
 
