@@ -1,4 +1,64 @@
 
+
+async function requestVendedoresRechazados(){
+    const options = {
+        method: 'GET',
+    }
+
+    let vendedorData;
+
+    // Realizar la solicitud al servidor para obtener los vendedores rechazados
+    const response = await fetch('/sellersReject', options)
+        .catch(e => {
+            console.log("Error en la conexión");
+        })
+        .then(res => res.json())
+        .then(dataRes => {
+            console.log(dataRes)
+            vendedorData = dataRes.dataRecha_Ven;
+        });
+
+    // Obtener el contenedor donde se mostrarán los vendedores
+    const rechaVendedoresContainer = $('#rechazadosVendedores');
+
+    // Limpiar el contenido existente en el contenedor
+    rechaVendedoresContainer.empty();
+
+    // Verificar si hay vendedores rechazados
+    if (Object.keys(vendedorData).length === 0) {
+        rechaVendedoresContainer.append('<p>No hay vendedores rechazados</p>');
+    } else {
+        // Iterar sobre los vendedores rechazados y agregarlos al contenedor
+        for (const key in vendedorData) {
+            if(vendedorData.hasOwnProperty(key)){
+                const vendedor = vendedorData[key];
+                const nombreCompleto = `${vendedor.Nombre} ${vendedor.ApellidoPat} ${vendedor.ApellidoMat}`;
+
+                const vendedorHTML = `
+                <div class="col-lg-4 col-md-6">
+                    <div class="single-latest-news">
+                        <p class="blog-meta">
+                            <span class="author"><i class="fas fa-user"></i> ${vendedor.userName}</span>
+                            <span class="date"><i class="fas fa-calendar"></i></span>
+                        </p>
+                        <span>Nombre: ${nombreCompleto}</span>
+                        
+                        <p></p>
+                    </div>
+                </div>
+            `;
+
+            rechaVendedoresContainer.append(vendedorHTML);
+
+            }  
+        }
+    }
+
+    console.log("Vendedores rechazados cargados. Verifica si este mensaje aparece en la consola.");
+
+
+}
+
 async function requestVendedoresAprobados(){
     const options = {
         method: 'GET',
@@ -346,4 +406,5 @@ $(document).ready(function() {
     requestProductosRechazados();
     requestVendedoresEspera();
     requestVendedoresAprobados();
+    requestVendedoresRechazados();
 });

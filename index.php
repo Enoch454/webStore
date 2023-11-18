@@ -104,6 +104,10 @@ get('/sellersApprove', function(){
     Profile::vendedoresAprobadosAdmin();
 });
 
+get('/sellersReject', function(){
+    Profile::vendedoresRechazadosAdmin();
+});
+
 
 
 

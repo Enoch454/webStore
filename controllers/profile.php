@@ -177,6 +177,30 @@ class Profile {
 
     }
 
+    public static function vendedoresRechazadosAdmin(){
+        session_start();
+        if (isset($_SESSION["AUTH"]) && isset($_SESSION["idAdmin"])) {
+            
+            $conexion = new Conexion;
+            $mysqli = $conexion->conexion;
+            $vendedoresRecha = Vendedor::getVendedoresRechazados($mysqli);
+
+            header('Content-Type: application/json');
+            $response = array();
+            $response['succes'] = true;
+            $response['dataRecha_Ven'] = ($vendedoresRecha);
+            //$response['data']['usuarios'] = ($userJson); 
+            echo json_encode($response);
+            //var_dump($productos);
+            
+        } else {
+            $response['succes'] = false;
+            $response['error'] = 'Error ver productos';
+            echo json_encode( $response );
+        }
+
+    }
+
     public static function getDataProfile($id) {
         // Verifica si se ha recibido el ID de usuario
         if (isset($_SESSION['AUTH'])) {

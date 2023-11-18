@@ -115,4 +115,23 @@ class Vendedor {
     
         return $vendedoresAprob;
     }
+
+    public static function getVendedoresRechazados($mysqli){
+        $vendedoresRecha = [];
+        
+        $sql = "SELECT * FROM vw_vendedoresRechazados_admin";
+        $result = $mysqli->query($sql);
+    
+        if ($result) {
+            // Itera sobre los resultados y crea un array asociativo para cada fila
+            while ($row = $result->fetch_assoc()) {
+                $vendedoresRecha[] = $row;
+            }
+        } else {
+            echo "Error al ejecutar la consulta SQL: " . $mysqli->error;
+        }
+    
+        return $vendedoresRecha;
+
+    }
 }
