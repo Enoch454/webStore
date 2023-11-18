@@ -108,6 +108,11 @@ get('/sellersReject', function(){
     Profile::vendedoresRechazadosAdmin();
 });
 
+//Profile admin aprobar/rechazar Productos y/o Vendedores
+post('/profile/statusChange', function (){
+    Profile::updateStatusProducto();
+});
+
 
 
 

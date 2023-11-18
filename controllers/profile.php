@@ -201,6 +201,8 @@ class Profile {
 
     }
 
+
+
     public static function getDataProfile($id) {
         // Verifica si se ha recibido el ID de usuario
         if (isset($_SESSION['AUTH'])) {
@@ -230,7 +232,38 @@ class Profile {
         }
     }
 
+    public static function updateStatusProducto() {
+        $json_data = json_decode(file_get_contents('php://input'), true);
 
+        if (isset($json_data["idProducto"]) && isset($json_data["status"])) {
+            $conexion = new Conexion;
+            $mysqli = $conexion->conexion;
+
+            $idProducto = $json_data["idProducto"];
+            $status = $json_data["status"];
+    
+            // Llama al método para actualizar el estado del producto
+            $result = Producto::actualizarStatusProducto($mysqli, $idProducto, $status);
+            
+            // Maneja el resultado y prepara la respuesta en formato JSON
+            $response = json_decode($result, true); // Decodifica la cadena JSON en un array asociativo
+    
+            if ($response["success"]) {
+                // Producto actualizado correctamente
+                echo json_encode($response);
+            } else {
+                // Error al actualizar el producto
+                http_response_code(500); // O el código de estado apropiado
+                echo json_encode($response);
+            }
+        } else {
+            // No se proporcionaron los parámetros esperados
+            http_response_code(400);
+            $json_response = ["success" => false, "message" => "Parámetros incorrectos"];
+            echo json_encode($json_response);
+        }
+    }
+    
 
     // funcion para actualizar el rol de usuario a vendedor.
     // Haciendo uso de las funciones de la clase Vendedor,

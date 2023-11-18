@@ -345,5 +345,16 @@ BEGIN
 END //
 
 
+DELIMITER //
 
+DELIMITER //
+
+CREATE PROCEDURE sp_updateStatusProducto(IN p_idProducto INT, IN p_nuevoEstado INT)
+BEGIN
+    -- Actualizar el Status del producto
+    UPDATE productos SET Status = p_nuevoEstado WHERE idProducto = p_idProducto;
+    
+END //
+
+DELIMITER ;
 

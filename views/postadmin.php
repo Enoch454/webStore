@@ -121,35 +121,26 @@
 	<div class="mt-150 mb-150">
 		<div class="container">
 		<h1>Productos</h1>
-			<div class="row">
-			<p><h2>Solicitudes de aprobacion</h2></p>
+		<p><h2>Solicitudes de aprobacion</h2></p>
+			
+			
 				<div id = "esperaProductos" class="row">
 				
 				
 				</div>
-			</div>
+			
 
 			<p><h2>Productos aprobados</h2></p>
-		<div class="row">
+		
 				<div id = "aprobadosProductos" class="row">
-				<div class="col-lg-4 col-md-6">
-					<div class="single-latest-news">
-							<img src="" alt="">
-							<p class="blog-meta">
-								<span class="author"><i class="fas fa-user"></i> Nombre Usuario</span>
-								<span class ="money"><i class= "fa-money"></i> Precio: </span>
-							</p>
-							<p> Descripcion: Esto es para la descripcion del producto como ejemplo para la vista </p>
-							<span class ="cotizable"></span>
-					</div>
-				</div>
+				
 				
 			</div>
 
-		</div>
+		
 
 		<p><h2>Productos rechazados</h2></p>
-			<div class="row">
+			
 			
 				<div id = "rechazadosProductos" class="row">
 				<div class="col-lg-4 col-md-6">
@@ -165,13 +156,13 @@
 				</div>
 				</div>
 
-			</div>
+			
 
 
 
 			<h1>Vendedores</h1>
 			<p><h2>Solicitudes de aprobacion</h2></p>
-			<div class="row">
+			
 				<div id = "esperaVendedores" class="row">
 				
 				</div>
@@ -180,26 +171,26 @@
 					
 				
 
-			</div>
+			
 
 
 			<p><h2>Vendedores aprobados</h2></p>
-			<div class="row">
+			
 			
 				<div id = "aprobadosVendedores" class="row">
 				
 				</div>
 
-			</div>
+			
 
 			<p><h2>Vendedores rechazados</h2></p>
-			<div class="row">
+			
 			
 				<div id = "rechazadosVendedores" class="row">
 				
 				</div>
 
-			</div>
+			
 				
 			</div>
 		</div>

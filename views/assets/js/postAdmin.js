@@ -1,5 +1,45 @@
 
 
+// Función para realizar una solicitud POST y actualizar el estado del producto
+async function actualizarEstadoProducto(idProducto, status) {
+    try {
+        const options = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                idProducto: idProducto,
+                status: status,
+            }),
+        };
+        console.log(JSON.stringify({ idProducto: idProducto, status: status }));
+
+        const response = await fetch('/profile/statusChange', options);
+
+        if (!response.ok) {
+            throw new Error('Error al actualizar el estado del producto');
+        }
+
+        try {
+            const data = await response.json();
+            console.log(data);
+
+            // Agrega un pequeño retraso antes de redirigir
+            setTimeout(() => {
+                alert('Se actualizó el estado del producto');
+                window.location.href = '/profile';
+            }, 500); // Puedes ajustar el tiempo de espera según sea necesario
+        } catch (error) {
+            console.error('Error al analizar la respuesta JSON', error);
+        }
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+
+
 async function requestVendedoresRechazados(){
     const options = {
         method: 'GET',
@@ -14,7 +54,7 @@ async function requestVendedoresRechazados(){
         })
         .then(res => res.json())
         .then(dataRes => {
-            console.log(dataRes)
+            //console.log(dataRes)
             vendedorData = dataRes.dataRecha_Ven;
         });
 
@@ -54,7 +94,7 @@ async function requestVendedoresRechazados(){
         }
     }
 
-    console.log("Vendedores rechazados cargados. Verifica si este mensaje aparece en la consola.");
+    //console.log("Vendedores rechazados cargados. Verifica si este mensaje aparece en la consola.");
 
 
 }
@@ -73,7 +113,7 @@ async function requestVendedoresAprobados(){
         })
         .then(res => res.json())
         .then(dataRes => {
-            console.log(dataRes)
+            //console.log(dataRes)
             vendedorData = dataRes.dataAprob_Ven;
         });
 
@@ -113,7 +153,7 @@ async function requestVendedoresAprobados(){
         }
     }
 
-    console.log("Vendedores aprobados cargados. Verifica si este mensaje aparece en la consola.");
+    //console.log("Vendedores aprobados cargados. Verifica si este mensaje aparece en la consola.");
 
 }
 
@@ -132,7 +172,7 @@ async function requestVendedoresEspera(){
             })
             .then(res => res.json())
             .then(dataRes => {
-                console.log(dataRes)
+                //console.log(dataRes)
                 vendedorData = dataRes.dataEspera_Ven;
             });
     
@@ -189,7 +229,7 @@ async function requestVendedoresEspera(){
             }
         }
     
-        console.log("Vendedores en espera cargados. Verifica si este mensaje aparece en la consola.");
+        //console.log("Vendedores en espera cargados. Verifica si este mensaje aparece en la consola.");
     
 }
 
@@ -207,7 +247,7 @@ async function requestProductosRechazados(){
         })
         .then(res => res.json())
         .then(dataRes => {
-            console.log(dataRes)
+            //console.log(dataRes)
             productosData = dataRes.dataRecha;
         });
 
@@ -256,7 +296,7 @@ async function requestProductosRechazados(){
         }
     }
 
-    console.log("Productos rechazados cargados. Verifica si este mensaje aparece en la consola.");
+    //console.log("Productos rechazados cargados. Verifica si este mensaje aparece en la consola.");
 
 }
 
@@ -275,7 +315,7 @@ async function requestProductosAprobados() {
         })
         .then(res => res.json())
         .then(dataRes => {
-            console.log(dataRes)
+            //console.log(dataRes)
             productosData = dataRes.dataAprob;
         });
 
@@ -324,7 +364,7 @@ async function requestProductosAprobados() {
         }
     }
 
-    console.log("Productos aprobados cargados. Verifica si este mensaje aparece en la consola.");
+    //console.log("Productos aprobados cargados. Verifica si este mensaje aparece en la consola.");
 }
 
 
@@ -342,7 +382,7 @@ async function requestProductosEspera() {
         })
         .then(res => res.json())
         .then(dataRes => {
-            console.log(dataRes)
+            //console.log(dataRes)
             productosData = dataRes.data;
         });
 
@@ -384,11 +424,15 @@ async function requestProductosEspera() {
             // Puedes usar los IDs de los botones para identificar y manejar eventos específicos
             $(`#btnAprobar${producto.idProducto}`).click(function() {
                 // Lógica para aprobar el producto con ID producto.idProducto
+                const idProducto = parseInt($(this).attr('id').replace('btnAprobar', ''), 10);
+                actualizarEstadoProducto(idProducto, 1); // 1 para aprobado
                 console.log(`Aprobar producto con ID ${producto.idProducto}`);
             });
 
             $(`#btnRechazar${producto.idProducto}`).click(function() {
                 // Lógica para rechazar el producto con ID producto.idProducto
+                const idProducto = parseInt($(this).attr('id').replace('btnRechazar', ''), 10);
+                actualizarEstadoProducto(idProducto, 3); // 3 para rechazado
                 console.log(`Rechazar producto con ID ${producto.idProducto}`);
             });
 
@@ -396,7 +440,7 @@ async function requestProductosEspera() {
         }
     }
 
-    console.log("Productos en espera cargados. Verifica si este mensaje aparece en la consola.");
+    //console.log("Productos en espera cargados. Verifica si este mensaje aparece en la consola.");
 }
 
 // Llama a la función para cargar los productos en espera cuando la página cargue
