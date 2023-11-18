@@ -65,28 +65,11 @@ class Profile {
             $conexion = new Conexion;
             $mysqli = $conexion->conexion;
             $productos = Producto::getProductosEspera($mysqli);
-            $user = Usuario::getProductosEspera_Usuario($mysqli);
-            $productosJson = [];
-            $userJson = [];
-            foreach ($productos as $producto) {
-                //echo json_encode($producto->toJSON());
-        
-                    $productosJson[] = ($producto->toJSON());
-                    
-            }
-
-            foreach ($user as $usuario) {
-                //echo json_encode($producto->toJSON());
-        
-                    $userJson[] = ($usuario->toJSON());
-                    
-            }
-            
 
             header('Content-Type: application/json');
             $response = array();
             $response['succes'] = true;
-            $response['data'] = ($productosJson);
+            $response['data'] = ($productos);
             //$response['data']['usuarios'] = ($userJson); 
             echo json_encode($response);
             //var_dump($productos);

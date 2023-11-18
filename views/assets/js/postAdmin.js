@@ -23,12 +23,14 @@ async function requestProductosEspera() {
     esperaProductosContainer.empty();
 
     // Verificar si hay productos en espera
-    if (productosData.length === 0) {
+    if (Object.keys(productosData).length === 0) {
         esperaProductosContainer.append('<p>No hay productos en espera de aprobación</p>');
     } else {
         // Iterar sobre los productos en espera y agregarlos al contenedor
-        for (const producto of productosData) {
-            const productoHTML = `
+        for (const key in productosData) {
+            if(productosData.hasOwnProperty(key)){
+                const producto = productosData[key];
+                const productoHTML = `
                 <div class="col-lg-4 col-md-6">
                     <div class="single-latest-news">
                         <img src="" alt="">
@@ -36,8 +38,8 @@ async function requestProductosEspera() {
                             <span class="author"><i class="fas fa-user"></i> ${producto.userName}</span>
                             <span class="date"><i class="fas fa-calendar"></i></span>
                         </p>
-                        <span>Producto: ${producto.nombre}</span>
-                        <p>${producto.descripcion}</p>
+                        <span>Producto: ${producto.Nombre}</span>
+                        <p>${producto.Descripcion}</p>
                         <div class="button-container">
                             <div class="circle-button approve" id="btnAprobar${producto.idProducto}" style="background-color: #4CAF50;"></div>
                             <div class="circle-button reject" id="btnRechazar${producto.idProducto}" style="background-color: #FF5733;"></div>
@@ -59,6 +61,8 @@ async function requestProductosEspera() {
                 // Lógica para rechazar el producto con ID producto.idProducto
                 console.log(`Rechazar producto con ID ${producto.idProducto}`);
             });
+
+            }  
         }
     }
 

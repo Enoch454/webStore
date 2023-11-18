@@ -226,18 +226,17 @@ class Producto {
         
         $sql = "SELECT * FROM vw_productosespera_admin";
         $result = $mysqli->query($sql);
-
+    
         if ($result) {
-            // Itera sobre los resultados y crea objetos Producto
+            // Itera sobre los resultados y crea un array asociativo para cada fila
             while ($row = $result->fetch_assoc()) {
-                $productos[] = Producto::parseJson($row);
+                $productos[] = $row;
             }
         } else {
             echo "Error al ejecutar la consulta SQL: " . $mysqli->error;
         }
-
+    
         return $productos;
-
     }
     
 
