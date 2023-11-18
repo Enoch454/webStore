@@ -1,3 +1,79 @@
+async function requestVendedoresEspera(){
+
+        const options = {
+            method: 'GET',
+        }
+    
+        let vendedorData;
+    
+        // Realizar la solicitud al servidor para obtener los vendedores en espera
+        const response = await fetch('/sellersWait', options)
+            .catch(e => {
+                console.log("Error en la conexión");
+            })
+            .then(res => res.json())
+            .then(dataRes => {
+                console.log(dataRes)
+                vendedorData = dataRes.dataEspera_Ven;
+            });
+    
+        // Obtener el contenedor donde se mostrarán los vendedores
+        const esperaVendedoresContainer = $('#esperaVendedores');
+    
+        // Limpiar el contenido existente en el contenedor
+        esperaVendedoresContainer.empty();
+    
+        // Verificar si hay vendedores en espera
+        if (Object.keys(vendedorData).length === 0) {
+            esperaVendedoresContainer.append('<p>No hay vendedores en espera de aprobación</p>');
+        } else {
+            // Iterar sobre los vendedores en espera y agregarlos al contenedor
+            for (const key in vendedorData) {
+                if(vendedorData.hasOwnProperty(key)){
+                    const vendedor = vendedorData[key];
+                    const nombreCompleto = `${vendedor.Nombre} ${vendedor.ApellidoPat} ${vendedor.ApellidoMat}`;
+
+                    const vendedorHTML = `
+                    <div class="col-lg-4 col-md-6">
+                        <div class="single-latest-news">
+                            <p class="blog-meta">
+                                <span class="author"><i class="fas fa-user"></i> ${vendedor.userName}</span>
+                                <span class="date"><i class="fas fa-calendar"></i></span>
+                            </p>
+                            <span>Nombre: ${nombreCompleto}</span>
+                            
+                            <p></p>
+                            
+                            <div class="button-container">
+                                <div class="circle-button approve" id="btnAprobar${vendedor.idVendedor}" style="background-color: #4CAF50;"></div>
+                                <div class="circle-button reject" id="btnRechazar${vendedor.idVendedor}" style="background-color: #FF5733;"></div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+    
+                esperaVendedoresContainer.append(vendedorHTML);
+    
+                // Agregar eventos o lógica específica para cada vendedor si es necesario
+                // Puedes usar los IDs de los botones para identificar y manejar eventos específicos
+                $(`#btnAprobar${vendedor.idVendedor}`).click(function() {
+                    // Lógica para aprobar el producto con ID producto.idProducto
+                    console.log(`Aprobar vendedor con ID ${vendedor.idVendedor}`);
+                });
+    
+                $(`#btnRechazar${vendedor.idVendedor}`).click(function() {
+                    // Lógica para rechazar el producto con ID producto.idProducto
+                    console.log(`Rechazar vendedor con ID ${vendedor.idVendedor}`);
+                });
+    
+                }  
+            }
+        }
+    
+        console.log("Vendedores en espera cargados. Verifica si este mensaje aparece en la consola.");
+    
+}
+
 async function requestProductosRechazados(){
     const options = {
         method: 'GET',
@@ -209,4 +285,5 @@ $(document).ready(function() {
     requestProductosEspera();
     requestProductosAprobados();
     requestProductosRechazados();
+    requestVendedoresEspera();
 });

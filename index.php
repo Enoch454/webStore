@@ -95,6 +95,11 @@ get('/productsReject', function(){
     Profile::productosRechazadosAdmin();
 });
 
+get('/sellersWait', function(){
+    
+    Profile::vendedoresEsperaAdmin();
+});
+
 
 
 

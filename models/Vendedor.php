@@ -79,4 +79,24 @@ class Vendedor {
         
         return $idVendedor ? new Vendedor($idVendedor, $idUsuario, $status) : null;
     }
+
+    public static function getVendedoresEspera($mysqli){
+        $vendedores = [];
+        
+        $sql = "SELECT * FROM vw_vendedoresEspera_admin";
+        $result = $mysqli->query($sql);
+    
+        if ($result) {
+            // Itera sobre los resultados y crea un array asociativo para cada fila
+            while ($row = $result->fetch_assoc()) {
+                $vendedores[] = $row;
+            }
+        } else {
+            echo "Error al ejecutar la consulta SQL: " . $mysqli->error;
+        }
+    
+        return $vendedores;
+    }
+
+    
 }
