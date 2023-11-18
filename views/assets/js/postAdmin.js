@@ -45,6 +45,7 @@ async function requestProductosAprobados() {
                     <div class="col-lg-4 col-md-6">
                         <div class="single-latest-news">
                             <img src="" alt="">
+                            <span>Producto: ${producto.Nombre}</span>
                             <p class="blog-meta">
                                 <span class="author"><i class="fas fa-user"></i>${producto.userName}</span>
                                 ${precioHTML}
