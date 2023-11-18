@@ -1,3 +1,62 @@
+
+async function requestVendedoresAprobados(){
+    const options = {
+        method: 'GET',
+    }
+
+    let vendedorData;
+
+    // Realizar la solicitud al servidor para obtener los vendedores aprobados
+    const response = await fetch('/sellersApprove', options)
+        .catch(e => {
+            console.log("Error en la conexión");
+        })
+        .then(res => res.json())
+        .then(dataRes => {
+            console.log(dataRes)
+            vendedorData = dataRes.dataAprob_Ven;
+        });
+
+    // Obtener el contenedor donde se mostrarán los vendedores
+    const aprobVendedoresContainer = $('#aprobadosVendedores');
+
+    // Limpiar el contenido existente en el contenedor
+    aprobVendedoresContainer.empty();
+
+    // Verificar si hay vendedores aprobados
+    if (Object.keys(vendedorData).length === 0) {
+        aprobVendedoresContainer.append('<p>No hay vendedores aprobados</p>');
+    } else {
+        // Iterar sobre los vendedores aprobados y agregarlos al contenedor
+        for (const key in vendedorData) {
+            if(vendedorData.hasOwnProperty(key)){
+                const vendedor = vendedorData[key];
+                const nombreCompleto = `${vendedor.Nombre} ${vendedor.ApellidoPat} ${vendedor.ApellidoMat}`;
+
+                const vendedorHTML = `
+                <div class="col-lg-4 col-md-6">
+                    <div class="single-latest-news">
+                        <p class="blog-meta">
+                            <span class="author"><i class="fas fa-user"></i> ${vendedor.userName}</span>
+                            <span class="date"><i class="fas fa-calendar"></i></span>
+                        </p>
+                        <span>Nombre: ${nombreCompleto}</span>
+                        
+                        <p></p>
+                    </div>
+                </div>
+            `;
+
+            aprobVendedoresContainer.append(vendedorHTML);
+
+            }  
+        }
+    }
+
+    console.log("Vendedores aprobados cargados. Verifica si este mensaje aparece en la consola.");
+
+}
+
 async function requestVendedoresEspera(){
 
         const options = {
@@ -286,4 +345,5 @@ $(document).ready(function() {
     requestProductosAprobados();
     requestProductosRechazados();
     requestVendedoresEspera();
+    requestVendedoresAprobados();
 });

@@ -100,6 +100,10 @@ get('/sellersWait', function(){
     Profile::vendedoresEsperaAdmin();
 });
 
+get('/sellersApprove', function(){
+    Profile::vendedoresAprobadosAdmin();
+});
+
 
 
 

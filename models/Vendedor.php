@@ -98,5 +98,21 @@ class Vendedor {
         return $vendedores;
     }
 
+    public static function getVendedoresAprobados($mysqli){
+        $vendedoresAprob = [];
+        
+        $sql = "SELECT * FROM vw_vendedoresAprobados_admin";
+        $result = $mysqli->query($sql);
     
+        if ($result) {
+            // Itera sobre los resultados y crea un array asociativo para cada fila
+            while ($row = $result->fetch_assoc()) {
+                $vendedoresAprob[] = $row;
+            }
+        } else {
+            echo "Error al ejecutar la consulta SQL: " . $mysqli->error;
+        }
+    
+        return $vendedoresAprob;
+    }
 }
