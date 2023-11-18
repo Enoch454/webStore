@@ -28,8 +28,10 @@ WHERE
 CREATE VIEW vw_vendedoresEspera_admin AS
 SELECT
     v.idVendedor,
-    u.userName AS Usuario,
-    CONCAT(p.Nombre, ' ', p.ApellidoPat, ' ', COALESCE(p.ApellidoMat, '')) AS NombreCompleto
+    u.userName,
+    p.Nombre,
+    p.ApellidoPat,
+    p.ApellidoMat
 FROM
     vendedores v
 JOIN
@@ -46,8 +48,10 @@ select*from vw_vendedoresEspera_admin;
 CREATE VIEW vw_vendedoresAprobados_admin AS
 SELECT
     v.idVendedor,
-    u.userName AS Usuario,
-    CONCAT(p.Nombre, ' ', p.ApellidoPat, ' ', COALESCE(p.ApellidoMat, '')) AS NombreCompleto
+    u.userName,
+    p.Nombre,
+    p.ApellidoPat,
+    p.ApellidoMat
 FROM
     vendedores v
 JOIN
@@ -63,12 +67,12 @@ select* from vw_vendedoresAprobados_admin;
 CREATE VIEW vw_productosAprobados_admin AS
 SELECT
     p.idProducto,
-    p.Nombre AS NombreProducto,
+    p.Nombre,
     p.Descripcion,
     p.esCotizable,
     p.Precio,
     p.Stock,
-    u.userName AS UsuarioVendedor
+    u.userName
 FROM
     productos p
 JOIN
@@ -87,8 +91,10 @@ WHERE
 CREATE VIEW vw_vendedoresRechazados_admin AS
 SELECT
     v.idVendedor,
-    u.userName AS Usuario,
-    CONCAT(p.Nombre, ' ', p.ApellidoPat, ' ', COALESCE(p.ApellidoMat, '')) AS NombreCompleto
+    u.userName,
+    p.Nombre,
+    p.ApellidoPat,
+    p.ApellidoMat
 FROM
     vendedores v
 JOIN
@@ -104,12 +110,12 @@ select* from vw_vendedoresRechazados_admin;
 CREATE VIEW vw_productosRechazados_admin AS
 SELECT
     p.idProducto,
-    p.Nombre AS NombreProducto,
+    p.Nombre,
     p.Descripcion,
     p.esCotizable,
     p.Precio,
     p.Stock,
-    u.userName AS UsuarioVendedor
+    u.userName
 FROM
     productos p
 JOIN
