@@ -86,6 +86,12 @@ get('/productsWait', function(){
     Profile::productosEsperaAdmin();
 });
 
+get('/productsApprove', function(){
+    Profile::productosAprobadosAdmin();
+});
+
+
+
 
 // For GET or POST
 // The 404.php which is inside the views folder will be called

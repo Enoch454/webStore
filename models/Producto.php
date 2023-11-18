@@ -238,6 +238,24 @@ class Producto {
     
         return $productos;
     }
+
+    public static function getProductosAprobados($mysqli){
+        $productosAprob = [];
+        
+        $sql = "SELECT * FROM vw_productosAprobados_admin";
+        $result = $mysqli->query($sql);
+    
+        if ($result) {
+            // Itera sobre los resultados y crea un array asociativo para cada fila
+            while ($row = $result->fetch_assoc()) {
+                $productosAprob[] = $row;
+            }
+        } else {
+            echo "Error al ejecutar la consulta SQL: " . $mysqli->error;
+        }
+    
+        return $productosAprob;
+    }
     
 
 }

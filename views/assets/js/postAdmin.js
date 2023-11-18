@@ -1,3 +1,69 @@
+async function requestProductosAprobados() {
+    const options = {
+        method: 'GET',
+    }
+
+    let productosData;
+
+    // Realizar la solicitud al servidor para obtener los productos aprobados
+    const response = await fetch('/productsApprove', options)
+        .catch(e => {
+            console.log("Error en la conexión");
+        })
+        .then(res => res.json())
+        .then(dataRes => {
+            console.log(dataRes)
+            productosData = dataRes.dataAprob;
+        });
+
+    // Obtener el contenedor donde se mostrarán los productos aprobados
+    const aprobProductosContainer = $('#aprobadosProductos');
+
+    // Limpiar el contenido existente en el contenedor
+    aprobProductosContainer.empty();
+
+    // Verificar si hay productos aprobados
+    if (Object.keys(productosData).length === 0) {
+        aprobProductosContainer.append('<p>No hay productos aprobados</p>');
+    } else {
+        // Iterar sobre los productos aprobados y agregarlos al contenedor
+        for (const key in productosData) {
+            if (productosData.hasOwnProperty(key)) {
+                const producto = productosData[key];
+
+                // Verificar si el producto es cotizable
+                let precioHTML, cotizableHTML;
+                if (producto.esCotizable == 1) {
+                    precioHTML = '<span class="money">Por Cotización</span>';
+                    cotizableHTML = '';
+                } else {
+                    precioHTML = `<span class="money">Precio: $${producto.Precio}</span>`;
+                    cotizableHTML = `<span class="cotizable">Stock Disponible: ${producto.Stock}</span>`;
+                }
+
+                const productoHTML = `
+                    <div class="col-lg-4 col-md-6">
+                        <div class="single-latest-news">
+                            <img src="" alt="">
+                            <p class="blog-meta">
+                                <span class="author"><i class="fas fa-user"></i>${producto.userName}</span>
+                                ${precioHTML}
+                            </p>
+                            <p> Descripcion: ${producto.Descripcion} </p>
+                            ${cotizableHTML}
+                        </div>
+                    </div>
+                `;
+
+                aprobProductosContainer.append(productoHTML);
+            }
+        }
+    }
+
+    console.log("Productos aprobados cargados. Verifica si este mensaje aparece en la consola.");
+}
+
+
 async function requestProductosEspera() {
     const options = {
         method: 'GET',
@@ -72,4 +138,5 @@ async function requestProductosEspera() {
 // Llama a la función para cargar los productos en espera cuando la página cargue
 $(document).ready(function() {
     requestProductosEspera();
+    requestProductosAprobados();
 });
