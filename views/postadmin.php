@@ -148,32 +148,21 @@
 
 		</div>
 
+		<p><h2>Productos rechazados</h2></p>
 			<div class="row">
-			<p><h2>Productos rechazados</h2></p>
+			
 				<div id = "rechazadosProductos" class="row">
 				<div class="col-lg-4 col-md-6">
 					<div class="single-latest-news">
-							<img src="/views/assets/img/products/pastellll.jpg" alt="">
+							<img src="" alt="">
 							<p class="blog-meta">
 								<span class="author"><i class="fas fa-user"></i> Nombre Usuario</span>
-								<span class="date"><i class="fas fa-calendar"></i> Septiembre 8, 2023</span>
+								<span class ="money"><i class= "fa-money"></i> Precio: </span>
 							</p>
-							<p>Compra mi pastel !!! Los doctores dicen que los pateles multiplican tu vida x20 por eso hay que comprar!!!!!! </p>
-							
-						</div>
-				</div>
-				
-				<div class="col-lg-4 col-md-6">
-						<div class="single-latest-news">
-							<img src="/views/assets/img/products/pastellll.jpg" alt="">
-							<p class="blog-meta">
-								<span class="author"><i class="fas fa-user"></i> Nombre Usuario</span>
-								<span class="date"><i class="fas fa-calendar"></i> Septiembre 8, 2023</span>
-							</p>
-							<p>Compra mi pastel !!! Los doctores dicen que los pateles multiplican tu vida x20 por eso hay que comprar!!!!!! </p>
-							
-						</div>
+							<p> Descripcion: Esto es para la descripcion del producto rechazado como ejemplo para la vista </p>
+							<span class ="cotizable"></span>
 					</div>
+				</div>
 				</div>
 
 			</div>

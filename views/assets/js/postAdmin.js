@@ -1,3 +1,71 @@
+async function requestProductosRechazados(){
+    const options = {
+        method: 'GET',
+    }
+
+    let productosData;
+
+    // Realizar la solicitud al servidor para obtener los productos rechazados
+    const response = await fetch('/productsReject', options)
+        .catch(e => {
+            console.log("Error en la conexión");
+        })
+        .then(res => res.json())
+        .then(dataRes => {
+            console.log(dataRes)
+            productosData = dataRes.dataRecha;
+        });
+
+    // Obtener el contenedor donde se mostrarán los productos rechazados
+    const rechaProductosContainer = $('#rechazadosProductos');
+
+    // Limpiar el contenido existente en el contenedor
+    rechaProductosContainer.empty();
+
+    // Verificar si hay productos rechazados
+    if (Object.keys(productosData).length === 0) {
+        rechaProductosContainer.append('<p>No hay productos rechazados</p>');
+    } else {
+        // Iterar sobre los productos rechazados y agregarlos al contenedor
+        for (const key in productosData) {
+            if (productosData.hasOwnProperty(key)) {
+                const producto = productosData[key];
+
+                // Verificar si el producto es cotizable
+                let precioHTML, cotizableHTML;
+                if (producto.esCotizable == 1) {
+                    precioHTML = '<span class="money">Por Cotización</span>';
+                    cotizableHTML = '';
+                } else {
+                    precioHTML = `<span class="money">Precio: $${producto.Precio}</span>`;
+                    cotizableHTML = `<span class="cotizable">Stock Disponible: ${producto.Stock}</span>`;
+                }
+
+                const productoHTML = `
+                    <div class="col-lg-4 col-md-6">
+                        <div class="single-latest-news">
+                            <img src="" alt="">
+                            <span>Producto: ${producto.Nombre}</span>
+                            <p class="blog-meta">
+                                <span class="author"><i class="fas fa-user"></i>${producto.userName}</span>
+                                ${precioHTML}
+                            </p>
+                            <p> Descripcion: ${producto.Descripcion} </p>
+                            ${cotizableHTML}
+                        </div>
+                    </div>
+                `;
+
+                rechaProductosContainer.append(productoHTML);
+            }
+        }
+    }
+
+    console.log("Productos rechazados cargados. Verifica si este mensaje aparece en la consola.");
+
+}
+
+
 async function requestProductosAprobados() {
     const options = {
         method: 'GET',
@@ -140,4 +208,5 @@ async function requestProductosEspera() {
 $(document).ready(function() {
     requestProductosEspera();
     requestProductosAprobados();
+    requestProductosRechazados();
 });

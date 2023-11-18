@@ -256,6 +256,24 @@ class Producto {
     
         return $productosAprob;
     }
+
+    public static function getProductosRechazados($mysqli){
+        $productosRecha = [];
+        
+        $sql = "SELECT * FROM vw_productosRechazados_admin";
+        $result = $mysqli->query($sql);
+    
+        if ($result) {
+            // Itera sobre los resultados y crea un array asociativo para cada fila
+            while ($row = $result->fetch_assoc()) {
+                $productosRecha[] = $row;
+            }
+        } else {
+            echo "Error al ejecutar la consulta SQL: " . $mysqli->error;
+        }
+    
+        return $productosRecha;
+    }
     
 
 }

@@ -90,6 +90,11 @@ get('/productsApprove', function(){
     Profile::productosAprobadosAdmin();
 });
 
+get('/productsReject', function(){
+
+    Profile::productosRechazadosAdmin();
+});
+
 
 
 
