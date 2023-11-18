@@ -38,7 +38,42 @@ async function actualizarEstadoProducto(idProducto, status) {
     }
 }
 
+async function actualizarEstadoVendedor(idVendedor, status) {
+    try {
+        const options = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                idVendedor: idVendedor,
+                status: status,
+            }),
+        };
+        console.log(JSON.stringify({ idVendedor: idVendedor, status: status }));
 
+        const response = await fetch('/profile/statusChangeSeller', options);
+
+        if (!response.ok) {
+            throw new Error('Error al actualizar el estado del vendedor');
+        }
+
+        try {
+            const data = await response.json();
+            console.log(data);
+
+            // Agrega un pequeño retraso antes de redirigir
+            setTimeout(() => {
+                alert('Se actualizó el estado del vendedor');
+                window.location.href = '/profile';
+            }, 500); // Puedes ajustar el tiempo de espera según sea necesario
+        } catch (error) {
+            console.error('Error al analizar la respuesta JSON', error);
+        }
+    } catch (error) {
+        console.log(error);
+    }
+}
 
 async function requestVendedoresRechazados(){
     const options = {
@@ -216,14 +251,19 @@ async function requestVendedoresEspera(){
                 // Agregar eventos o lógica específica para cada vendedor si es necesario
                 // Puedes usar los IDs de los botones para identificar y manejar eventos específicos
                 $(`#btnAprobar${vendedor.idVendedor}`).click(function() {
-                    // Lógica para aprobar el producto con ID producto.idProducto
+                    // Lógica para aprobar el vendedor con ID vendedor.idVendedor
+                    const idVendedor = parseInt($(this).attr('id').replace('btnAprobar', ''), 10);
+                    actualizarEstadoVendedor(idVendedor, 1); // 1 para aprobado
                     console.log(`Aprobar vendedor con ID ${vendedor.idVendedor}`);
                 });
     
                 $(`#btnRechazar${vendedor.idVendedor}`).click(function() {
-                    // Lógica para rechazar el producto con ID producto.idProducto
+                    // Lógica para rechazar el vendedor con ID vendedor.idVendedor
+                    const idVendedor = parseInt($(this).attr('id').replace('btnRechazar', ''), 10);
+                    actualizarEstadoVendedor(idVendedor, 3); // 3 para rechazado
                     console.log(`Rechazar vendedor con ID ${vendedor.idVendedor}`);
                 });
+
     
                 }  
             }

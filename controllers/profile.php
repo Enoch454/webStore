@@ -263,6 +263,39 @@ class Profile {
             echo json_encode($json_response);
         }
     }
+
+
+    public static function updateStatusVendedor() {
+        $json_data = json_decode(file_get_contents('php://input'), true);
+
+        if (isset($json_data["idVendedor"]) && isset($json_data["status"])) {
+            $conexion = new Conexion;
+            $mysqli = $conexion->conexion;
+
+            $idVendedor = $json_data["idVendedor"];
+            $status = $json_data["status"];
+    
+            // Llama al método para actualizar el estado del vendedor
+            $result = Vendedor::actualizarStatusVendedor($mysqli, $idVendedor, $status);
+            
+            // Maneja el resultado y prepara la respuesta en formato JSON
+            $response = json_decode($result, true); // Decodifica la cadena JSON en un array asociativo
+    
+            if ($response["success"]) {
+                // Vendedor actualizado correctamente
+                echo json_encode($response);
+            } else {
+                // Error al actualizar el vendedor
+                http_response_code(500); // O el código de estado apropiado
+                echo json_encode($response);
+            }
+        } else {
+            // No se proporcionaron los parámetros esperados
+            http_response_code(400);
+            $json_response = ["success" => false, "message" => "Parámetros incorrectos"];
+            echo json_encode($json_response);
+        }
+    }
     
 
     // funcion para actualizar el rol de usuario a vendedor.

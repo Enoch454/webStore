@@ -134,4 +134,43 @@ class Vendedor {
         return $vendedoresRecha;
 
     }
+
+
+    public static function actualizarStatusVendedor($mysqli, $idVendedor, $status) {
+        try {
+            // Preparar la consulta con una declaración preparada
+            $sql = "CALL sp_updateStatusVendedor(?, ?)";
+            $stmt = $mysqli->prepare($sql);
+    
+            // Vincular los parámetros
+            $stmt->bind_param("ii", $idVendedor, $status);
+    
+            // Ejecutar la consulta preparada
+            $stmt->execute();
+    
+            // Verificar si se produjo algún error durante la ejecución
+            if ($stmt->errno) {
+                throw new Exception("Error al actualizar el vendedor: " . $mysqli->error);
+            }
+    
+            // Obtener el número de filas afectadas
+            $rowsAffected = $stmt->affected_rows;
+    
+            // Verificar si se realizaron cambios en al menos una fila
+            if ($rowsAffected > 0) {
+                $response = ["success" => true, "message" => "Vendedor actualizado correctamente"];
+            } else {
+                $response = ["success" => false, "message" => "No se realizaron cambios en el vendedor"];
+            }
+    
+            // Cerrar la declaración preparada
+            $stmt->close();
+        } catch (Exception $e) {
+            // Manejar cualquier excepción
+            $response = ["success" => false, "message" => $e->getMessage()];
+        }
+    
+        // Devolver la respuesta como JSON
+        return json_encode($response);
+    }
 }

@@ -113,6 +113,12 @@ post('/profile/statusChange', function (){
     Profile::updateStatusProducto();
 });
 
+post('/profile/statusChangeSeller', function(){
+
+    Profile::updateStatusVendedor();
+
+});
+
 
 
 
