@@ -171,9 +171,10 @@
 						<div class="single-product-form">
 							<form action="index.php">
 								<input type="number" placeholder="0">
+								<span class="error-message" style="color: red; display: none;">Este valor no es válido</span>
 							</form>
 							<p class="stock-info"><strong>Stock disponible:</strong> <span class="stock-count">10</span></p>
-							<a href="cart.php" class="cart-btn"><i class="fas fa-shopping-cart"></i> Agregar al Carrito</a>
+							<a href="" class="cart-btn"><i class="fas fa-shopping-cart"></i> Agregar al Carrito</a>
 							<p><strong>Categorias: </strong>Chocolate, Organic</p>
 						</div>
 						<h4>Compartir:</h4>
