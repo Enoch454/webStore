@@ -99,6 +99,9 @@
 										<li><a href="cart.php">Carrito</a></li>
 									</ul>
 								</li>
+
+								<li> <a href="/logout">Cerrar Sesion</a></li>
+
 								<li>
 									<div class="header-icons">
 										<a class="shopping-cart" href="cart.php"><i class="fas fa-shopping-cart"></i></a>

@@ -6,13 +6,14 @@ require_once __DIR__.'/controllers/signup.php';
 require_once __DIR__.'/controllers/login.php';
 require_once __DIR__.'/controllers/profile.php';
 require_once __DIR__ .'/controllers/product.php';
+require_once __DIR__ .'/controllers/shop.php';
 
 use \Controllers\Home as Home;
 use \Controllers\SignUp as SignUp;
 use \Controllers\Login as Login;
 use \Controllers\Profile as Profile;
 use \Controllers\Product as Product;
-
+use \Controllers\Shop as Shop;
 
 // ##################################################
 // ##################################################
@@ -119,7 +120,16 @@ post('/profile/statusChangeSeller', function(){
 
 });
 
+//Shop-Tienda general
+get('/shop', function (){
+    Shop::verShop();
+});
 
+get('/allShop', function(){
+
+    Shop::allProducts();
+
+});
 
 
 // For GET or POST
