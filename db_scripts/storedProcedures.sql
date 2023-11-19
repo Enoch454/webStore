@@ -358,3 +358,13 @@ END //
 
 DELIMITER ;
 
+DELIMITER //
+
+CREATE PROCEDURE sp_updateStatusVendedor(IN v_idVendedor INT, IN v_nuevoEstado INT)
+BEGIN
+    -- Actualizar el Status del vendedor
+    UPDATE vendedores SET Status = v_nuevoEstado WHERE idVendedor = v_idVendedor;
+    
+END //
+
+DELIMITER ;
