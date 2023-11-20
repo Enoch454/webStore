@@ -35,10 +35,10 @@ async function requestTodosLosProductos() {
                 let precioHTML, cotizableHTML;
                 if (producto.esCotizable == 1) {
                     precioHTML = '<p class="product-price"><span>Insertar Categoría</span> Por cotización </p>';
-                    cotizableHTML = '<a href="cart.php" class="cart-btn"><i class="fas fa-shopping-cart"></i> Pedir cotizacion</a>';
+                    cotizableHTML = '<a href="" class="cart-btn"><i class="fas fa-shopping-cart"></i> Pedir cotizacion</a>';
                 } else {
                     precioHTML = `<p class="product-price"><span>Insertar Categoría</span>$ ${producto.Precio} </p>`;
-                    cotizableHTML = `<a href="#" class="cart-btn" data-id="${producto.idProducto}"><i class="fas fa-shopping-cart"></i> Agregar al Carrito</a>`;
+                    cotizableHTML = `<a href="" class="cart-btn" data-id="${producto.idProducto}"><i class="fas fa-shopping-cart"></i> Agregar al Carrito</a>`;
 
                 }
 
@@ -64,17 +64,15 @@ async function requestTodosLosProductos() {
     console.log("Productos cargados. Verifica si este mensaje aparece en la consola.");
 }
 
-$('.cart-btn').on('click', function (event) {
+$(document).on('click', '.cart-btn', function (event) {
     event.preventDefault();
 
     const idProducto = $(this).data('id');
-    const cantidad = $(this).closest('.single-product-item').find('input[name="cantidad"]').val();
 
     // Crear un objeto con los datos
     const datos = {
         idProducto: idProducto,
-        cantidad: cantidad,
-        addToCart: 1
+        cantidad: 1
     };
 
     // Enviar datos al servidor usando AJAX
@@ -86,10 +84,30 @@ $('.cart-btn').on('click', function (event) {
         body: JSON.stringify(datos),
     })
     .then(response => {
-        // Manejar la respuesta del servidor, por ejemplo, mostrar un mensaje al usuario
-        console.log('Producto agregado al carrito');
+        // Verificar si la respuesta es exitosa
+        if (!response.ok) {
+            throw new Error('La solicitud no fue exitosa');
+        }
+        // Devolver la respuesta como JSON
+        return response.json();
+    })
+    .then(data => {
+        // Manejar la respuesta del servidor
+        if (data.success) {
+            console.log('Producto agregado al carrito');
+            alert('Producto agregado al carrito');
+            // Puedes redirigir al usuario o mostrar un mensaje de éxito aquí
+            // window.location.replace('/ruta-a-la-que-redirigir'); // Reemplaza con tu ruta
+        } else {
+            console.error('Error al agregar el producto al carrito:', data.message);
+            // Puedes mostrar un mensaje de error al usuario si es necesario
+        }
     })
     .catch(error => {
         console.error('Error al agregar el producto al carrito', error);
     });
 });
+
+
+
+requestTodosLosProductos();
