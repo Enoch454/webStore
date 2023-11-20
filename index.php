@@ -7,6 +7,7 @@ require_once __DIR__.'/controllers/login.php';
 require_once __DIR__.'/controllers/profile.php';
 require_once __DIR__ .'/controllers/product.php';
 require_once __DIR__ .'/controllers/shop.php';
+require_once __DIR__ .'/controllers/cart.php';
 
 use \Controllers\Home as Home;
 use \Controllers\SignUp as SignUp;
@@ -14,6 +15,7 @@ use \Controllers\Login as Login;
 use \Controllers\Profile as Profile;
 use \Controllers\Product as Product;
 use \Controllers\Shop as Shop;
+use \Controllers\Cart as Cart;
 
 // ##################################################
 // ##################################################
@@ -129,6 +131,13 @@ get('/allShop', function(){
 
     Shop::allProducts();
 
+});
+
+//Carrito de Compras
+get('/cart', function(){
+
+    Cart::verCart();
+    
 });
 
 

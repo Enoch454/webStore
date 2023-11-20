@@ -10,27 +10,27 @@
 	<title>Carrito</title>
 
 	<!-- fotito -->
-	<link rel="shortcut icon" type="image/png" href="assets/img/pasteles.png">
+	<link rel="shortcut icon" type="image/png" href="./views/assets/img/pasteles.png">
 
 	<!-- google font -->
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
 	<!-- fontawesome -->
-	<link rel="stylesheet" href="assets/css/all.min.css">
+	<link rel="stylesheet" href="./views/assets/css/all.min.css">
 	<!-- bootstrap -->
-	<link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="./views/assets/bootstrap/css/bootstrap.min.css">
 	<!-- owl carousel -->
-	<link rel="stylesheet" href="assets/css/owl.carousel.css">
+	<link rel="stylesheet" href="./views/assets/css/owl.carousel.css">
 	<!-- magnific popup -->
-	<link rel="stylesheet" href="assets/css/magnific-popup.css">
+	<link rel="stylesheet" href="./views/assets/css/magnific-popup.css">
 	<!-- animate css -->
-	<link rel="stylesheet" href="assets/css/animate.css">
+	<link rel="stylesheet" href="./views/assets/css/animate.css">
 	<!-- mean menu css -->
-	<link rel="stylesheet" href="assets/css/meanmenu.min.css">
+	<link rel="stylesheet" href="./views/assets/css/meanmenu.min.css">
 	<!-- main style -->
-	<link rel="stylesheet" href="assets/css/main.css">
+	<link rel="stylesheet" href="./views/assets/css/main.css">
 	<!-- responsive -->
-	<link rel="stylesheet" href="assets/css/responsive.css">
+	<link rel="stylesheet" href="./views/assets/css/responsive.css">
 
 </head>
 <body>
@@ -52,7 +52,7 @@
 						<!-- logo -->
 						<div class="site-logo">
 							<a href="index.php">
-								<img src="assets/img/logo.png" alt="">
+								<img src="./views/assets/img/logo.png" alt="">
 							</a>
 						</div>
 						<!-- logo -->
@@ -92,6 +92,7 @@
 											<li><a href="cart.php">Carrito</a></li>
 										</ul>
 									</li>
+									<li> <a href="/logout">Cerrar Sesion</a></li>
 									<li>
 										<div class="header-icons">
 											<a class="shopping-cart" href="cart.php"><i class="fas fa-shopping-cart"></i></a>
@@ -157,7 +158,7 @@
 									<th class="product-remove"></th>
 									<th class="product-image">Producto</th>
 									<th class="product-name">Nombre</th>
-									<th class="product-price">Precio</th>
+									<th class="product-price">Precio unitario</th>
 									<th class="product-quantity">Cantidad</th>
 									<th class="product-total">Total</th>
 								</tr>
@@ -165,26 +166,26 @@
 							<tbody>
 								<tr class="table-body-row">
 									<td class="product-remove"><a href="#"><i class="far fa-window-close"></i></a></td>
-									<td class="product-image"><img src="assets/img/products/Cupcake.png" alt=""></td>
+									<td class="product-image"><img src="./views/assets/img/products/Cupcake.png" alt=""></td>
 									<td class="product-name">Fresa</td>
 									<td class="product-price">$85</td>
-									<td class="product-quantity"><input type="number" placeholder="0"></td>
+									<td class="product-quantity"><input type="number" placeholder="1"></td>
 									<td class="product-total">1</td>
 								</tr>
 								<tr class="table-body-row">
 									<td class="product-remove"><a href="#"><i class="far fa-window-close"></i></a></td>
-									<td class="product-image"><img src="assets/img/products/cocholate.png" alt=""></td>
+									<td class="product-image"><img src="./views/assets/img/products/cocholate.png" alt=""></td>
 									<td class="product-name">Chocolate Cream</td>
 									<td class="product-price">$70</td>
-									<td class="product-quantity"><input type="number" placeholder="0"></td>
+									<td class="product-quantity"><input type="number" placeholder="1"></td>
 									<td class="product-total">1</td>
 								</tr>
 								<tr class="table-body-row">
 									<td class="product-remove"><a href="#"><i class="far fa-window-close"></i></a></td>
-									<td class="product-image"><img src="assets/img/products/galleta_chocolate.png" alt=""></td>
+									<td class="product-image"><img src="./views/assets/img/products/galleta_chocolate.png" alt=""></td>
 									<td class="product-name">Chocolate Chip Cookie</td>
 									<td class="product-price">$35</td>
-									<td class="product-quantity"><input type="number" placeholder="0"></td>
+									<td class="product-quantity"><input type="number" placeholder="1"></td>
 									<td class="product-total">1</td>
 								</tr>
 							</tbody>
@@ -207,7 +208,7 @@
 									<td>$500</td>
 								</tr>
 								<tr class="total-data">
-									<td><strong>Envio: </strong></td>
+									<td><strong>IVA: </strong></td>
 									<td>$45</td>
 								</tr>
 								<tr class="total-data">
@@ -217,7 +218,6 @@
 							</tbody>
 						</table>
 						<div class="cart-buttons">
-							<a href="cart.php" class="boxed-btn">Actualizar Carrito</a>
 							<a href="checkout.php" class="boxed-btn black">Check Out</a>
 						</div>
 					</div>
@@ -235,19 +235,19 @@
 				<div class="col-lg-12">
 					<div class="logo-carousel-inner">
 						<div class="single-logo-item">
-							<img src="assets/img/4001495.png" alt="">
+							<img src="./views/assets/img/4001495.png" alt="">
 						</div>
 						<div class="single-logo-item">
-							<img src="assets/img/awww.png" alt="">
+							<img src="./views/assets/img/awww.png" alt="">
 						</div>
 						<div class="single-logo-item">
-							<img src="assets/img/pastelito.png" alt="">
+							<img src="./views/assets/img/pastelito.png" alt="">
 						</div>
 						<div class="single-logo-item">
-							<img src="assets/img/cap.png" alt="">
+							<img src="./views/assets/img/cap.png" alt="">
 						</div>
 						<div class="single-logo-item">
-							<img src="assets/img/pasteles.png" alt="">
+							<img src="./views/assets/img/pasteles.png" alt="">
 						</div>
 					</div>
 				</div>
@@ -289,7 +289,7 @@
 					</div>
 				</div>
 				<div class="col-lg-3 col-md-6">
-					<img src="assets/img/mishi.jpg" alt="">
+					<img src="./views/assets/img/mishi.jpg" alt="">
 				</div>
 			</div>
 		</div>
@@ -297,25 +297,25 @@
 	<!-- end footer -->
 	
 	<!-- jquery -->
-	<script src="assets/js/jquery-1.11.3.min.js"></script>
+	<script src="./views/assets/js/jquery-1.11.3.min.js"></script>
 	<!-- bootstrap -->
-	<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+	<script src="./views/assets/bootstrap/js/bootstrap.min.js"></script>
 	<!-- count down -->
-	<script src="assets/js/jquery.countdown.js"></script>
+	<script src="./views/assets/js/jquery.countdown.js"></script>
 	<!-- isotope -->
-	<script src="assets/js/jquery.isotope-3.0.6.min.js"></script>
+	<script src="./views/assets/js/jquery.isotope-3.0.6.min.js"></script>
 	<!-- waypoints -->
-	<script src="assets/js/waypoints.js"></script>
+	<script src="./views/assets/js/waypoints.js"></script>
 	<!-- owl carousel -->
-	<script src="assets/js/owl.carousel.min.js"></script>
+	<script src="./views/assets/js/owl.carousel.min.js"></script>
 	<!-- magnific popup -->
-	<script src="assets/js/jquery.magnific-popup.min.js"></script>
+	<script src="./views/assets/js/jquery.magnific-popup.min.js"></script>
 	<!-- mean menu -->
-	<script src="assets/js/jquery.meanmenu.min.js"></script>
+	<script src="./views/assets/js/jquery.meanmenu.min.js"></script>
 	<!-- sticker js -->
-	<script src="assets/js/sticker.js"></script>
+	<script src="./views/assets/js/sticker.js"></script>
 	<!-- main js -->
-	<script src="assets/js/main.js"></script>
+	<script src="./views/assets/js/main.js"></script>
 
 </body>
 </html>
