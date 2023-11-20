@@ -368,3 +368,33 @@ BEGIN
 END //
 
 DELIMITER ;
+
+DELIMITER //
+
+CREATE PROCEDURE sp_InsertarCarritoCompra(
+    IN p_cantidad INT,
+    IN p_idComprador INT,
+    OUT p_idCarritoCompra INT
+)
+BEGIN
+    -- Insertar en la tabla CarritoCompra
+    INSERT INTO carritocompras (cantidad, idComprador)
+    VALUES (p_cantidad, p_idComprador);
+
+    -- Obtener el último ID insertado y devolverlo como resultado
+    SET p_idCarritoCompra = LAST_INSERT_ID();
+END //
+
+DELIMITER ;
+
+
+
+DELIMITER //
+create procedure sp_InsertarCarritoProducto(in p_idCarritoCompra int, in p_idProducto int)
+begin 
+-- Insertar en la tabla de Carrito_Producto teniendo como parámetro el idCarritoCompra y su idProducto
+insert into carrito_producto (idCarritoCompra, idProducto)
+values (p_idCarritoCompra, p_idProducto);
+END //
+
+DELIMITER ;

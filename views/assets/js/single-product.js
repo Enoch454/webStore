@@ -54,9 +54,15 @@ async function actualizarInformacionProducto() {
           // Ocultar el mensaje de error si el valor es válido
           errorMessageElement.style.display = 'none';
 
-          // Aquí puedes colocar la lógica para procesar el clic del botón
-          // Por ejemplo, enviar la cantidad al carrito o realizar alguna acción relacionada
-          console.log("Botón clicado. Cantidad seleccionada:", cantidadIngresada);
+          // Obtener el ID del producto
+          const auxArray = window.location.href.split('/');
+          const idProducto = parseInt(auxArray[auxArray.length - 1], 10);
+
+          // Aquí puedes colocar la lógica para procesar el clic del botón y agregar al carrito
+          agregarAlCarrito(idProducto, cantidadIngresada);
+
+          // Puedes redirigir al usuario o mostrar un mensaje de éxito
+          console.log("Producto agregado al carrito. Cantidad:", cantidadIngresada);
         }
       }
     });
@@ -118,5 +124,50 @@ async function obtenerInformacionProducto(idProducto) {
   }
 }
 
+function agregarAlCarrito(idProducto, cantidad) {
+  const urlRaiz = window.location.protocol
+                + "//"
+                + window.location.host;
+                console.log(urlRaiz);
+  
+  const datos = {
+    idProducto: idProducto,
+    cantidad: cantidad
+    // ...otros datos que puedan ser necesarios
+  };
+  console.log(datos);
+  // Resto del código para realizar la solicitud AJAX
+  console.log("Enviando datos al servidor:", JSON.stringify(datos));
+  fetch('/addCart', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(datos),
+  })
+  .then(response => {if (!response.ok) {
+    throw new Error('La solicitud no fue exitosa');
+  }
+  return response.json();
+})
+
+
+.then(data => {
+    if (data.success) {
+        alert('Agregado al carrito');
+        //window.location.replace(urlRaiz + '/products/ver/'+ idProducto); // Redirecciona al mismo producto detalle
+    } else {
+        alert('Agregado exitoso, pero ocurrió un error inesperado.');
+        console.log(data.details);
+    }
+})
+.catch(error => {
+    console.error("Error en la solicitud:", error);
+    //console.error(error);
+}); 
+}
+
 // Llamar a la función para actualizar la información del producto
 actualizarInformacionProducto();
+
+

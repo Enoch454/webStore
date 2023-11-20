@@ -38,7 +38,8 @@ async function requestTodosLosProductos() {
                     cotizableHTML = '<a href="cart.php" class="cart-btn"><i class="fas fa-shopping-cart"></i> Pedir cotizacion</a>';
                 } else {
                     precioHTML = `<p class="product-price"><span>Insertar Categoría</span>$ ${producto.Precio} </p>`;
-                    cotizableHTML = `<a href="cart.php" class="cart-btn"><i class="fas fa-shopping-cart"></i> Agregar al Carrito</a>`;
+                    cotizableHTML = `<a href="#" class="cart-btn" data-id="${producto.idProducto}"><i class="fas fa-shopping-cart"></i> Agregar al Carrito</a>`;
+
                 }
 
                 const productoHTML = `
@@ -63,8 +64,32 @@ async function requestTodosLosProductos() {
     console.log("Productos cargados. Verifica si este mensaje aparece en la consola.");
 }
 
+$('.cart-btn').on('click', function (event) {
+    event.preventDefault();
 
-$(document).ready(function(){
-    requestTodosLosProductos();
+    const idProducto = $(this).data('id');
+    const cantidad = $(this).closest('.single-product-item').find('input[name="cantidad"]').val();
 
+    // Crear un objeto con los datos
+    const datos = {
+        idProducto: idProducto,
+        cantidad: cantidad,
+        addToCart: 1
+    };
+
+    // Enviar datos al servidor usando AJAX
+    fetch('/addCart', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(datos),
+    })
+    .then(response => {
+        // Manejar la respuesta del servidor, por ejemplo, mostrar un mensaje al usuario
+        console.log('Producto agregado al carrito');
+    })
+    .catch(error => {
+        console.error('Error al agregar el producto al carrito', error);
+    });
 });

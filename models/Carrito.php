@@ -66,22 +66,30 @@ class Carrito {
 
 
     public function saveCart($mysqli){
-
-        $sql = "CALL sp_InsertarCarritoCompra(?,?)";
+        $sql = "CALL sp_InsertarCarritoCompra(?,?, @idCarritoCompra)";
         $stmt = $mysqli->prepare($sql);
         $stmt->bind_param("ii", $this->cantidad, $this->idComprador);
         $stmt->execute();
         $stmt->close();
 
+        // Obtener el idCarritoCompra resultante del procedimiento almacenado
+        $result = $mysqli->query("SELECT @idCarritoCompra as idCarritoCompra");
+        $row = $result->fetch_assoc();
+        $this->idCarritoCompra = $row['idCarritoCompra'];
     }
 
     public function saveCardProd($mysqli){
-        $sql = "sp_InsertarCarritoProducto(?,?)";
+        // Asegúrate de que el carrito tenga un idCarritoCompra válido
+        if (!$this->idCarritoCompra) {
+            // Manejar el caso en el que no haya un idCarritoCompra válido
+            return;
+        }
+
+        $sql = "CALL sp_InsertarCarritoProducto(?,?)";
         $stmt = $mysqli->prepare($sql);
         $stmt->bind_param("ii", $this->idCarritoCompra, $this->idProducto);
         $stmt->execute();
         $stmt->close();
-
     }
 
 }
