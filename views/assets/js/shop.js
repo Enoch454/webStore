@@ -73,39 +73,43 @@ $(document).on('click', '.cart-btn', function (event) {
     const datos = {
         idProducto: idProducto,
         cantidad: 1
-    };
-
-    // Enviar datos al servidor usando AJAX
-    fetch('/addCart', {
+        // ...otros datos que puedan ser necesarios
+      };
+      console.log(datos);
+      // Resto del código para realizar la solicitud AJAX
+      console.log("Enviando datos al servidor:", JSON.stringify(datos));
+      fetch('/addCart', {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json',
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify(datos),
+      })
+      .then(response => {if (!response.ok) {
+        throw new Error('La solicitud no fue exitosa');
+      }
+      return response.json();
     })
-    .then(response => {
-        // Verificar si la respuesta es exitosa
-        if (!response.ok) {
-            throw new Error('La solicitud no fue exitosa');
-        }
-        // Devolver la respuesta como JSON
-        return response.json();
-    })
+    
+    
     .then(data => {
         // Manejar la respuesta del servidor
         if (data.success) {
             console.log('Producto agregado al carrito');
-            alert('Producto agregado al carrito');
-            // Puedes redirigir al usuario o mostrar un mensaje de éxito aquí
-            // window.location.replace('/ruta-a-la-que-redirigir'); // Reemplaza con tu ruta
+            // Acceder al ID del carrito desde la respuesta del servidor
+            const idCarrito = data.idCarritoCompra;
+            // Puedes realizar acciones adicionales con el ID del carrito
+            alert('Producto agregado al carrito. ID del carrito: ' + idCarrito);
         } else {
             console.error('Error al agregar el producto al carrito:', data.message);
             // Puedes mostrar un mensaje de error al usuario si es necesario
         }
     })
     .catch(error => {
-        console.error('Error al agregar el producto al carrito', error);
-    });
+        
+        console.error("Error en la solicitud:", error);
+        //console.error(error);
+    }); 
 });
 
 

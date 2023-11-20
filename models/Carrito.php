@@ -65,32 +65,46 @@ class Carrito {
     }
 
 
-    public function saveCart($mysqli){
-        $sql = "CALL sp_InsertarCarritoCompra(?,?, @idCarritoCompra)";
-        $stmt = $mysqli->prepare($sql);
-        $stmt->bind_param("ii", $this->cantidad, $this->idComprador);
-        $stmt->execute();
-        $stmt->close();
-
-        // Obtener el idCarritoCompra resultante del procedimiento almacenado
-        $result = $mysqli->query("SELECT @idCarritoCompra as idCarritoCompra");
-        $row = $result->fetch_assoc();
-        $this->idCarritoCompra = $row['idCarritoCompra'];
-    }
-
-    public function saveCardProd($mysqli){
-        // Asegúrate de que el carrito tenga un idCarritoCompra válido
-        if (!$this->idCarritoCompra) {
-            // Manejar el caso en el que no haya un idCarritoCompra válido
-            return;
+    public function agregarProductoAlCarrito($mysqli)
+    {
+        // Asegúrate de tener los datos necesarios
+        if (!isset($this->cantidad, $this->idComprador, $this->idProducto)) {
+            // Manejar el caso en que no haya datos válidos
+            return ["success" => false, "message" => "Datos incompletos o incorrectos"];
         }
 
-        $sql = "CALL sp_InsertarCarritoProducto(?,?)";
-        $stmt = $mysqli->prepare($sql);
-        $stmt->bind_param("ii", $this->idCarritoCompra, $this->idProducto);
-        $stmt->execute();
-        $stmt->close();
+        // Llamar al nuevo procedimiento almacenado
+        $result = $this->llamarProcedimientoAlmacenado($mysqli);
+
+        return $result;
     }
+
+    private function llamarProcedimientoAlmacenado($mysqli)
+{
+    // Preparar la llamada al procedimiento almacenado
+    $stmt = $mysqli->prepare("CALL sp_InsertarCarritoCompra(?, ?, ?, @idCarritoCompra)");
+    if (!$stmt) {
+        return ["success" => false, "message" => "Error en la preparación de la consulta: " . $mysqli->error];
+    }
+
+    // Vincular los parámetros
+    $stmt->bind_param("iii", $this->cantidad, $this->idComprador, $this->idProducto);
+
+    // Ejecutar la consulta
+    $stmt->execute();
+
+    // Obtener el resultado del procedimiento almacenado
+    $result = $mysqli->query("SELECT @idCarritoCompra as idCarritoCompra");
+    $row = $result->fetch_assoc();
+    $stmt->close();
+
+    // Verificar el resultado y devolverlo
+    if ($row && isset($row['idCarritoCompra'])) {
+        return ["success" => true, "idCarritoCompra" => $row['idCarritoCompra']];
+    } else {
+        return ["success" => false, "message" => "Error al obtener el ID del carrito"];
+    }
+}
 
 
     public function getProductosEnCarrito($mysqli){
