@@ -153,41 +153,19 @@
 				<div class="col-lg-8 col-md-12">
 					<div class="cart-table-wrap">
 						<table class="cart-table">
-							<thead class="cart-table-head">
+							<thead  class="cart-table-head">
 								<tr class="table-head-row">
 									<th class="product-remove"></th>
 									<th class="product-image">Producto</th>
 									<th class="product-name">Nombre</th>
 									<th class="product-price">Precio unitario</th>
 									<th class="product-quantity">Cantidad</th>
-									<th class="product-total">Total</th>
+									
 								</tr>
 							</thead>
-							<tbody>
-								<tr class="table-body-row">
-									<td class="product-remove"><a href="#"><i class="far fa-window-close"></i></a></td>
-									<td class="product-image"><img src="./views/assets/img/products/Cupcake.png" alt=""></td>
-									<td class="product-name">Fresa</td>
-									<td class="product-price">$85</td>
-									<td class="product-quantity"><input type="number" placeholder="1"></td>
-									<td class="product-total">1</td>
-								</tr>
-								<tr class="table-body-row">
-									<td class="product-remove"><a href="#"><i class="far fa-window-close"></i></a></td>
-									<td class="product-image"><img src="./views/assets/img/products/cocholate.png" alt=""></td>
-									<td class="product-name">Chocolate Cream</td>
-									<td class="product-price">$70</td>
-									<td class="product-quantity"><input type="number" placeholder="1"></td>
-									<td class="product-total">1</td>
-								</tr>
-								<tr class="table-body-row">
-									<td class="product-remove"><a href="#"><i class="far fa-window-close"></i></a></td>
-									<td class="product-image"><img src="./views/assets/img/products/galleta_chocolate.png" alt=""></td>
-									<td class="product-name">Chocolate Chip Cookie</td>
-									<td class="product-price">$35</td>
-									<td class="product-quantity"><input type="number" placeholder="1"></td>
-									<td class="product-total">1</td>
-								</tr>
+							<tbody id="cartTableBody">
+								
+								
 							</tbody>
 						</table>
 					</div>
@@ -316,6 +294,7 @@
 	<script src="./views/assets/js/sticker.js"></script>
 	<!-- main js -->
 	<script src="./views/assets/js/main.js"></script>
-
+	<!-- cart js-->
+	<script src= "./views/assets/js/cart.js"></script>
 </body>
 </html>

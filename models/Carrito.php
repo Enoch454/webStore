@@ -92,6 +92,47 @@ class Carrito {
         $stmt->close();
     }
 
+
+    public function getProductosEnCarrito($mysqli){
+    // Asegúrate de tener un idComprador válido
+    if (!$this->idComprador) {
+        // Manejar el caso en el que no haya un idComprador válido
+        return [];
+    }
+
+    $productosEnCarrito = [];
+
+    // Consulta SQL para obtener los productos en el carrito de un usuario
+    $sql = "SELECT p.idProducto, p.Nombre, p.Precio, cc.Cantidad
+            FROM productos p
+            JOIN carrito_producto cp ON p.idProducto = cp.idProducto
+            JOIN carritocompras cc ON cp.idCarritoCompra = cc.idCarritoCompra
+            WHERE cc.idComprador = ?";
+
+    $stmt = $mysqli->prepare($sql);
+    if (!$stmt) {
+        die('Error en la consulta preparada: ' . $mysqli->error);
+    }
+    $stmt->bind_param("i", $this->idComprador);
+    $stmt->execute();
+
+    $result = $stmt->get_result();
+
+    // Obtener los productos y cantidades en el carrito
+    while ($row = $result->fetch_assoc()) {
+        $productosEnCarrito[] = [
+            'idProducto' => $row['idProducto'],
+            'nombre' => $row['Nombre'],
+            'precio' => $row['Precio'],
+            'cantidad' => $row['Cantidad']
+        ];
+    }
+
+    $stmt->close();
+
+    return $productosEnCarrito;
+    }
+
 }
 
 

@@ -140,9 +140,16 @@ get('/cart', function(){
     
 });
 
+get('/cart/verCart', function(){
+    Cart::contenidoCart();
+});
+
+//Añadir a carrito desde shop.php y single-product.php
 post('/addCart', function(){
     Cart::recibirArticulo();
 });
+
+
 
 
 // For GET or POST
