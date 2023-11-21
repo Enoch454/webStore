@@ -37,9 +37,7 @@ CREATE TABLE `admins` (
 -- Dumping data for table `admins`
 --
 
-LOCK TABLES `admins` WRITE;
-INSERT INTO `admins` (`idAdmin`, `idUsuario`) VALUES (1,4);
-UNLOCK TABLES;
+INSERT INTO `admins` VALUES (1,4);
 
 --
 -- Table structure for table `carrito_producto`
@@ -52,21 +50,19 @@ CREATE TABLE `carrito_producto` (
   `idCarProd` int(11) NOT NULL AUTO_INCREMENT,
   `idCarritoCompra` int(11) DEFAULT NULL,
   `idProducto` int(11) DEFAULT NULL,
-  `Cantidad` int(11) DEFAULT NULL,
   PRIMARY KEY (`idCarProd`),
   KEY `idCarritoCompra` (`idCarritoCompra`),
   KEY `idProducto` (`idProducto`),
   CONSTRAINT `carrito_producto_ibfk_1` FOREIGN KEY (`idCarritoCompra`) REFERENCES `carritocompras` (`idCarritoCompra`),
   CONSTRAINT `carrito_producto_ibfk_2` FOREIGN KEY (`idProducto`) REFERENCES `productos` (`idProducto`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `carrito_producto`
 --
 
-LOCK TABLES `carrito_producto` WRITE;
-UNLOCK TABLES;
+INSERT INTO `carrito_producto` VALUES (1,1,17),(2,2,15),(3,3,13),(4,4,18),(5,5,3),(6,6,13);
 
 --
 -- Table structure for table `carritocompras`
@@ -82,15 +78,14 @@ CREATE TABLE `carritocompras` (
   PRIMARY KEY (`idCarritoCompra`),
   KEY `idComprador` (`idComprador`),
   CONSTRAINT `carritocompras_ibfk_1` FOREIGN KEY (`idComprador`) REFERENCES `compradores` (`idComprador`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `carritocompras`
 --
 
-LOCK TABLES `carritocompras` WRITE;
-UNLOCK TABLES;
+INSERT INTO `carritocompras` VALUES (1,12,1),(2,1,3),(3,1,3),(4,32,1),(5,5,1),(6,4,1);
 
 --
 -- Table structure for table `categoria_producto`
@@ -115,8 +110,6 @@ CREATE TABLE `categoria_producto` (
 -- Dumping data for table `categoria_producto`
 --
 
-LOCK TABLES `categoria_producto` WRITE;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `categorias`
@@ -140,8 +133,6 @@ CREATE TABLE `categorias` (
 -- Dumping data for table `categorias`
 --
 
-LOCK TABLES `categorias` WRITE;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `compradores`
@@ -163,9 +154,7 @@ CREATE TABLE `compradores` (
 -- Dumping data for table `compradores`
 --
 
-LOCK TABLES `compradores` WRITE;
-INSERT INTO `compradores` (`idComprador`, `idUsuario`) VALUES (1,1),(2,2),(3,3),(4,4),(5,5);
-UNLOCK TABLES;
+INSERT INTO `compradores` VALUES (1,1),(2,2),(3,3),(4,4),(5,5);
 
 --
 -- Table structure for table `cotizaciones`
@@ -194,8 +183,6 @@ CREATE TABLE `cotizaciones` (
 -- Dumping data for table `cotizaciones`
 --
 
-LOCK TABLES `cotizaciones` WRITE;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `detallesordencompra`
@@ -223,8 +210,6 @@ CREATE TABLE `detallesordencompra` (
 -- Dumping data for table `detallesordencompra`
 --
 
-LOCK TABLES `detallesordencompra` WRITE;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `domicilios`
@@ -250,8 +235,6 @@ CREATE TABLE `domicilios` (
 -- Dumping data for table `domicilios`
 --
 
-LOCK TABLES `domicilios` WRITE;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `especificaciones`
@@ -275,8 +258,6 @@ CREATE TABLE `especificaciones` (
 -- Dumping data for table `especificaciones`
 --
 
-LOCK TABLES `especificaciones` WRITE;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `lista_producto`
@@ -301,8 +282,6 @@ CREATE TABLE `lista_producto` (
 -- Dumping data for table `lista_producto`
 --
 
-LOCK TABLES `lista_producto` WRITE;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `listas`
@@ -327,8 +306,6 @@ CREATE TABLE `listas` (
 -- Dumping data for table `listas`
 --
 
-LOCK TABLES `listas` WRITE;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `metodospago`
@@ -349,8 +326,6 @@ CREATE TABLE `metodospago` (
 -- Dumping data for table `metodospago`
 --
 
-LOCK TABLES `metodospago` WRITE;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `ordenescompra`
@@ -378,8 +353,6 @@ CREATE TABLE `ordenescompra` (
 -- Dumping data for table `ordenescompra`
 --
 
-LOCK TABLES `ordenescompra` WRITE;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `pagos`
@@ -403,8 +376,6 @@ CREATE TABLE `pagos` (
 -- Dumping data for table `pagos`
 --
 
-LOCK TABLES `pagos` WRITE;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `personas`
@@ -432,9 +403,7 @@ CREATE TABLE `personas` (
 -- Dumping data for table `personas`
 --
 
-LOCK TABLES `personas` WRITE;
-INSERT INTO `personas` (`idPersona`, `Nombre`, `ApellidoPat`, `ApellidoMat`, `FechaNac`, `Sexo`, `idDomicilio`, `Telefono`) VALUES (1,'Nelly','Rangel','Jimenez','1999-05-15','F',NULL,'2251054299'),(2,'Caraly','Armenta ','Jimenez','1990-04-25','F',NULL,'2251053579'),(3,'Alicia','Jimenez','Aburto','1971-06-15','M',NULL,'2251038946'),(4,'Usuario Veinte','Apepat','Apemat','1999-07-10','M',NULL,'0123456789'),(5,'UsuarioRe','apellidoPat','apellidoMat','1988-10-10','M',NULL,'0987654321');
-UNLOCK TABLES;
+INSERT INTO `personas` VALUES (1,'Nelly','Rangel','Jimenez','1999-05-15','F',NULL,'2251054299'),(2,'Caraly','Armenta ','Jimenez','1990-04-25','F',NULL,'2251053579'),(3,'Alicia','Jimenez','Aburto','1971-06-15','M',NULL,'2251038946'),(4,'Usuario Veinte','Apepat','Apemat','1999-07-10','M',NULL,'0123456789'),(5,'UsuarioRe','apellidoPat','apellidoMat','1988-10-10','M',NULL,'0987654321');
 
 --
 -- Table structure for table `prodmultimedias`
@@ -458,8 +427,6 @@ CREATE TABLE `prodmultimedias` (
 -- Dumping data for table `prodmultimedias`
 --
 
-LOCK TABLES `prodmultimedias` WRITE;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `productos`
@@ -494,9 +461,7 @@ CREATE TABLE `productos` (
 -- Dumping data for table `productos`
 --
 
-LOCK TABLES `productos` WRITE;
-INSERT INTO `productos` (`idProducto`, `Nombre`, `Descripcion`, `esCotizable`, `Precio`, `Stock`, `Rating`, `Status`, `idVendedor`, `idAdmin`, `idCarritoCompra`) VALUES (1,'CupCake Fresa','Pastelillos rellenos de fresa',_binary '\0',11,50,3,1,1,NULL,NULL),(2,'CupCake Chocolate','Pastelillos rellenos de chocolate',_binary '\0',16,10,4,1,2,NULL,NULL),(3,'CupCake Vainilla','Pastelillos rellenos de vainilla',_binary '\0',20,32,5,1,1,NULL,NULL),(4,'PastelChoco','Relleno de nuez, cacao y coco',_binary '\0',12,16,0,1,3,NULL,NULL),(5,'PastelChoco','Relleno de nuez, cacao y coco',_binary '\0',12,16,0,1,3,NULL,NULL),(6,'PastelChoco','Relleno de nuez, cacao y coco',_binary '\0',12,16,0,1,3,NULL,NULL),(7,'a','a',_binary '\0',16,12,0,1,3,NULL,NULL),(8,'PastelChoco','Relleno de coco, cacao y nuez',_binary '\0',12,16,0,1,3,NULL,NULL),(9,'Pastel','Relleno de cacao, nuez y coco',_binary '\0',12,16,0,1,3,NULL,NULL),(10,'PastelChoco','Relleno de nuez, cacao y cco',_binary '\0',12,16,0,1,3,NULL,NULL),(11,'PastelChoco','Relleno de nuez, cacao y cco',_binary '\0',125,16,0,1,3,NULL,NULL),(12,'PastelChoco','Relleno de nuez, cacao y cco',_binary '\0',12,16,0,1,3,NULL,NULL),(13,'PastelChoco','Relleno de nuez, cacao y coco',_binary '\0',12,16,0,1,3,NULL,NULL),(14,'Galleta chispas','Chispas de chocolate y relleno de cacao',_binary '',0,0,0,1,3,NULL,NULL),(15,'Macarrones','Contiene 12 colores distintos',_binary '\0',29,49,0,1,1,NULL,NULL),(16,'Galletas de Nepe','Galleta de Nepe de Maiz',_binary '\0',10,5,0,1,1,NULL,NULL),(17,'Huevos de avestruz','Huevos de avestruz doble yema',_binary '\0',200,3,0,1,1,NULL,NULL),(18,'Magdalenas','Sumo de naranja y entregas en la misma ciudad',_binary '\0',13,56,0,1,3,NULL,NULL),(19,'Tiramisu','Hecho con café de grano y cacao',_binary '',0,0,0,3,2,NULL,NULL);
-UNLOCK TABLES;
+INSERT INTO `productos` VALUES (1,'CupCake Fresa','Pastelillos rellenos de fresa',_binary '\0',11,50,3,1,1,NULL,NULL),(2,'CupCake Chocolate','Pastelillos rellenos de chocolate',_binary '\0',16,10,4,1,2,NULL,NULL),(3,'CupCake Vainilla','Pastelillos rellenos de vainilla',_binary '\0',20,32,5,1,1,NULL,NULL),(4,'PastelChoco','Relleno de nuez, cacao y coco',_binary '\0',12,16,0,1,3,NULL,NULL),(5,'PastelChoco','Relleno de nuez, cacao y coco',_binary '\0',12,16,0,1,3,NULL,NULL),(6,'PastelChoco','Relleno de nuez, cacao y coco',_binary '\0',12,16,0,1,3,NULL,NULL),(7,'a','a',_binary '\0',16,12,0,1,3,NULL,NULL),(8,'PastelChoco','Relleno de coco, cacao y nuez',_binary '\0',12,16,0,1,3,NULL,NULL),(9,'Pastel','Relleno de cacao, nuez y coco',_binary '\0',12,16,0,1,3,NULL,NULL),(10,'PastelChoco','Relleno de nuez, cacao y cco',_binary '\0',12,16,0,1,3,NULL,NULL),(11,'PastelChoco','Relleno de nuez, cacao y cco',_binary '\0',125,16,0,1,3,NULL,NULL),(12,'PastelChoco','Relleno de nuez, cacao y cco',_binary '\0',12,16,0,1,3,NULL,NULL),(13,'PastelChoco','Relleno de nuez, cacao y coco',_binary '\0',12,16,0,1,3,NULL,NULL),(14,'Galleta chispas','Chispas de chocolate y relleno de cacao',_binary '',0,0,0,1,3,NULL,NULL),(15,'Macarrones','Contiene 12 colores distintos',_binary '\0',29,49,0,1,1,NULL,NULL),(16,'Galletas de Nepe','Galleta de Nepe de Maiz',_binary '\0',10,5,0,1,1,NULL,NULL),(17,'Huevos de avestruz','Huevos de avestruz doble yema',_binary '\0',200,3,0,1,1,NULL,NULL),(18,'Magdalenas','Sumo de naranja y entregas en la misma ciudad',_binary '\0',13,56,0,1,3,NULL,NULL),(19,'Tiramisu','Hecho con café de grano y cacao',_binary '',0,0,0,3,2,NULL,NULL);
 
 --
 -- Table structure for table `respuestasespec`
@@ -522,8 +487,6 @@ CREATE TABLE `respuestasespec` (
 -- Dumping data for table `respuestasespec`
 --
 
-LOCK TABLES `respuestasespec` WRITE;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `roles`
@@ -545,9 +508,7 @@ CREATE TABLE `roles` (
 -- Dumping data for table `roles`
 --
 
-LOCK TABLES `roles` WRITE;
-INSERT INTO `roles` (`idRol`, `Nombre`, `Descripcion`) VALUES (1,'SuperAdmin','Super Administrador'),(2,'Admin','Administrador'),(3,'Comprador','Comprador'),(4,'Vendedor','Vendedor');
-UNLOCK TABLES;
+INSERT INTO `roles` VALUES (1,'SuperAdmin','Super Administrador'),(2,'Admin','Administrador'),(3,'Comprador','Comprador'),(4,'Vendedor','Vendedor');
 
 --
 -- Table structure for table `superadmins`
@@ -569,8 +530,6 @@ CREATE TABLE `superadmins` (
 -- Dumping data for table `superadmins`
 --
 
-LOCK TABLES `superadmins` WRITE;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `usuario_rol`
@@ -595,9 +554,7 @@ CREATE TABLE `usuario_rol` (
 -- Dumping data for table `usuario_rol`
 --
 
-LOCK TABLES `usuario_rol` WRITE;
-INSERT INTO `usuario_rol` (`idUserRol`, `idUsuario`, `idRol`) VALUES (1,1,3),(2,2,3),(3,3,3),(4,4,3),(5,5,3);
-UNLOCK TABLES;
+INSERT INTO `usuario_rol` VALUES (1,1,3),(2,2,3),(3,3,3),(4,4,3),(5,5,3);
 
 --
 -- Table structure for table `usuarios`
@@ -627,9 +584,7 @@ CREATE TABLE `usuarios` (
 -- Dumping data for table `usuarios`
 --
 
-LOCK TABLES `usuarios` WRITE;
-INSERT INTO `usuarios` (`idUsuario`, `userName`, `contraseña`, `fechaIngreso`, `email`, `fotoPerfil`, `esPrivado`, `esActivo`, `idPersona`) VALUES (1,'gaki1505','Prueba_1','2023-11-07 14:33:11','nellyrj@outlook.com',NULL,1,_binary '',1),(2,'caraly25','Prueba_2','2023-11-07 15:27:23','caraly25@gmail.com',NULL,1,_binary '',2),(3,'alicia1971','Prueba_3','2023-11-07 23:24:09','alicia1971@gmail.com',NULL,1,_binary '',3),(4,'usuario20','Ariuro_100','2023-11-15 06:50:33','usuario20@mail.com',NULL,1,_binary '',4),(5,'usuarioRe3','Prueba_5','2023-11-16 22:00:23','userReject@gmail.com',NULL,1,_binary '',5);
-UNLOCK TABLES;
+INSERT INTO `usuarios` VALUES (1,'gaki1505','Prueba_1','2023-11-07 14:33:11','nellyrj@outlook.com',NULL,1,_binary '',1),(2,'caraly25','Prueba_2','2023-11-07 15:27:23','caraly25@gmail.com',NULL,1,_binary '',2),(3,'alicia1971','Prueba_3','2023-11-07 23:24:09','alicia1971@gmail.com',NULL,1,_binary '',3),(4,'usuario20','Ariuro_100','2023-11-15 06:50:33','usuario20@mail.com',NULL,1,_binary '',4),(5,'usuarioRe3','Prueba_5','2023-11-16 22:00:23','userReject@gmail.com',NULL,1,_binary '',5);
 
 --
 -- Table structure for table `valoraciones`
@@ -653,8 +608,6 @@ CREATE TABLE `valoraciones` (
 -- Dumping data for table `valoraciones`
 --
 
-LOCK TABLES `valoraciones` WRITE;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `vendedores`
@@ -677,9 +630,7 @@ CREATE TABLE `vendedores` (
 -- Dumping data for table `vendedores`
 --
 
-LOCK TABLES `vendedores` WRITE;
-INSERT INTO `vendedores` (`idVendedor`, `idUsuario`, `Status`) VALUES (1,1,1),(2,2,1),(3,3,1),(4,5,3);
-UNLOCK TABLES;
+INSERT INTO `vendedores` VALUES (1,1,1),(2,2,1),(3,3,1),(4,5,3);
 
 --
 -- Temporary view structure for view `vw_consultaventas_admin`
@@ -1082,6 +1033,88 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `sp_InsertarCarritoCompra` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_InsertarCarritoCompra`(
+    IN p_cantidad INT,
+    IN p_idComprador INT,
+    IN p_idProducto INT,
+    OUT p_idCarritoCompra INT
+)
+BEGIN
+    DECLARE existingRowCount INT;
+
+    -- Verificar si ya existe una fila con el mismo idProducto e idComprador
+    SELECT COUNT(*) INTO existingRowCount
+    FROM carrito_producto cp
+    JOIN carritocompras cc ON cp.idCarritoCompra = cc.idCarritoCompra
+    WHERE cp.idProducto = p_idProducto AND cc.idComprador = p_idComprador;
+
+    IF existingRowCount > 0 THEN
+        -- Si ya existe, actualizar la cantidad en la tabla carritocompras
+        UPDATE carritocompras c
+        JOIN carrito_producto cp ON c.idCarritoCompra = cp.idCarritoCompra
+        SET c.cantidad = c.cantidad + p_cantidad
+        WHERE cp.idProducto = p_idProducto AND c.idComprador = p_idComprador;
+
+        -- Obtener el idCarritoCompra existente
+        SET p_idCarritoCompra = (
+            SELECT idCarritoCompra
+            FROM carrito_producto
+            WHERE idProducto = p_idProducto AND idCarritoCompra = p_idComprador
+        );
+
+        -- Si no se encontró, usar el valor recién insertado
+        IF p_idCarritoCompra IS NULL THEN
+            SET p_idCarritoCompra = LAST_INSERT_ID();
+        END IF;
+    ELSE
+        -- Si no existe, insertar en la tabla CarritoCompra
+        INSERT INTO carritocompras (cantidad, idComprador)
+        VALUES (p_cantidad, p_idComprador);
+
+        -- Obtener el último ID insertado
+        SET p_idCarritoCompra = LAST_INSERT_ID();
+
+        -- Insertar en la tabla Carrito_Producto teniendo como parámetro el idCarritoCompra y su idProducto
+        CALL sp_InsertarCarritoProducto(p_idCarritoCompra, p_idProducto);
+    END IF;
+
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `sp_InsertarCarritoProducto` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_InsertarCarritoProducto`(in p_idCarritoCompra int, in p_idProducto int)
+begin 
+-- Insertar en la tabla de Carrito_Producto teniendo como parámetro el idCarritoCompra y su idProducto
+insert into carrito_producto (idCarritoCompra, idProducto)
+values (p_idCarritoCompra, p_idProducto);
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `sp_InsertarComprador` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -1429,4 +1462,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-11-18 19:31:38
+-- Dump completed on 2023-11-20 18:32:04

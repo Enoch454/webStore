@@ -386,8 +386,61 @@ BEGIN
 END //
 
 DELIMITER ;
+DELIMITER //
+
+CREATE PROCEDURE sp_InsertarCarritoCompra(
+    IN p_cantidad INT,
+    IN p_idComprador INT,
+    IN p_idProducto INT,
+    OUT p_idCarritoCompra INT
+)
+BEGIN
+    DECLARE existingRowCount INT;
+
+    -- Verificar si ya existe una fila con el mismo idProducto e idComprador
+    SELECT COUNT(*) INTO existingRowCount
+    FROM carrito_producto cp
+    JOIN carritocompras cc ON cp.idCarritoCompra = cc.idCarritoCompra
+    WHERE cp.idProducto = p_idProducto AND cc.idComprador = p_idComprador;
+
+    IF existingRowCount > 0 THEN
+        -- Si ya existe, actualizar la cantidad en la tabla carritocompras
+        UPDATE carritocompras c
+        JOIN carrito_producto cp ON c.idCarritoCompra = cp.idCarritoCompra
+        SET c.cantidad = c.cantidad + p_cantidad
+        WHERE cp.idProducto = p_idProducto AND c.idComprador = p_idComprador;
+
+        -- Obtener el idCarritoCompra existente
+        SET p_idCarritoCompra = (
+            SELECT idCarritoCompra
+            FROM carrito_producto
+            WHERE idProducto = p_idProducto AND idCarritoCompra = p_idComprador
+        );
+
+        -- Si no se encontró, usar el valor recién insertado
+        IF p_idCarritoCompra IS NULL THEN
+            SET p_idCarritoCompra = LAST_INSERT_ID();
+        END IF;
+    ELSE
+        -- Si no existe, insertar en la tabla CarritoCompra
+        INSERT INTO carritocompras (cantidad, idComprador)
+        VALUES (p_cantidad, p_idComprador);
+
+        -- Obtener el último ID insertado
+        SET p_idCarritoCompra = LAST_INSERT_ID();
+
+        -- Insertar en la tabla Carrito_Producto teniendo como parámetro el idCarritoCompra y su idProducto
+        CALL sp_InsertarCarritoProducto(p_idCarritoCompra, p_idProducto);
+    END IF;
+
+END //
+
+DELIMITER ;
 
 
+
+CALL sp_InsertarCarritoCompra(3, 1, 18, @idCarritoCompra);
+SELECT @idCarritoCompra;
 
 DELIMITER //
 create procedure sp_InsertarCarritoProducto(in p_idCarritoCompra int, in p_idProducto int)
