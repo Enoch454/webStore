@@ -1,12 +1,34 @@
+let carritoData;
+let cantidadesValidas = false;
 
+async function requestCheckOut(){
+    //alert('simon, si jala'
+    const dataRequest = {
+        productos: carritoData
+    };
+    const options = {
+        method: 'POST',
+        body: JSON.stringify(dataRequest)
+    }
+    await fetch('/cart/updateCantidades', options).
+    catch(e => {
+        console.log("error en checkout")
+    })
+    .then(res => res.json())
+    .then(dataRes => {
+        //redireccionamiento
+        location.html = dataRes.redirectUrl;
+    });
+      
+        
+    
+}
 
 // Función para cargar dinámicamente los productos del carrito en la tabla
 async function cargarProductosEnCarrito() {
     const options = {
         method: 'GET',
     }
-
-    let carritoData;
 
     // Realizar la solicitud al servidor para obtener los productos en espera
     const response = await fetch('/cart/verCart', options)
@@ -17,6 +39,9 @@ async function cargarProductosEnCarrito() {
     .then(dataRes => {
         console.log(dataRes);
         carritoData = dataRes.productosEnCarrito; // Accede directamente a productosEnCarrito
+        mostrarTotal(carritoData);
+        consultarStock(carritoData);
+
     });
 
     // Obtener el contenedor donde se mostrarán los productos
@@ -51,8 +76,83 @@ async function cargarProductosEnCarrito() {
     }
 }
 
+const mostrarTotal = (data) => {
+    // calcular el total
+    let total = 0;
+    console.log(data);
+    data.forEach(element => {
+        let subtotal = element.precio * element.cantidad;
+        console.log(element.nombre, subtotal);
+        total += subtotal;
+    });
+    console.log(total);
+    // mostrarlo en pantallaa
+    const precioTotalHTML = $('#precioTotal');
+    precioTotalHTML.html('$'+total);
+};
+
+const actualizarCantidad = (idProducto, newCantidad) => {
+    carritoData.forEach((element) => {
+        if (element.idProducto == idProducto) {
+            element.cantidad = newCantidad;
+        }
+    })
+}
+
+const consultarStock = async (data) => {
+    let dataRequest = {
+        productos: data
+    };
+    const options = {
+        method: 'POST',
+        body: JSON.stringify(dataRequest)
+    };
+    await fetch('/cart/query-stock', options)
+    .catch(e => {
+        console.log("Error en la conexión");
+    })
+    .then(res => res.json())
+    .then(dataRes => {
+        console.log(dataRes);
+        cantidadesValidas = dataRes.success;
+        if(!dataRes.success){
+            alert("Stock insuficiente para el producto: " + dataRes.Nombre);
+        }
+    });
+
+};
+
 // Llamar a la función para cargar los productos del carrito al cargar la página
 $(document).ready(function() {
     cargarProductosEnCarrito();
+    
+    // Agregar evento de escucha al input de tipo número
+    $('#cartTableBody').on('input', '.product-quantity input[type="number"]', function() {
+        const idProducto = $(this).closest('tr').find('.product-remove a').attr('href');
+        const nuevaCantidad = $(this).val();
+
+        console.log(idProducto, nuevaCantidad);
+
+        // Actualizar la cantidad en carritoData
+        actualizarCantidad(idProducto, nuevaCantidad);
+        console.log(carritoData);
+
+        // Consultar stock
+        consultarStock(carritoData);
+        mostrarTotal(carritoData);
+
+
+        // Volver a cargar los productos del carrito
+        //cargarProductosEnCarrito();
+    });
+
+    $('#btn-requestCheckOut').click(function(){
+        if(cantidadesValidas){
+            requestCheckOut();
+        }else{
+            alert("Cantidades de productos no validas");
+        }
+        
+    });
 });
 

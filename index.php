@@ -8,6 +8,7 @@ require_once __DIR__.'/controllers/profile.php';
 require_once __DIR__ .'/controllers/product.php';
 require_once __DIR__ .'/controllers/shop.php';
 require_once __DIR__ .'/controllers/cart.php';
+require_once __DIR__ .'/controllers/payment.php';
 
 use \Controllers\Home as Home;
 use \Controllers\SignUp as SignUp;
@@ -16,6 +17,7 @@ use \Controllers\Profile as Profile;
 use \Controllers\Product as Product;
 use \Controllers\Shop as Shop;
 use \Controllers\Cart as Cart;
+use \Controllers\Payment as Payment;
 
 // ##################################################
 // ##################################################
@@ -144,9 +146,22 @@ get('/cart/verCart', function(){
     Cart::contenidoCart();
 });
 
+post('/cart/query-stock', function(){
+    Cart::queryStock();
+});
+
+post('/cart/update-cantidades', function(){
+    //Cart::updateCantidades();
+});
+
 //Añadir a carrito desde shop.php y single-product.php
 post('/addCart', function(){
     Cart::recibirArticulo();
+});
+
+get('/checkOut', function(){
+
+    Payment::verPayment();
 });
 
 

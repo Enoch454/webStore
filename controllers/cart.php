@@ -124,6 +124,64 @@ class Cart{
             echo json_encode(array("message" => "Método no permitido"));
         }
     }
+
+    public static function queryStock() {
+        // Recibe el JSON desde la solicitud POST
+        $json = file_get_contents('php://input');
+        $data = json_decode($json, true);
+    
+        if ($data) {
+            // Inicia la sesión si no está iniciada
+            session_start();
+    
+            // Obtiene la conexión a la base de datos
+            $conexion = new Conexion;
+            $mysqli = $conexion->conexion;
+    
+            try {
+                // Itera sobre cada producto en el JSON
+                foreach ($data['productos'] as $producto) {
+                    $idProducto = $producto['idProducto'];
+                    $cantidad = $producto['cantidad'];
+    
+                    // Obtiene el producto desde la base de datos
+                    $productoEnBD = Producto::findProductById($mysqli, $idProducto);
+    
+                    // Verifica si el producto existe y si hay suficiente stock
+                    if ($productoEnBD && $productoEnBD->getStock() >= $cantidad) {
+                        // Puedes realizar otras acciones aquí si lo deseas
+                    } else {
+                        // Responde con un mensaje de error si el stock no es suficiente
+                        // http_response_code(400);
+                        echo json_encode(["success" => false,
+                            "message" => "Stock insuficiente para el producto con ID: $idProducto",
+                            "idProducto" => $idProducto,
+                            "Nombre" => $productoEnBD->getNombre()],
+                        );
+                        exit;
+                    }
+                }
+    
+                // Responde con éxito si todos los productos tienen suficiente stock
+                echo json_encode(["success" => true, "message" => "Todos los productos tienen suficiente stock"]);
+                exit;
+            } catch (\Exception $e) {
+                // Maneja cualquier excepción
+                http_response_code(500);
+                echo json_encode(["success" => false, "message" => "Error interno del servidor", "details" => $e->getMessage()]);
+                exit;
+            }
+        } else {
+            // Responde con un mensaje de error si el JSON no es válido
+            http_response_code(400);
+            echo json_encode(["success" => false, "message" => "JSON no válido"]);
+            exit;
+        }
+    }
+
+    public static function updateCantidades() {
+        
+    }
     
 
 }

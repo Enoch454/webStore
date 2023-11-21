@@ -8,29 +8,35 @@
 
 	<!-- title -->
 	<title>Check Out</title>
+	<script src="https://www.paypal.com/sdk/js?client-id=ASJRV66GQ90rNcUL1pj_ZYcB6-v6-mJAbKaaH7MR22ekzjWiiRUKTbR5z5vXmA9IPGZBYXLOw7p267fS&currency=MXN" ></script>
 
 	<!-- fotito -->
-	<link rel="shortcut icon" type="image/png" href="assets/img/pasteles.png">
+	<link rel="shortcut icon" type="image/png" href="./views/assets/img/pasteles.png">
 
 	<!-- google font -->
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
 	<!-- fontawesome -->
-	<link rel="stylesheet" href="assets/css/all.min.css">
+	<link rel="stylesheet" href="./views/assets/css/all.min.css">
 	<!-- bootstrap -->
-	<link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="./views/assets/bootstrap/css/bootstrap.min.css">
 	<!-- owl carousel -->
-	<link rel="stylesheet" href="assets/css/owl.carousel.css">
+	<link rel="stylesheet" href="./views/assets/css/owl.carousel.css">
 	<!-- magnific popup -->
-	<link rel="stylesheet" href="assets/css/magnific-popup.css">
+	<link rel="stylesheet" href="./views/assets/css/magnific-popup.css">
 	<!-- animate css -->
-	<link rel="stylesheet" href="assets/css/animate.css">
+	<link rel="stylesheet" href="./views/assets/css/animate.css">
 	<!-- mean menu css -->
-	<link rel="stylesheet" href="assets/css/meanmenu.min.css">
+	<link rel="stylesheet" href="./views/assets/css/meanmenu.min.css">
 	<!-- main style -->
-	<link rel="stylesheet" href="assets/css/main.css">
+	<link rel="stylesheet" href="./views/assets/css/main.css">
 	<!-- responsive -->
-	<link rel="stylesheet" href="assets/css/responsive.css">
+	<link rel="stylesheet" href="./views/assets/css/responsive.css">
+
+	<script>
+		const totalCheckOut = <?php if($_SESSION['TotalCheckOut']){ echo $_SESSION['TotalCheckOut']; }?>;
+		console.log(totalCheckOut);
+	</script>
 
 </head>
 <body>
@@ -52,7 +58,7 @@
 						<!-- logo -->
 						<div class="site-logo">
 							<a href="index.php">
-								<img src="assets/img/logo.png" alt="">
+								<img src="./views/assets/img/logo.png" alt="">
 							</a>
 						</div>
 						<!-- logo -->
@@ -166,8 +172,39 @@
 						        <div class="card-details">
 									<div class="checkout">
 										<div class="payment-methods">
+										  <div id="paypal-button-container">
+												
+												<script>
+													paypal.Buttons({
+														style:{
+															color: 'blue',
+															shape: 'pill',
+															label: 'pay'
+														},
+
+														createOrder: function(data, actions){
+															return actions.order.create({
+																purchase_units:[{
+																	amount: {
+																		value: totalCheckOut
+																	}
+																}]
+															});
+														},
+
+														onApprove: function(data, actions){
+															actions.order.capture().then(function (detalles){
+																	console.log(detalles);
+															});
+														},
+
+														onCancel: function(data){
+															alert("Pago Cancelado")
+														}
+													}).render('#paypal-button-container');
+												</script>
+										  </div>
 										  
-										  <span>Aqui estará paypal</span>
 										</div>
 										
 										<br>
@@ -246,19 +283,19 @@
 				<div class="col-lg-12">
 					<div class="logo-carousel-inner">
 						<div class="single-logo-item">
-							<img src="assets/img/4001495.png" alt="">
+							<img src="./views/assets/img/4001495.png" alt="">
 						</div>
 						<div class="single-logo-item">
-							<img src="assets/img/awww.png" alt="">
+							<img src="./views/assets/img/awww.png" alt="">
 						</div>
 						<div class="single-logo-item">
-							<img src="assets/img/pastelito.png" alt="">
+							<img src="./views/assets/img/pastelito.png" alt="">
 						</div>
 						<div class="single-logo-item">
-							<img src="assets/img/cap.png" alt="">
+							<img src="./views/assets/img/cap.png" alt="">
 						</div>
 						<div class="single-logo-item">
-							<img src="assets/img/pasteles.png" alt="">
+							<img src="./views/assets/img/pasteles.png" alt="">
 						</div>
 					</div>
 				</div>
@@ -300,7 +337,7 @@
 				</div>
 			</div>
 			<div class="col-lg-3 col-md-6">
-				<img src="assets/img/mishi.jpg" alt="">
+				<img src="./views/assets/img/mishi.jpg" alt="">
 			</div>
 		</div>
 	</div>
@@ -308,29 +345,32 @@
 <!-- end footer -->
 	
 	<!-- jquery -->
-	<script src="assets/js/jquery-1.11.3.min.js"></script>
+	<script src="./views/assets/js/jquery-1.11.3.min.js"></script>
 	<!-- bootstrap -->
-	<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+	<script src="./views/assets/bootstrap/js/bootstrap.min.js"></script>
 	<!-- count down -->
-	<script src="assets/js/jquery.countdown.js"></script>
+	<script src="./views/assets/js/jquery.countdown.js"></script>
 	<!-- isotope -->
-	<script src="assets/js/jquery.isotope-3.0.6.min.js"></script>
+	<script src="./views/assets/js/jquery.isotope-3.0.6.min.js"></script>
 	<!-- waypoints -->
-	<script src="assets/js/waypoints.js"></script>
+	<script src="./views/assets/js/waypoints.js"></script>
 	<!-- owl carousel -->
-	<script src="assets/js/owl.carousel.min.js"></script>
+	<script src="./views/assets/js/owl.carousel.min.js"></script>
 	<!-- magnific popup -->
-	<script src="assets/js/jquery.magnific-popup.min.js"></script>
+	<script src="./views/assets/js/jquery.magnific-popup.min.js"></script>
 	<!-- mean menu -->
-	<script src="assets/js/jquery.meanmenu.min.js"></script>
+	<script src="./views/assets/js/jquery.meanmenu.min.js"></script>
 	<!-- sticker js -->
-	<script src="assets/js/sticker.js"></script>
+	<script src="./views/assets/js/sticker.js"></script>
 	<!-- main js -->
-	<script src="assets/js/main.js"></script>
+	<script src="./views/assets/js/main.js"></script>
 	<!--Validaciones de los metodos de pago-->
-	<script src="assets/js/metodoPago.js"></script>
-	<!--Validaciones de los datos de direccion-->
-	<script src="assets/js/validarDatosDireccion.js"></script>
-
+	<script src="./views/assets/js/metodoPago.js"></script>
+	<!--Validaciones de los datos de direccion
+	<script src="./views/assets/js/validarDatosDireccion.js"></script>
+	-->
+	<!--Paypal 
+	<script src="https://www.paypal.com/sdk/js?client-id=ASJRV66GQ90rNcUL1pj_ZYcB6-v6-mJAbKaaH7MR22ekzjWiiRUKTbR5z5vXmA9IPGZBYXLOw7p267fS&currency=MXN" ></script>
+-->
 </body>
 </html>
