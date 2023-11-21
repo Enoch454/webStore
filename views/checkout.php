@@ -152,51 +152,7 @@
 				<div class="col-lg-8">
 					<div class="checkout-accordion-wrap">
 						<div class="accordion" id="accordionExample">
-						  <div class="card single-accordion">
-						    <div class="card-header" id="headingOne">
-						      <h5 class="mb-0">
-						        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-						          Datos de Comprador
-						        </button>
-						      </h5>
-						    </div>
-
-						    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-						      <div class="card-body">
-						        <div class="billing-address-form">
-						        	<form action="index.php">
-										<div id="mensajeError" style="color: red;"></div>
-						        		<p><input type="text" placeholder="Nombre" id="nombre"></p>
-										<div id="errorNombre" style="color: red;"></div>
-						        		<p><input type="text" placeholder="Email" id="email"></p>
-										<div id="errorEmail" style="color: red;"></div>
-						        		<p><input type="text" placeholder="Direccion" id="direccion"></p>
-										<div id="errorDireccion" style="color: red;"></div>
-						        		<p><input type="text" placeholder="Telefono" id="telefono"></p>
-										<div id="errorTelefono" style="color: red;"></div>
-						        		<p><textarea name="bill" id="bill" cols="30" rows="10" placeholder="Comentarios"></textarea></p>
-									
-						        	</form>
-						        </div>
-						      </div>
-						    </div>
-						  </div>
-						  <div class="card single-accordion">
-						    <div class="card-header" id="headingTwo">
-						      <h5 class="mb-0">
-						        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-						          Direccion de Envio
-						        </button>
-						      </h5>
-						    </div>
-						    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-						      <div class="card-body">
-						        <div class="shipping-address-form">
-						        	<p>YEsta es su direccion de envio.</p>
-						        </div>
-						      </div>
-						    </div>
-						  </div>
+						  
 						  <div class="card single-accordion">
 						    <div class="card-header" id="headingThree">
 						      <h5 class="mb-0">
@@ -210,32 +166,8 @@
 						        <div class="card-details">
 									<div class="checkout">
 										<div class="payment-methods">
-										  <!-- Método de pago con Bootstrap -->
-										  <div class="form-check">
-											<input class="form-check-input" type="radio" name="payment" id="visaRadio" value="visa" onchange="mostrarCampos(this.value)">
-											<p>
-											<label class="form-check-label" for="visaRadio">
-											  <i class="fas fa-credit-card"></i> Tarjeta de Credito
-											  </p>
-											</label>
-										  </div>
 										  
-										  <!-- Método de pago con Bootstrap -->
-										  <div class="form-check">
-											<input class="form-check-input" type="radio" name="payment" id="mastercardRadio" value="mastercard" onchange="mostrarCampos(this.value)">
-											<label class="form-check-label" for="mastercardRadio">
-											  <i class="fas fa-credit-card"></i> Tarjeta de Debito
-											</label>
-										  </div>
-										  
-										  <!-- Método de pago con Bootstrap -->
-										  <div class="form-check">
-											<input class="form-check-input" type="radio" name="payment" id="paypalRadio" value="paypal" onchange="mostrarCampos(this.value)">
-											<label class="form-check-label" for="paypalRadio">
-											  <img src="assets/img/paypal.svg" alt="PayPal"> PayPal
-											</label>
-										  </div>
-										  
+										  <span>Aqui estará paypal</span>
 										</div>
 										
 										<br>
@@ -245,25 +177,7 @@
 											<span id="paypalEmailError" style="display: none; color: red;">Por favor, ingresa un correo de PayPal válido.</span>
 										</div>
 					
-										<!-- Campos de entrada de datos de tarjeta -->
-										<div class="card-details" style="display: none;" id="cardFields">
-											<div class="mb-3">
-												<label for="cardNumber" class="formulario">Número de Tarjeta:</label>
-												<input type="text" class="formulario" id="cardNumber" name="cardNumber">
-												<span id="cardNumberError" style="display: none; color: red;">Por favor, ingresa un número de tarjeta válido (16 dígitos numéricos).</span>
-											</div>
-											<div class="mb-3">
-												<label for="cardName" class="formulario">Nombre en la Tarjeta:</label>
-												<input type="text" class="formulario" id="cardName" name="cardName">
-												
-											</div>
-											<div class="mb-3">
-												<label for="cvv" class="formulario">CVV:</label>
-												<input type="text" class="formulario" id="cvv" name="cvv">
-												<span id="cvvError" style="display: none; color: red;">Por favor, ingresa un CVV válido (3 dígitos numéricos).</span>
-											</div>
-											<!-- Agrega más campos de tarjeta si es necesario -->
-										</div>
+										
 										
 									  </div>
 						        </div>
